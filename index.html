@@ -139,7 +139,7 @@ body {
 .lightbox-btn-primary { background: #fff; color: var(--airbnb-dark); border-color: #fff; }
 .lightbox-btn-primary:hover { background: rgba(255,255,255,0.9); border-color: rgba(255,255,255,0.9); }
 .lightbox-reload-btn { border-color: rgba(255,255,255,0.3); color: #ff9f43; }
-.lightbox-prompt { font-size: 0.78rem; line-height: 1.6; color: rgba(255,255,255,0.3); max-width: 600px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.08); word-break: break-word; }
+.lightbox-prompt { font-size: 0.78rem; line-height: 1.6; color: rgba(255,255,255,0.3); max-width: 600px; padding-top: 10px; word-break: break-word; }
 
 .pin-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 2000; align-items: center; justify-content: center; }
 .pin-modal.active { display: flex; }
@@ -461,6 +461,7 @@ const artists = [
   { name: "Brice Marden", genre: "Minimalism & Modernism", genreCN: "极简 & 现代", styleDesc: "Minimalist monochrome panel, later serpentine calligraphy, Chinese influence, cold wax, minimal and lyrical, single color, reductive and expressive, meditative surface, organic line, nature-inspired" }
 ];
 const BASE_PROMPT = "A person reading by a window, quiet contemplative interior";
+const BASE_PROMPT_CN = "窗边阅读者，宁静沉思的室内场景";
 const IMAGE_PARAMS = "?width=1024&height=1024&nologo=true&seed=42";
 const RELOAD_PASSWORD = "sip3";
 
@@ -475,6 +476,10 @@ function getPollinationsUrl(artist) {
 
 function getPrompt(artist) {
   return BASE_PROMPT + ". In the distinctive style of " + artist.name + ": " + artist.styleDesc;
+}
+
+function getPromptDisplay(artist) {
+  return `<span style="color:rgba(255,255,255,0.5)">${BASE_PROMPT_CN}</span><br><span style="color:rgba(255,255,255,0.25);font-size:0.72rem">${BASE_PROMPT}. In the distinctive style of ${artist.name}: ${artist.styleDesc}</span>`;
 }
 
 let activeGenre = "all";
@@ -753,18 +758,21 @@ document.getElementById("compareViewClose").addEventListener("click", function()
 function openLightbox(artist) {
   var lb = document.getElementById("lightbox");
   var inner = document.getElementById("lightboxInner");
-  var prompt = getPrompt(artist);
+  var promptText = getPrompt(artist);
+  var promptDisplay = getPromptDisplay(artist);
   var safeName = artist.name.replace(/'/g, "\'");
-  var safePrompt = prompt.replace(/'/g, "\'");
+  var safePrompt = promptText.replace(/'/g, "\'");
+  var imgUrl = getImageUrl(artist);
+  var nameCN = getNameCN(artist.name);
   inner.innerHTML =
-    '<img class="lightbox-image" src="' + getImageUrl(artist) + '" alt="' + artist.name + '" id="lightboxImg">' +
-    '<div class="lightbox-meta"><div class="lightbox-title-cn">' + getNameCN(artist.name) + '</div><div class="lightbox-title-en">' + artist.name + '</div><div class="lightbox-genre">' + artist.genreCN + ' · ' + artist.genre + '</div>' +
-    '<div class="lightbox-actions">' +
-    '<button class="lightbox-btn lightbox-btn-primary" onclick="downloadImage('' + getImageUrl(artist) + '', '' + safeName + '')">&#x2B07; 下载</button>' +
-    '<button class="lightbox-btn" onclick="navigator.clipboard.writeText('' + safePrompt + '')">&#x1F4CB; 复制提示词</button>' +
-    '<button class="lightbox-reload-btn" onclick="showReloadPin('' + safeName + '')">&#x27F2; 重新生成</button>' +
-    (compareMode && compareSelected.length < 2 ? '<button class="lightbox-btn" onclick="toggleCompareFromLightbox('' + safeName + '')">&#x21C4; 加入对比</button>' : "") +
-    '</div><div class="lightbox-prompt">' + prompt + '</div></div>';
+    `<img class="lightbox-image" src="${imgUrl}" alt="${artist.name}" id="lightboxImg">` +
+    `<div class="lightbox-meta"><div class="lightbox-title-cn">${nameCN}</div><div class="lightbox-title-en">${artist.name}</div><div class="lightbox-genre">${artist.genreCN} · ${artist.genre}</div>` +
+    `<div class="lightbox-actions">` +
+    `<button class="lightbox-btn lightbox-btn-primary" onclick="downloadImage('${imgUrl}', '${safeName}')">&#x2B07; 下载</button>` +
+    `<button class="lightbox-btn" onclick="navigator.clipboard.writeText('${safePrompt}')">&#x1F4CB; 复制提示词</button>` +
+    `<button class="lightbox-reload-btn" onclick="showReloadPin('${safeName}')">&#x27F2; 重新生成</button>` +
+    (compareMode && compareSelected.length < 2 ? `<button class="lightbox-btn" onclick="toggleCompareFromLightbox('${safeName}')">&#x21C4; 加入对比</button>` : "") +
+    `</div><div class="lightbox-prompt">${promptDisplay}</div></div>`;
   lb.classList.add("active");
   document.body.style.overflow = "hidden";
 }
