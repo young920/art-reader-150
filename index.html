@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
@@ -202,10 +203,321 @@ body {
   white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 10;
 }
 [data-tooltip]:hover::after { opacity: 1; }
+=======
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Reader in 150 Styles</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --color-bg: #fafafa;
+  --color-surface: #ffffff;
+  --color-text: #111111;
+  --color-text-secondary: #888888;
+  --color-border: #e5e5e5;
+  --color-accent: #111111;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, sans-serif;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container { max-width: 1440px; margin: 0 auto; padding: 0 48px; }
+
+/* Header */
+header {
+  padding: 80px 0 60px;
+  border-bottom: 1px solid var(--color-border);
+}
+header h1 {
+  font-family: var(--font-serif);
+  font-size: 3.2rem;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+header .subtitle {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.02em;
+}
+
+/* Controls */
+.controls {
+  padding: 32px 0 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.search-box {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+}
+.search-box input {
+  width: 100%;
+  padding: 14px 20px 14px 48px;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 400;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  outline: none;
+  transition: var(--transition);
+}
+.search-box input:focus {
+  border-color: var(--color-text);
+}
+.search-box::before {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.6;
+}
+
+.genre-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.genre-tag {
+  padding: 8px 16px;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: var(--transition);
+  user-select: none;
+}
+.genre-tag:hover {
+  border-color: var(--color-text);
+  color: var(--color-text);
+}
+.genre-tag.active {
+  background: var(--color-accent);
+  color: var(--color-surface);
+  border-color: var(--color-accent);
+}
+
+/* Grid */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1px;
+  background: var(--color-border);
+  border: 1px solid var(--color-border);
+}
+
+.card {
+  background: var(--color-surface);
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.card:hover {
+  background: #f5f5f5;
+}
+.card-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: #f0f0f0;
+}
+.card-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card:hover .card-image-wrapper img {
+  transform: scale(1.03);
+}
+.card-info {
+  padding: 20px 24px 24px;
+}
+.card-name {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1.3;
+  margin-bottom: 6px;
+  color: var(--color-text);
+}
+.card-genre {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+/* Loading */
+.loading-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0f0f0;
+  z-index: 2;
+  transition: opacity 0.4s ease;
+}
+.loading-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.loading-spinner {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ddd;
+  border-top-color: #111;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.94);
+  z-index: 1000;
+  overflow-y: auto;
+}
+.lightbox.active { display: flex; }
+.lightbox-inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.6);
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: color 0.2s;
+}
+.lightbox-close:hover { color: #fff; }
+.lightbox-image {
+  width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  background: #111;
+}
+.lightbox-meta {
+  color: #fff;
+}
+.lightbox-title {
+  font-family: var(--font-serif);
+  font-size: 2.4rem;
+  font-weight: 400;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+.lightbox-genre {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 24px;
+}
+.lightbox-prompt {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.6);
+  max-width: 640px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Footer */
+footer {
+  padding: 60px 0;
+  border-top: 1px solid var(--color-border);
+  margin-top: 60px;
+}
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.02em;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container { padding: 0 24px; }
+  header { padding: 48px 0 40px; }
+  header h1 { font-size: 2rem; }
+  .gallery { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+  .lightbox-inner { padding: 40px 24px; }
+  .lightbox-title { font-size: 1.6rem; }
+}
+
+/* Counter */
+.results-count {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.02em;
+  margin-top: 8px;
+}
+>>>>>>> b47af28 (Initial: The Reader in 150 Styles)
 </style>
 </head>
 <body>
 
+<<<<<<< HEAD
 <header class="site-header">
   <div class="site-header-inner">
     <div class="site-logo">
@@ -259,6 +571,36 @@ body {
     <div class="site-footer-inner">
       <span>窗畔静读 · The Reader</span>
       <span>AI 生成艺术画廊</span>
+=======
+<header>
+  <div class="container">
+    <h1>The Reader in 150 Styles</h1>
+    <p class="subtitle">One prompt. One hundred and fifty masters. Each interpretation, unique.</p>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="container">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search artist or genre..." autocomplete="off">
+    </div>
+    <div class="genre-tags" id="genreTags"></div>
+    <div class="results-count" id="resultsCount"></div>
+  </div>
+</div>
+
+<main>
+  <div class="container">
+    <div class="gallery" id="gallery"></div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <span>The Reader in 150 Styles</span>
+      <span>Generated with AI &middot; 2026</span>
+>>>>>>> b47af28 (Initial: The Reader in 150 Styles)
     </div>
   </div>
 </footer>
@@ -268,6 +610,7 @@ body {
   <div class="lightbox-inner" id="lightboxInner"></div>
 </div>
 
+<<<<<<< HEAD
 <div class="compare-view" id="compareView">
   <button class="compare-view-close" id="compareViewClose">&times;</button>
   <div class="compare-view-title" id="compareViewTitle"></div>
@@ -290,6 +633,12 @@ body {
 <button class="scroll-top" id="scrollTop" data-tooltip="回到顶部">&#x25B2;</button>
 
 <script>
+=======
+<script>
+const PROMPT = "A solitary figure seated by a tall arched window reading an old leather-bound book, warm afternoon light through dusty glass, geometric shadows on worn wooden floorboards, forgotten ceramic cup of tea on side table, atmospheric contemplative rich textures of fabric and paper. In the style of ";
+const IMAGE_PARAMS = "?width=1024&height=1024&nologo=true&seed=42";
+
+>>>>>>> b47af28 (Initial: The Reader in 150 Styles)
 const genres = [
   { id: "all", cn: "All" },
   { id: "Renaissance", cn: "文艺复兴" },
@@ -299,6 +648,7 @@ const genres = [
   { id: "Post-Impressionism", cn: "后印象派" },
   { id: "Expressionism & Fauvism", cn: "表现 & 野兽" },
   { id: "Cubism & Futurism", cn: "立体 & 未来" },
+<<<<<<< HEAD
   { id: "Surrealism", cn: "超现实" },
   { id: "Abstract Expressionism", cn: "抽象表现" },
   { id: "Pop & Contemporary", cn: "波普 & 当代" },
@@ -475,10 +825,179 @@ function getPollinationsUrl(artist) {
 
 function getPrompt(artist) {
   return BASE_PROMPT + ". In the distinctive style of " + artist.name + ": " + artist.styleDesc;
+=======
+  { id: "Surrealism", cn: "超现实主义" },
+  { id: "Abstract Expressionism", cn: "抽象表现主义" },
+  { id: "Pop & Contemporary", cn: "波普 & 当代" },
+  { id: "Ukiyo-e", cn: "日本浮世绘" },
+  { id: "Chinese Ink", cn: "中国水墨" },
+  { id: "Digital & Tech Art", cn: "数字 & 科技艺术" },
+  { id: "Art Nouveau & Symbolism", cn: "新艺术 & 象征" },
+  { id: "Minimalism & Modernism", cn: "极简 & 现代" }
+];
+
+const artists = [
+  { name: "Leonardo da Vinci", genre: "Renaissance", genreCN: "文艺复兴" },
+  { name: "Michelangelo", genre: "Renaissance", genreCN: "文艺复兴" },
+  { name: "Raphael", genre: "Renaissance", genreCN: "文艺复兴" },
+  { name: "Sandro Botticelli", genre: "Renaissance", genreCN: "文艺复兴" },
+  { name: "Giotto", genre: "Renaissance", genreCN: "文艺复兴" },
+  { name: "Masaccio", genre: "Renaissance", genreCN: "文艺复兴" },
+  { name: "Titian", genre: "Renaissance", genreCN: "文艺复兴" },
+  { name: "Tintoretto", genre: "Renaissance", genreCN: "文艺复兴" },
+  { name: "Jan van Eyck", genre: "Renaissance", genreCN: "文艺复兴" },
+  { name: "Hieronymus Bosch", genre: "Renaissance", genreCN: "文艺复兴" },
+  { name: "Piero della Francesca", genre: "Renaissance", genreCN: "文艺复兴" },
+  { name: "Andrea Mantegna", genre: "Renaissance", genreCN: "文艺复兴" },
+  { name: "Caravaggio", genre: "Baroque", genreCN: "巴洛克" },
+  { name: "Rembrandt", genre: "Baroque", genreCN: "巴洛克" },
+  { name: "Peter Paul Rubens", genre: "Baroque", genreCN: "巴洛克" },
+  { name: "Johannes Vermeer", genre: "Baroque", genreCN: "巴洛克" },
+  { name: "Gian Lorenzo Bernini", genre: "Baroque", genreCN: "巴洛克" },
+  { name: "Diego Velázquez", genre: "Baroque", genreCN: "巴洛克" },
+  { name: "Nicolas Poussin", genre: "Baroque", genreCN: "巴洛克" },
+  { name: "Claude Lorrain", genre: "Baroque", genreCN: "巴洛克" },
+  { name: "Jacques-Louis David", genre: "Neoclassicism & Romanticism", genreCN: "新古典 & 浪漫" },
+  { name: "Jean-Auguste-Dominique Ingres", genre: "Neoclassicism & Romanticism", genreCN: "新古典 & 浪漫" },
+  { name: "Eugène Delacroix", genre: "Neoclassicism & Romanticism", genreCN: "新古典 & 浪漫" },
+  { name: "J.M.W. Turner", genre: "Neoclassicism & Romanticism", genreCN: "新古典 & 浪漫" },
+  { name: "Francisco Goya", genre: "Neoclassicism & Romanticism", genreCN: "新古典 & 浪漫" },
+  { name: "Caspar David Friedrich", genre: "Neoclassicism & Romanticism", genreCN: "新古典 & 浪漫" },
+  { name: "Théodore Géricault", genre: "Neoclassicism & Romanticism", genreCN: "新古典 & 浪漫" },
+  { name: "François Boucher", genre: "Neoclassicism & Romanticism", genreCN: "新古典 & 浪漫" },
+  { name: "Jean-Honoré Fragonard", genre: "Neoclassicism & Romanticism", genreCN: "新古典 & 浪漫" },
+  { name: "John Constable", genre: "Neoclassicism & Romanticism", genreCN: "新古典 & 浪漫" },
+  { name: "Claude Monet", genre: "Impressionism", genreCN: "印象派" },
+  { name: "Pierre-Auguste Renoir", genre: "Impressionism", genreCN: "印象派" },
+  { name: "Edgar Degas", genre: "Impressionism", genreCN: "印象派" },
+  { name: "Alfred Sisley", genre: "Impressionism", genreCN: "印象派" },
+  { name: "Camille Pissarro", genre: "Impressionism", genreCN: "印象派" },
+  { name: "Berthe Morisot", genre: "Impressionism", genreCN: "印象派" },
+  { name: "Frédéric Bazille", genre: "Impressionism", genreCN: "印象派" },
+  { name: "Gustave Caillebotte", genre: "Impressionism", genreCN: "印象派" },
+  { name: "Édouard Manet", genre: "Impressionism", genreCN: "印象派" },
+  { name: "Mary Cassatt", genre: "Impressionism", genreCN: "印象派" },
+  { name: "Childe Hassam", genre: "Impressionism", genreCN: "印象派" },
+  { name: "William Merritt Chase", genre: "Impressionism", genreCN: "印象派" },
+  { name: "Vincent van Gogh", genre: "Post-Impressionism", genreCN: "后印象派" },
+  { name: "Paul Cézanne", genre: "Post-Impressionism", genreCN: "后印象派" },
+  { name: "Paul Gauguin", genre: "Post-Impressionism", genreCN: "后印象派" },
+  { name: "Henri de Toulouse-Lautrec", genre: "Post-Impressionism", genreCN: "后印象派" },
+  { name: "Odilon Redon", genre: "Post-Impressionism", genreCN: "后印象派" },
+  { name: "Pierre Bonnard", genre: "Post-Impressionism", genreCN: "后印象派" },
+  { name: "Édouard Vuillard", genre: "Post-Impressionism", genreCN: "后印象派" },
+  { name: "Paul Sérusier", genre: "Post-Impressionism", genreCN: "后印象派" },
+  { name: "Maurice Denis", genre: "Post-Impressionism", genreCN: "后印象派" },
+  { name: "Georges Seurat", genre: "Post-Impressionism", genreCN: "后印象派" },
+  { name: "Edvard Munch", genre: "Expressionism & Fauvism", genreCN: "表现 & 野兽" },
+  { name: "Ernst Ludwig Kirchner", genre: "Expressionism & Fauvism", genreCN: "表现 & 野兽" },
+  { name: "Henri Matisse", genre: "Expressionism & Fauvism", genreCN: "表现 & 野兽" },
+  { name: "André Derain", genre: "Expressionism & Fauvism", genreCN: "表现 & 野兽" },
+  { name: "Maurice de Vlaminck", genre: "Expressionism & Fauvism", genreCN: "表现 & 野兽" },
+  { name: "Albert Marquet", genre: "Expressionism & Fauvism", genreCN: "表现 & 野兽" },
+  { name: "Georges Rouault", genre: "Expressionism & Fauvism", genreCN: "表现 & 野兽" },
+  { name: "Emil Nolde", genre: "Expressionism & Fauvism", genreCN: "表现 & 野兽" },
+  { name: "Max Pechstein", genre: "Expressionism & Fauvism", genreCN: "表现 & 野兽" },
+  { name: "Karl Schmidt-Rottluff", genre: "Expressionism & Fauvism", genreCN: "表现 & 野兽" },
+  { name: "Pablo Picasso", genre: "Cubism & Futurism", genreCN: "立体 & 未来" },
+  { name: "Georges Braque", genre: "Cubism & Futurism", genreCN: "立体 & 未来" },
+  { name: "Fernand Léger", genre: "Cubism & Futurism", genreCN: "立体 & 未来" },
+  { name: "Umberto Boccioni", genre: "Cubism & Futurism", genreCN: "立体 & 未来" },
+  { name: "Giacomo Balla", genre: "Cubism & Futurism", genreCN: "立体 & 未来" },
+  { name: "Gino Severini", genre: "Cubism & Futurism", genreCN: "立体 & 未来" },
+  { name: "André Lhote", genre: "Cubism & Futurism", genreCN: "立体 & 未来" },
+  { name: "Juan Gris", genre: "Cubism & Futurism", genreCN: "立体 & 未来" },
+  { name: "Jean Metzinger", genre: "Cubism & Futurism", genreCN: "立体 & 未来" },
+  { name: "Amédée Ozenfant", genre: "Cubism & Futurism", genreCN: "立体 & 未来" },
+  { name: "Salvador Dalí", genre: "Surrealism", genreCN: "超现实主义" },
+  { name: "René Magritte", genre: "Surrealism", genreCN: "超现实主义" },
+  { name: "Max Ernst", genre: "Surrealism", genreCN: "超现实主义" },
+  { name: "Joan Miró", genre: "Surrealism", genreCN: "超现实主义" },
+  { name: "Yves Tanguy", genre: "Surrealism", genreCN: "超现实主义" },
+  { name: "Paul Delvaux", genre: "Surrealism", genreCN: "超现实主义" },
+  { name: "André Masson", genre: "Surrealism", genreCN: "超现实主义" },
+  { name: "Man Ray", genre: "Surrealism", genreCN: "超现实主义" },
+  { name: "Óscar Domínguez", genre: "Surrealism", genreCN: "超现实主义" },
+  { name: "Remedios Varo", genre: "Surrealism", genreCN: "超现实主义" },
+  { name: "Jackson Pollock", genre: "Abstract Expressionism", genreCN: "抽象表现主义" },
+  { name: "Willem de Kooning", genre: "Abstract Expressionism", genreCN: "抽象表现主义" },
+  { name: "Mark Rothko", genre: "Abstract Expressionism", genreCN: "抽象表现主义" },
+  { name: "Barnett Newman", genre: "Abstract Expressionism", genreCN: "抽象表现主义" },
+  { name: "Franz Kline", genre: "Abstract Expressionism", genreCN: "抽象表现主义" },
+  { name: "Robert Motherwell", genre: "Abstract Expressionism", genreCN: "抽象表现主义" },
+  { name: "Adolph Gottlieb", genre: "Abstract Expressionism", genreCN: "抽象表现主义" },
+  { name: "Philip Guston", genre: "Abstract Expressionism", genreCN: "抽象表现主义" },
+  { name: "Bradley Walker Tomlin", genre: "Abstract Expressionism", genreCN: "抽象表现主义" },
+  { name: "Clyfford Still", genre: "Abstract Expressionism", genreCN: "抽象表现主义" },
+  { name: "Andy Warhol", genre: "Pop & Contemporary", genreCN: "波普 & 当代" },
+  { name: "Roy Lichtenstein", genre: "Pop & Contemporary", genreCN: "波普 & 当代" },
+  { name: "Jean-Michel Basquiat", genre: "Pop & Contemporary", genreCN: "波普 & 当代" },
+  { name: "Yayoi Kusama", genre: "Pop & Contemporary", genreCN: "波普 & 当代" },
+  { name: "Jeff Koons", genre: "Pop & Contemporary", genreCN: "波普 & 当代" },
+  { name: "Damien Hirst", genre: "Pop & Contemporary", genreCN: "波普 & 当代" },
+  { name: "Takashi Murakami", genre: "Pop & Contemporary", genreCN: "波普 & 当代" },
+  { name: "Banksy", genre: "Pop & Contemporary", genreCN: "波普 & 当代" },
+  { name: "Keith Haring", genre: "Pop & Contemporary", genreCN: "波普 & 当代" },
+  { name: "Barbara Kruger", genre: "Pop & Contemporary", genreCN: "波普 & 当代" },
+  { name: "Katsushika Hokusai", genre: "Ukiyo-e", genreCN: "日本浮世绘" },
+  { name: "Utagawa Hiroshige", genre: "Ukiyo-e", genreCN: "日本浮世绘" },
+  { name: "Kitagawa Utamaro", genre: "Ukiyo-e", genreCN: "日本浮世绘" },
+  { name: "Tōshūsai Sharaku", genre: "Ukiyo-e", genreCN: "日本浮世绘" },
+  { name: "Torii Kiyonaga", genre: "Ukiyo-e", genreCN: "日本浮世绘" },
+  { name: "Suzuki Harunobu", genre: "Ukiyo-e", genreCN: "日本浮世绘" },
+  { name: "Utagawa Kuniyoshi", genre: "Ukiyo-e", genreCN: "日本浮世绘" },
+  { name: "Tsukioka Yoshitoshi", genre: "Ukiyo-e", genreCN: "日本浮世绘" },
+  { name: "Zhang Daqian", genre: "Chinese Ink", genreCN: "中国水墨" },
+  { name: "Qi Baishi", genre: "Chinese Ink", genreCN: "中国水墨" },
+  { name: "Wu Guanzhong", genre: "Chinese Ink", genreCN: "中国水墨" },
+  { name: "Fan Kuan", genre: "Chinese Ink", genreCN: "中国水墨" },
+  { name: "Huang Gongwang", genre: "Chinese Ink", genreCN: "中国水墨" },
+  { name: "Dong Yuan", genre: "Chinese Ink", genreCN: "中国水墨" },
+  { name: "Ni Zan", genre: "Chinese Ink", genreCN: "中国水墨" },
+  { name: "Wang Meng", genre: "Chinese Ink", genreCN: "中国水墨" },
+  { name: "Beeple", genre: "Digital & Tech Art", genreCN: "数字 & 科技艺术" },
+  { name: "Refik Anadol", genre: "Digital & Tech Art", genreCN: "数字 & 科技艺术" },
+  { name: "Mario Klingemann", genre: "Digital & Tech Art", genreCN: "数字 & 科技艺术" },
+  { name: "Ian Cheng", genre: "Digital & Tech Art", genreCN: "数字 & 科技艺术" },
+  { name: "Casey Reas", genre: "Digital & Tech Art", genreCN: "数字 & 科技艺术" },
+  { name: "Joshua Davis", genre: "Digital & Tech Art", genreCN: "数字 & 科技艺术" },
+  { name: "Zach Lieberman", genre: "Digital & Tech Art", genreCN: "数字 & 科技艺术" },
+  { name: "Golan Levin", genre: "Digital & Tech Art", genreCN: "数字 & 科技艺术" },
+  { name: "teamLab", genre: "Digital & Tech Art", genreCN: "数字 & 科技艺术" },
+  { name: "Memo Akten", genre: "Digital & Tech Art", genreCN: "数字 & 科技艺术" },
+  { name: "Sougwen Chung", genre: "Digital & Tech Art", genreCN: "数字 & 科技艺术" },
+  { name: "Rafael Lozano-Hemmer", genre: "Digital & Tech Art", genreCN: "数字 & 科技艺术" },
+  { name: "Alphonse Mucha", genre: "Art Nouveau & Symbolism", genreCN: "新艺术 & 象征" },
+  { name: "Gustav Klimt", genre: "Art Nouveau & Symbolism", genreCN: "新艺术 & 象征" },
+  { name: "Aubrey Beardsley", genre: "Art Nouveau & Symbolism", genreCN: "新艺术 & 象征" },
+  { name: "Koloman Moser", genre: "Art Nouveau & Symbolism", genreCN: "新艺术 & 象征" },
+  { name: "Hector Guimard", genre: "Art Nouveau & Symbolism", genreCN: "新艺术 & 象征" },
+  { name: "Louis Comfort Tiffany", genre: "Art Nouveau & Symbolism", genreCN: "新艺术 & 象征" },
+  { name: "Victor Horta", genre: "Art Nouveau & Symbolism", genreCN: "新艺术 & 象征" },
+  { name: "Antoni Gaudí", genre: "Art Nouveau & Symbolism", genreCN: "新艺术 & 象征" },
+  { name: "William Morris", genre: "Art Nouveau & Symbolism", genreCN: "新艺术 & 象征" },
+  { name: "Charles Rennie Mackintosh", genre: "Art Nouveau & Symbolism", genreCN: "新艺术 & 象征" },
+  { name: "Donald Judd", genre: "Minimalism & Modernism", genreCN: "极简 & 现代" },
+  { name: "Dan Flavin", genre: "Minimalism & Modernism", genreCN: "极简 & 现代" },
+  { name: "Carl Andre", genre: "Minimalism & Modernism", genreCN: "极简 & 现代" },
+  { name: "Agnes Martin", genre: "Minimalism & Modernism", genreCN: "极简 & 现代" },
+  { name: "Frank Stella", genre: "Minimalism & Modernism", genreCN: "极简 & 现代" },
+  { name: "Ellsworth Kelly", genre: "Minimalism & Modernism", genreCN: "极简 & 现代" },
+  { name: "Sol LeWitt", genre: "Minimalism & Modernism", genreCN: "极简 & 现代" },
+  { name: "Richard Serra", genre: "Minimalism & Modernism", genreCN: "极简 & 现代" },
+  { name: "Robert Ryman", genre: "Minimalism & Modernism", genreCN: "极简 & 现代" },
+  { name: "Brice Marden", genre: "Minimalism & Modernism", genreCN: "极简 & 现代" }
+];
+
+function getImageUrl(artist) {
+  const fullPrompt = PROMPT + artist.name + ".";
+  return "https://image.pollinations.ai/prompt/" + encodeURIComponent(fullPrompt) + IMAGE_PARAMS;
+>>>>>>> b47af28 (Initial: The Reader in 150 Styles)
 }
 
 let activeGenre = "all";
 let searchQuery = "";
+<<<<<<< HEAD
 let compareMode = false;
 let compareSelected = [];
 let pendingReloadArtist = null;
@@ -718,11 +1237,33 @@ function updateCompareBar() {
       var idx = parseInt(el.dataset.index);
       compareSelected.splice(idx, 1);
       updateCompareBar();
+=======
+
+const gallery = document.getElementById("gallery");
+const genreTags = document.getElementById("genreTags");
+const searchInput = document.getElementById("searchInput");
+const resultsCount = document.getElementById("resultsCount");
+const lightbox = document.getElementById("lightbox");
+const lightboxClose = document.getElementById("lightboxClose");
+const lightboxInner = document.getElementById("lightboxInner");
+
+function renderGenreTags() {
+  genreTags.innerHTML = genres.map(g => {
+    const isActive = g.id === activeGenre;
+    return `<button class="genre-tag ${isActive ? 'active' : ''}" data-genre="${g.id}">${g.cn}</button>`;
+  }).join("");
+  
+  genreTags.querySelectorAll(".genre-tag").forEach(btn => {
+    btn.addEventListener("click", () => {
+      activeGenre = btn.dataset.genre;
+      renderGenreTags();
+>>>>>>> b47af28 (Initial: The Reader in 150 Styles)
       renderGallery();
     });
   });
 }
 
+<<<<<<< HEAD
 document.getElementById("compareGoBtn").addEventListener("click", function() {
   if (compareSelected.length === 2) {
     openCompareView(compareSelected[0], compareSelected[1]);
@@ -924,3 +1465,80 @@ updateArrowVisibility();
 </script>
 </body>
 </html>
+=======
+function getFilteredArtists() {
+  return artists.filter(a => {
+    const matchesGenre = activeGenre === "all" || a.genre === activeGenre;
+    const q = searchQuery.toLowerCase();
+    const matchesSearch = !q || a.name.toLowerCase().includes(q) || a.genre.toLowerCase().includes(q) || a.genreCN.includes(q);
+    return matchesGenre && matchesSearch;
+  });
+}
+
+function renderGallery() {
+  const filtered = getFilteredArtists();
+  resultsCount.textContent = filtered.length + " works" + (activeGenre !== "all" ? " in " + genres.find(g => g.id === activeGenre).cn : "");
+  
+  gallery.innerHTML = filtered.map((a, i) => {
+    const url = getImageUrl(a);
+    return `
+      <div class="card" data-index="${i}" data-name="${a.name}">
+        <div class="card-image-wrapper">
+          <div class="loading-overlay" id="load-${i}"><div class="loading-spinner"></div></div>
+          <img src="${url}" alt="${a.name}" loading="lazy" onload="document.getElementById('load-${i}').classList.add('hidden')">
+        </div>
+        <div class="card-info">
+          <div class="card-name">${a.name}</div>
+          <div class="card-genre">${a.genre} &middot; ${a.genreCN}</div>
+        </div>
+      </div>
+    `;
+  }).join("");
+  
+  gallery.querySelectorAll(".card").forEach(card => {
+    card.addEventListener("click", () => {
+      const name = card.dataset.name;
+      const artist = artists.find(a => a.name === name);
+      openLightbox(artist);
+    });
+  });
+}
+
+function openLightbox(artist) {
+  const url = getImageUrl(artist);
+  lightboxInner.innerHTML = `
+    <img class="lightbox-image" src="${url}" alt="${artist.name}">
+    <div class="lightbox-meta">
+      <div class="lightbox-title">${artist.name}</div>
+      <div class="lightbox-genre">${artist.genre} &middot; ${artist.genreCN}</div>
+      <div class="lightbox-prompt">${PROMPT}${artist.name}.</div>
+    </div>
+  `;
+  lightbox.classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+function closeLightbox() {
+  lightbox.classList.remove("active");
+  document.body.style.overflow = "";
+}
+
+lightboxClose.addEventListener("click", closeLightbox);
+lightbox.addEventListener("click", (e) => {
+  if (e.target === lightbox) closeLightbox();
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeLightbox();
+});
+
+searchInput.addEventListener("input", (e) => {
+  searchQuery = e.target.value.trim();
+  renderGallery();
+});
+
+renderGenreTags();
+renderGallery();
+</script>
+</body>
+</html>
+>>>>>>> b47af28 (Initial: The Reader in 150 Styles)
