@@ -661,7 +661,7 @@ function renderGallery() {
     var compareBtn = compareMode ? '<button class="card-compare-btn ' + (isSelected ? "selected" : "") + '" data-name="' + a.name + '">' + (isSelected ? "&#10003;" : "+") + '</button>' : "";
     card.innerHTML = compareBtn +
       '<div class="card-image-wrapper"><div class="card-loading" id="loading-' + i + '"><div class="card-spinner"></div></div>' +
-      '<img src="' + getImageUrl(a) + '" alt="' + a.name + '" loading="lazy" onload="document.getElementById('loading-' + i + '').classList.add('hidden')" onerror="document.getElementById('loading-' + i + '').innerHTML='<span style=color:#999;font-size:0.7rem>加载失败</span>'"></div>' +
+      '<img src="' + getImageUrl(a) + '" alt="' + a.name + '" loading="lazy" onload="document.getElementById(\'loading-' + i + '\').classList.add(\'hidden\')" onerror="document.getElementById(\'loading-' + i + '\').innerHTML=\'<span style=\\'color:#999;font-size:0.7rem\\'>加载失败</span>\'"></div>' +
       '<div class="card-info"><div class="card-name-cn">' + getNameCN(a.name) + '</div><div class="card-name-en">' + a.name + '</div><div class="card-genre">' + a.genreCN + ' · ' + a.genre + '</div></div>';
     if (compareMode) {
       card.addEventListener("click", function(e) {
