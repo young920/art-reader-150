@@ -6,339 +6,227 @@
 <title>The Reader in 150 Styles</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --color-bg: #fafafa;
-  --color-surface: #ffffff;
-  --color-text: #111111;
-  --color-text-secondary: #888888;
-  --color-border: #e5e5e5;
-  --color-accent: #111111;
-  --font-serif: 'Playfair Display', Georgia, serif;
-  --font-sans: 'Inter', -apple-system, sans-serif;
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --airbnb-red: #ff385c;
+  --airbnb-dark: #222222;
+  --airbnb-gray: #717171;
+  --airbnb-light: #f7f7f7;
+  --airbnb-border: #dddddd;
+  --airbnb-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  --airbnb-shadow-hover: 0 6px 20px rgba(0,0,0,0.12);
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --radius: 12px;
+  --radius-pill: 32px;
+  --transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
 }
-
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: var(--font-sans);
-  background: var(--color-bg);
-  color: var(--color-text);
-  line-height: 1.6;
+  font-family: var(--font);
+  background: #ffffff;
+  color: var(--airbnb-dark);
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
-
-.container { max-width: 1440px; margin: 0 auto; padding: 0 48px; }
-
-/* Header */
-header {
-  padding: 80px 0 60px;
-  border-bottom: 1px solid var(--color-border);
+.container { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+.site-header {
+  position: sticky; top: 0; background: #fff; z-index: 100;
+  border-bottom: 1px solid #ebebeb; padding: 16px 0;
 }
-header h1 {
-  font-family: var(--font-serif);
-  font-size: 3.2rem;
-  font-weight: 400;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  margin-bottom: 12px;
+.site-header-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  max-width: 1280px; margin: 0 auto; padding: 0 40px;
 }
-header .subtitle {
-  font-family: var(--font-sans);
-  font-size: 0.95rem;
-  font-weight: 300;
-  color: var(--color-text-secondary);
-  letter-spacing: 0.02em;
+.site-logo { font-size: 1.4rem; font-weight: 600; color: var(--airbnb-red); letter-spacing: -0.02em; }
+.search-bar-wrapper {
+  display: flex; justify-content: center; padding: 24px 0 8px; gap: 12px; align-items: center;
 }
-
-/* Controls */
-.controls {
-  padding: 32px 0 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+.search-bar {
+  display: flex; align-items: center; gap: 16px; padding: 12px 24px;
+  border: 1px solid var(--airbnb-border); border-radius: var(--radius-pill);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.05);
+  background: #fff; max-width: 640px; width: 100%; transition: var(--transition);
 }
-.search-box {
-  position: relative;
-  width: 100%;
-  max-width: 480px;
+.search-bar:focus-within { box-shadow: 0 2px 4px rgba(0,0,0,0.08), 0 6px 16px rgba(0,0,0,0.08); }
+.search-icon { width: 20px; height: 20px; flex-shrink: 0; opacity: 0.5; }
+.search-bar input {
+  flex: 1; border: none; outline: none; font-family: var(--font);
+  font-size: 0.95rem; color: var(--airbnb-dark); background: transparent;
 }
-.search-box input {
-  width: 100%;
-  padding: 14px 20px 14px 48px;
-  font-family: var(--font-sans);
-  font-size: 0.9rem;
-  font-weight: 400;
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
-  color: var(--color-text);
-  outline: none;
-  transition: var(--transition);
+.search-bar input::placeholder { color: var(--airbnb-gray); }
+.btn-icon {
+  width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--airbnb-border);
+  background: #fff; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: var(--transition); color: var(--airbnb-dark); font-size: 1.1rem; flex-shrink: 0;
 }
-.search-box input:focus {
-  border-color: var(--color-text);
+.btn-icon:hover { border-color: var(--airbnb-dark); box-shadow: var(--airbnb-shadow); }
+.category-bar {
+  position: sticky; top: 65px; background: #fff; z-index: 90;
+  padding: 16px 0 4px; border-bottom: 1px solid #ebebeb;
 }
-.search-box::before {
-  content: "";
-  position: absolute;
-  left: 18px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-size: contain;
-  opacity: 0.6;
+.category-scroll {
+  display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; padding-bottom: 12px;
 }
-
-.genre-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+.category-scroll::-webkit-scrollbar { display: none; }
+.category-pill {
+  flex-shrink: 0; padding: 10px 18px; font-family: var(--font); font-size: 0.82rem; font-weight: 500;
+  border: 1px solid var(--airbnb-border); border-radius: var(--radius-pill); background: #fff; color: var(--airbnb-gray);
+  cursor: pointer; transition: var(--transition); white-space: nowrap;
 }
-.genre-tag {
-  padding: 8px 16px;
-  font-family: var(--font-sans);
-  font-size: 0.75rem;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  border: 1px solid var(--color-border);
-  background: transparent;
-  color: var(--color-text-secondary);
-  cursor: pointer;
-  transition: var(--transition);
-  user-select: none;
+.category-pill:hover { border-color: var(--airbnb-dark); color: var(--airbnb-dark); }
+.category-pill.active { background: var(--airbnb-dark); color: #fff; border-color: var(--airbnb-dark); }
+.compare-bar {
+  display: none; padding: 12px 0; background: var(--airbnb-light); border-bottom: 1px solid #ebebeb;
+  position: sticky; top: 121px; z-index: 85;
 }
-.genre-tag:hover {
-  border-color: var(--color-text);
-  color: var(--color-text);
+.compare-bar.active { display: flex; }
+.compare-bar-inner {
+  max-width: 1280px; margin: 0 auto; padding: 0 40px;
+  display: flex; align-items: center; gap: 12px; font-size: 0.85rem;
 }
-.genre-tag.active {
-  background: var(--color-accent);
-  color: var(--color-surface);
-  border-color: var(--color-accent);
+.compare-slot {
+  padding: 6px 14px; border-radius: 20px; background: #fff; border: 1px solid var(--airbnb-border);
+  font-size: 0.82rem; font-weight: 500; color: var(--airbnb-dark); display: flex; align-items: center; gap: 8px;
 }
-
-/* Grid */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1px;
-  background: var(--color-border);
-  border: 1px solid var(--color-border);
+.compare-slot .remove { cursor: pointer; color: var(--airbnb-gray); font-size: 0.9rem; line-height: 1; }
+.compare-slot .remove:hover { color: var(--airbnb-red); }
+.compare-btn {
+  padding: 8px 20px; border-radius: 20px; border: none; background: var(--airbnb-dark); color: #fff;
+  font-family: var(--font); font-size: 0.82rem; font-weight: 500; cursor: pointer; transition: opacity 0.2s;
 }
-
-.card {
-  background: var(--color-surface);
-  cursor: pointer;
-  transition: var(--transition);
-  position: relative;
-  overflow: hidden;
+.compare-btn:hover { opacity: 0.9; }
+.compare-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.compare-cancel { margin-left: auto; font-size: 0.82rem; color: var(--airbnb-gray); cursor: pointer; background: none; border: none; font-family: var(--font); }
+.compare-cancel:hover { color: var(--airbnb-dark); }
+.results-meta { padding: 20px 0 8px; font-size: 0.85rem; color: var(--airbnb-gray); font-weight: 400; display: flex; justify-content: space-between; align-items: center; }
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 32px 24px; padding: 16px 0 80px; }
+.card { cursor: pointer; transition: var(--transition); position: relative; }
+.card:hover { transform: translateY(-2px); }
+.card-compare-btn {
+  position: absolute; top: 8px; right: 8px; width: 36px; height: 36px; border-radius: 50%; border: none;
+  background: rgba(255,255,255,0.9); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center;
+  cursor: pointer; opacity: 0; transition: opacity 0.2s, background 0.2s; z-index: 5; color: var(--airbnb-dark); font-size: 0.9rem; font-weight: 600;
 }
-.card:hover {
-  background: #f5f5f5;
-}
+.card:hover .card-compare-btn { opacity: 1; }
+.card-compare-btn:hover { background: var(--airbnb-dark); color: #fff; }
+.card-compare-btn.selected { opacity: 1; background: var(--airbnb-dark); color: #fff; }
 .card-image-wrapper {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1;
-  overflow: hidden;
-  background: #f0f0f0;
+  position: relative; width: 100%; aspect-ratio: 1; border-radius: var(--radius); overflow: hidden; background: var(--airbnb-light); margin-bottom: 12px;
 }
-.card-image-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+.card-image-wrapper img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1); }
+.card:hover .card-image-wrapper img { transform: scale(1.04); }
+.card-loading {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: var(--airbnb-light); z-index: 2; transition: opacity 0.4s ease;
 }
-.card:hover .card-image-wrapper img {
-  transform: scale(1.03);
-}
-.card-info {
-  padding: 20px 24px 24px;
-}
-.card-name {
-  font-family: var(--font-serif);
-  font-size: 1.1rem;
-  font-weight: 400;
-  line-height: 1.3;
-  margin-bottom: 6px;
-  color: var(--color-text);
-}
-.card-genre {
-  font-family: var(--font-sans);
-  font-size: 0.7rem;
-  font-weight: 400;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--color-text-secondary);
-}
-
-/* Loading */
-.loading-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #f0f0f0;
-  z-index: 2;
-  transition: opacity 0.4s ease;
-}
-.loading-overlay.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-.loading-spinner {
-  width: 20px;
-  height: 20px;
-  border: 1px solid #ddd;
-  border-top-color: #111;
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-}
+.card-loading.hidden { opacity: 0; pointer-events: none; }
+.card-spinner { width: 24px; height: 24px; border: 2px solid #e0e0e0; border-top-color: var(--airbnb-dark); border-radius: 50%; animation: spin 0.8s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
+.card-info { display: flex; flex-direction: column; gap: 2px; }
+.card-name { font-size: 0.95rem; font-weight: 500; color: var(--airbnb-dark); line-height: 1.3; }
+.card-genre { font-size: 0.8rem; color: var(--airbnb-gray); font-weight: 400; }
 
-/* Lightbox */
-.lightbox {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.94);
-  z-index: 1000;
-  overflow-y: auto;
-}
-.lightbox.active { display: flex; }
-.lightbox-inner {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 60px 48px;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
-.lightbox-close {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: none;
-  border: none;
-  color: rgba(255,255,255,0.6);
-  cursor: pointer;
-  font-size: 1.5rem;
-  transition: color 0.2s;
-}
-.lightbox-close:hover { color: #fff; }
-.lightbox-image {
-  width: 100%;
-  max-height: 70vh;
-  object-fit: contain;
-  background: #111;
-}
-.lightbox-meta {
-  color: #fff;
-}
-.lightbox-title {
-  font-family: var(--font-serif);
-  font-size: 2.4rem;
-  font-weight: 400;
-  margin-bottom: 8px;
-  line-height: 1.2;
-}
-.lightbox-genre {
-  font-family: var(--font-sans);
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
-  margin-bottom: 24px;
-}
-.lightbox-prompt {
-  font-family: var(--font-sans);
-  font-size: 0.85rem;
-  font-weight: 300;
-  line-height: 1.7;
-  color: rgba(255,255,255,0.6);
-  max-width: 640px;
-  padding-top: 24px;
-  border-top: 1px solid rgba(255,255,255,0.1);
-}
+.lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 1000; overflow-y: auto; padding: 40px 24px; }
+.lightbox.active { display: flex; align-items: center; justify-content: center; }
+.lightbox-inner { max-width: 900px; width: 100%; display: flex; flex-direction: column; gap: 24px; }
+.lightbox-close { position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; border-radius: 50%; border: none; background: rgba(255,255,255,0.15); color: #fff; font-size: 1.4rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+.lightbox-close:hover { background: rgba(255,255,255,0.25); }
+.lightbox-image { width: 100%; max-height: 65vh; object-fit: contain; border-radius: var(--radius); }
+.lightbox-meta { color: #fff; display: flex; flex-direction: column; gap: 4px; }
+.lightbox-title { font-size: 1.8rem; font-weight: 600; margin-bottom: 4px; }
+.lightbox-genre { font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-bottom: 16px; }
+.lightbox-actions { display: flex; gap: 12px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1); }
+.lightbox-btn { padding: 10px 20px; border-radius: var(--radius-pill); border: 1px solid rgba(255,255,255,0.2); background: transparent; color: #fff; font-family: var(--font); font-size: 0.82rem; font-weight: 500; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 6px; text-decoration: none; }
+.lightbox-btn:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.4); }
+.lightbox-btn-primary { background: #fff; color: var(--airbnb-dark); border-color: #fff; }
+.lightbox-btn-primary:hover { background: rgba(255,255,255,0.9); border-color: rgba(255,255,255,0.9); }
+.lightbox-prompt { font-size: 0.85rem; line-height: 1.6; color: rgba(255,255,255,0.5); max-width: 600px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1); }
 
-/* Footer */
-footer {
-  padding: 60px 0;
-  border-top: 1px solid var(--color-border);
-  margin-top: 60px;
-}
-.footer-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.75rem;
-  color: var(--color-text-secondary);
-  letter-spacing: 0.02em;
-}
+.compare-view { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 1001; overflow-y: auto; padding: 80px 40px 40px; }
+.compare-view.active { display: flex; flex-direction: column; align-items: center; }
+.compare-view-close { position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; border-radius: 50%; border: none; background: rgba(255,255,255,0.15); color: #fff; font-size: 1.4rem; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.compare-view-close:hover { background: rgba(255,255,255,0.25); }
+.compare-view-title { color: #fff; font-size: 1.2rem; font-weight: 500; margin-bottom: 32px; text-align: center; }
+.compare-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1200px; width: 100%; }
+.compare-column { display: flex; flex-direction: column; gap: 16px; align-items: center; }
+.compare-column img { width: 100%; max-height: 60vh; object-fit: contain; border-radius: var(--radius); }
+.compare-column-name { color: #fff; font-size: 1.2rem; font-weight: 600; }
+.compare-column-genre { color: rgba(255,255,255,0.5); font-size: 0.85rem; }
 
-/* Responsive */
+.site-footer { border-top: 1px solid #ebebeb; padding: 24px 0; margin-top: 40px; }
+.site-footer-inner { display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: var(--airbnb-gray); }
+
 @media (max-width: 768px) {
   .container { padding: 0 24px; }
-  header { padding: 48px 0 40px; }
-  header h1 { font-size: 2rem; }
-  .gallery { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
-  .lightbox-inner { padding: 40px 24px; }
-  .lightbox-title { font-size: 1.6rem; }
+  .site-header-inner { padding: 0 24px; }
+  .compare-bar-inner { padding: 0 24px; }
+  .gallery { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 20px 12px; }
+  .card-image-wrapper { border-radius: 8px; }
+  .lightbox-inner { max-width: 100%; }
+  .lightbox-title { font-size: 1.3rem; }
+  .compare-columns { grid-template-columns: 1fr; gap: 24px; }
+  .compare-view { padding: 60px 24px 24px; }
+  .search-bar-wrapper { flex-wrap: wrap; }
+  .btn-icon { width: 40px; height: 40px; }
 }
-
-/* Counter */
-.results-count {
-  font-size: 0.75rem;
-  color: var(--color-text-secondary);
-  letter-spacing: 0.02em;
-  margin-top: 8px;
+[data-tooltip] { position: relative; }
+[data-tooltip]::after {
+  content: attr(data-tooltip); position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+  padding: 6px 12px; background: var(--airbnb-dark); color: #fff; font-size: 0.75rem; border-radius: 6px;
+  white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 10;
 }
+[data-tooltip]:hover::after { opacity: 1; }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="container">
-    <h1>The Reader in 150 Styles</h1>
-    <p class="subtitle">One prompt. One hundred and fifty masters. Each interpretation, unique.</p>
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-logo">The Reader</div>
+    <div style="font-size:0.85rem; color:var(--airbnb-gray); font-weight:400;">150 Styles</div>
   </div>
 </header>
 
-<div class="controls">
-  <div class="container">
-    <div class="search-box">
-      <input type="text" id="searchInput" placeholder="Search artist or genre..." autocomplete="off">
+<div class="container">
+  <div class="search-bar-wrapper">
+    <div class="search-bar">
+      <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="searchInput" placeholder="Search artist, genre..." autocomplete="off">
     </div>
-    <div class="genre-tags" id="genreTags"></div>
-    <div class="results-count" id="resultsCount"></div>
+    <button class="btn-icon" id="randomBtn" data-tooltip="Random explore">&#127922;</button>
+    <button class="btn-icon" id="compareToggleBtn" data-tooltip="Compare mode">&#8646;</button>
   </div>
 </div>
 
-<main>
-  <div class="container">
-    <div class="gallery" id="gallery"></div>
+<div class="compare-bar" id="compareBar">
+  <div class="compare-bar-inner">
+    <span style="color:var(--airbnb-gray); font-size:0.82rem;">Compare:</span>
+    <div id="compareSlots"></div>
+    <button class="compare-btn" id="compareGoBtn" disabled>Compare</button>
+    <button class="compare-cancel" id="compareCancelBtn">Cancel</button>
   </div>
+</div>
+
+<div class="category-bar">
+  <div class="container">
+    <div class="category-scroll" id="categoryScroll"></div>
+  </div>
+</div>
+
+<main class="container">
+  <div class="results-meta">
+    <span id="resultsMeta"></span>
+    <span id="compareHint" style="color:var(--airbnb-gray); font-size:0.75rem; display:none;">Click cards to select for comparison</span>
+  </div>
+  <div class="gallery" id="gallery"></div>
 </main>
 
-<footer>
+<footer class="site-footer">
   <div class="container">
-    <div class="footer-inner">
+    <div class="site-footer-inner">
       <span>The Reader in 150 Styles</span>
-      <span>Generated with AI &middot; 2026</span>
+      <span>AI-generated gallery</span>
     </div>
   </div>
 </footer>
@@ -348,8 +236,14 @@ footer {
   <div class="lightbox-inner" id="lightboxInner"></div>
 </div>
 
+<div class="compare-view" id="compareView">
+  <button class="compare-view-close" id="compareViewClose">&times;</button>
+  <div class="compare-view-title" id="compareViewTitle"></div>
+  <div class="compare-columns" id="compareColumns"></div>
+</div>
+
 <script>
-const PROMPT = "A solitary figure seated by a tall arched window reading an old leather-bound book, warm afternoon light through dusty glass, geometric shadows on worn wooden floorboards, forgotten ceramic cup of tea on side table, atmospheric contemplative rich textures of fabric and paper. In the style of ";
+const BASE_PROMPT = "A person reading by a window, quiet contemplative interior";
 const IMAGE_PARAMS = "?width=1024&height=1024&nologo=true&seed=42";
 
 const genres = [
@@ -361,271 +255,401 @@ const genres = [
   { id: "Post-Impressionism", cn: "后印象派" },
   { id: "Expressionism & Fauvism", cn: "表现 & 野兽" },
   { id: "Cubism & Futurism", cn: "立体 & 未来" },
-  { id: "Surrealism", cn: "超现实主义" },
-  { id: "Abstract Expressionism", cn: "抽象表现主义" },
+  { id: "Surrealism", cn: "超现实" },
+  { id: "Abstract Expressionism", cn: "抽象表现" },
   { id: "Pop & Contemporary", cn: "波普 & 当代" },
-  { id: "Ukiyo-e", cn: "日本浮世绘" },
-  { id: "Chinese Ink", cn: "中国水墨" },
-  { id: "Digital & Tech Art", cn: "数字 & 科技艺术" },
+  { id: "Ukiyo-e", cn: "浮世绘" },
+  { id: "Chinese Ink", cn: "水墨" },
+  { id: "Digital & Tech Art", cn: "数字艺术" },
   { id: "Art Nouveau & Symbolism", cn: "新艺术 & 象征" },
   { id: "Minimalism & Modernism", cn: "极简 & 现代" }
 ];
-
 const artists = [
-  { name: "Leonardo da Vinci", genre: "Renaissance", genreCN: "文艺复兴" },
-  { name: "Michelangelo", genre: "Renaissance", genreCN: "文艺复兴" },
-  { name: "Raphael", genre: "Renaissance", genreCN: "文艺复兴" },
-  { name: "Sandro Botticelli", genre: "Renaissance", genreCN: "文艺复兴" },
-  { name: "Giotto", genre: "Renaissance", genreCN: "文艺复兴" },
-  { name: "Masaccio", genre: "Renaissance", genreCN: "文艺复兴" },
-  { name: "Titian", genre: "Renaissance", genreCN: "文艺复兴" },
-  { name: "Tintoretto", genre: "Renaissance", genreCN: "文艺复兴" },
-  { name: "Jan van Eyck", genre: "Renaissance", genreCN: "文艺复兴" },
-  { name: "Hieronymus Bosch", genre: "Renaissance", genreCN: "文艺复兴" },
-  { name: "Piero della Francesca", genre: "Renaissance", genreCN: "文艺复兴" },
-  { name: "Andrea Mantegna", genre: "Renaissance", genreCN: "文艺复兴" },
-  { name: "Caravaggio", genre: "Baroque", genreCN: "巴洛克" },
-  { name: "Rembrandt", genre: "Baroque", genreCN: "巴洛克" },
-  { name: "Peter Paul Rubens", genre: "Baroque", genreCN: "巴洛克" },
-  { name: "Johannes Vermeer", genre: "Baroque", genreCN: "巴洛克" },
-  { name: "Gian Lorenzo Bernini", genre: "Baroque", genreCN: "巴洛克" },
-  { name: "Diego Velázquez", genre: "Baroque", genreCN: "巴洛克" },
-  { name: "Nicolas Poussin", genre: "Baroque", genreCN: "巴洛克" },
-  { name: "Claude Lorrain", genre: "Baroque", genreCN: "巴洛克" },
-  { name: "Jacques-Louis David", genre: "Neoclassicism & Romanticism", genreCN: "新古典 & 浪漫" },
-  { name: "Jean-Auguste-Dominique Ingres", genre: "Neoclassicism & Romanticism", genreCN: "新古典 & 浪漫" },
-  { name: "Eugène Delacroix", genre: "Neoclassicism & Romanticism", genreCN: "新古典 & 浪漫" },
-  { name: "J.M.W. Turner", genre: "Neoclassicism & Romanticism", genreCN: "新古典 & 浪漫" },
-  { name: "Francisco Goya", genre: "Neoclassicism & Romanticism", genreCN: "新古典 & 浪漫" },
-  { name: "Caspar David Friedrich", genre: "Neoclassicism & Romanticism", genreCN: "新古典 & 浪漫" },
-  { name: "Théodore Géricault", genre: "Neoclassicism & Romanticism", genreCN: "新古典 & 浪漫" },
-  { name: "François Boucher", genre: "Neoclassicism & Romanticism", genreCN: "新古典 & 浪漫" },
-  { name: "Jean-Honoré Fragonard", genre: "Neoclassicism & Romanticism", genreCN: "新古典 & 浪漫" },
-  { name: "John Constable", genre: "Neoclassicism & Romanticism", genreCN: "新古典 & 浪漫" },
-  { name: "Claude Monet", genre: "Impressionism", genreCN: "印象派" },
-  { name: "Pierre-Auguste Renoir", genre: "Impressionism", genreCN: "印象派" },
-  { name: "Edgar Degas", genre: "Impressionism", genreCN: "印象派" },
-  { name: "Alfred Sisley", genre: "Impressionism", genreCN: "印象派" },
-  { name: "Camille Pissarro", genre: "Impressionism", genreCN: "印象派" },
-  { name: "Berthe Morisot", genre: "Impressionism", genreCN: "印象派" },
-  { name: "Frédéric Bazille", genre: "Impressionism", genreCN: "印象派" },
-  { name: "Gustave Caillebotte", genre: "Impressionism", genreCN: "印象派" },
-  { name: "Édouard Manet", genre: "Impressionism", genreCN: "印象派" },
-  { name: "Mary Cassatt", genre: "Impressionism", genreCN: "印象派" },
-  { name: "Childe Hassam", genre: "Impressionism", genreCN: "印象派" },
-  { name: "William Merritt Chase", genre: "Impressionism", genreCN: "印象派" },
-  { name: "Vincent van Gogh", genre: "Post-Impressionism", genreCN: "后印象派" },
-  { name: "Paul Cézanne", genre: "Post-Impressionism", genreCN: "后印象派" },
-  { name: "Paul Gauguin", genre: "Post-Impressionism", genreCN: "后印象派" },
-  { name: "Henri de Toulouse-Lautrec", genre: "Post-Impressionism", genreCN: "后印象派" },
-  { name: "Odilon Redon", genre: "Post-Impressionism", genreCN: "后印象派" },
-  { name: "Pierre Bonnard", genre: "Post-Impressionism", genreCN: "后印象派" },
-  { name: "Édouard Vuillard", genre: "Post-Impressionism", genreCN: "后印象派" },
-  { name: "Paul Sérusier", genre: "Post-Impressionism", genreCN: "后印象派" },
-  { name: "Maurice Denis", genre: "Post-Impressionism", genreCN: "后印象派" },
-  { name: "Georges Seurat", genre: "Post-Impressionism", genreCN: "后印象派" },
-  { name: "Edvard Munch", genre: "Expressionism & Fauvism", genreCN: "表现 & 野兽" },
-  { name: "Ernst Ludwig Kirchner", genre: "Expressionism & Fauvism", genreCN: "表现 & 野兽" },
-  { name: "Henri Matisse", genre: "Expressionism & Fauvism", genreCN: "表现 & 野兽" },
-  { name: "André Derain", genre: "Expressionism & Fauvism", genreCN: "表现 & 野兽" },
-  { name: "Maurice de Vlaminck", genre: "Expressionism & Fauvism", genreCN: "表现 & 野兽" },
-  { name: "Albert Marquet", genre: "Expressionism & Fauvism", genreCN: "表现 & 野兽" },
-  { name: "Georges Rouault", genre: "Expressionism & Fauvism", genreCN: "表现 & 野兽" },
-  { name: "Emil Nolde", genre: "Expressionism & Fauvism", genreCN: "表现 & 野兽" },
-  { name: "Max Pechstein", genre: "Expressionism & Fauvism", genreCN: "表现 & 野兽" },
-  { name: "Karl Schmidt-Rottluff", genre: "Expressionism & Fauvism", genreCN: "表现 & 野兽" },
-  { name: "Pablo Picasso", genre: "Cubism & Futurism", genreCN: "立体 & 未来" },
-  { name: "Georges Braque", genre: "Cubism & Futurism", genreCN: "立体 & 未来" },
-  { name: "Fernand Léger", genre: "Cubism & Futurism", genreCN: "立体 & 未来" },
-  { name: "Umberto Boccioni", genre: "Cubism & Futurism", genreCN: "立体 & 未来" },
-  { name: "Giacomo Balla", genre: "Cubism & Futurism", genreCN: "立体 & 未来" },
-  { name: "Gino Severini", genre: "Cubism & Futurism", genreCN: "立体 & 未来" },
-  { name: "André Lhote", genre: "Cubism & Futurism", genreCN: "立体 & 未来" },
-  { name: "Juan Gris", genre: "Cubism & Futurism", genreCN: "立体 & 未来" },
-  { name: "Jean Metzinger", genre: "Cubism & Futurism", genreCN: "立体 & 未来" },
-  { name: "Amédée Ozenfant", genre: "Cubism & Futurism", genreCN: "立体 & 未来" },
-  { name: "Salvador Dalí", genre: "Surrealism", genreCN: "超现实主义" },
-  { name: "René Magritte", genre: "Surrealism", genreCN: "超现实主义" },
-  { name: "Max Ernst", genre: "Surrealism", genreCN: "超现实主义" },
-  { name: "Joan Miró", genre: "Surrealism", genreCN: "超现实主义" },
-  { name: "Yves Tanguy", genre: "Surrealism", genreCN: "超现实主义" },
-  { name: "Paul Delvaux", genre: "Surrealism", genreCN: "超现实主义" },
-  { name: "André Masson", genre: "Surrealism", genreCN: "超现实主义" },
-  { name: "Man Ray", genre: "Surrealism", genreCN: "超现实主义" },
-  { name: "Óscar Domínguez", genre: "Surrealism", genreCN: "超现实主义" },
-  { name: "Remedios Varo", genre: "Surrealism", genreCN: "超现实主义" },
-  { name: "Jackson Pollock", genre: "Abstract Expressionism", genreCN: "抽象表现主义" },
-  { name: "Willem de Kooning", genre: "Abstract Expressionism", genreCN: "抽象表现主义" },
-  { name: "Mark Rothko", genre: "Abstract Expressionism", genreCN: "抽象表现主义" },
-  { name: "Barnett Newman", genre: "Abstract Expressionism", genreCN: "抽象表现主义" },
-  { name: "Franz Kline", genre: "Abstract Expressionism", genreCN: "抽象表现主义" },
-  { name: "Robert Motherwell", genre: "Abstract Expressionism", genreCN: "抽象表现主义" },
-  { name: "Adolph Gottlieb", genre: "Abstract Expressionism", genreCN: "抽象表现主义" },
-  { name: "Philip Guston", genre: "Abstract Expressionism", genreCN: "抽象表现主义" },
-  { name: "Bradley Walker Tomlin", genre: "Abstract Expressionism", genreCN: "抽象表现主义" },
-  { name: "Clyfford Still", genre: "Abstract Expressionism", genreCN: "抽象表现主义" },
-  { name: "Andy Warhol", genre: "Pop & Contemporary", genreCN: "波普 & 当代" },
-  { name: "Roy Lichtenstein", genre: "Pop & Contemporary", genreCN: "波普 & 当代" },
-  { name: "Jean-Michel Basquiat", genre: "Pop & Contemporary", genreCN: "波普 & 当代" },
-  { name: "Yayoi Kusama", genre: "Pop & Contemporary", genreCN: "波普 & 当代" },
-  { name: "Jeff Koons", genre: "Pop & Contemporary", genreCN: "波普 & 当代" },
-  { name: "Damien Hirst", genre: "Pop & Contemporary", genreCN: "波普 & 当代" },
-  { name: "Takashi Murakami", genre: "Pop & Contemporary", genreCN: "波普 & 当代" },
-  { name: "Banksy", genre: "Pop & Contemporary", genreCN: "波普 & 当代" },
-  { name: "Keith Haring", genre: "Pop & Contemporary", genreCN: "波普 & 当代" },
-  { name: "Barbara Kruger", genre: "Pop & Contemporary", genreCN: "波普 & 当代" },
-  { name: "Katsushika Hokusai", genre: "Ukiyo-e", genreCN: "日本浮世绘" },
-  { name: "Utagawa Hiroshige", genre: "Ukiyo-e", genreCN: "日本浮世绘" },
-  { name: "Kitagawa Utamaro", genre: "Ukiyo-e", genreCN: "日本浮世绘" },
-  { name: "Tōshūsai Sharaku", genre: "Ukiyo-e", genreCN: "日本浮世绘" },
-  { name: "Torii Kiyonaga", genre: "Ukiyo-e", genreCN: "日本浮世绘" },
-  { name: "Suzuki Harunobu", genre: "Ukiyo-e", genreCN: "日本浮世绘" },
-  { name: "Utagawa Kuniyoshi", genre: "Ukiyo-e", genreCN: "日本浮世绘" },
-  { name: "Tsukioka Yoshitoshi", genre: "Ukiyo-e", genreCN: "日本浮世绘" },
-  { name: "Zhang Daqian", genre: "Chinese Ink", genreCN: "中国水墨" },
-  { name: "Qi Baishi", genre: "Chinese Ink", genreCN: "中国水墨" },
-  { name: "Wu Guanzhong", genre: "Chinese Ink", genreCN: "中国水墨" },
-  { name: "Fan Kuan", genre: "Chinese Ink", genreCN: "中国水墨" },
-  { name: "Huang Gongwang", genre: "Chinese Ink", genreCN: "中国水墨" },
-  { name: "Dong Yuan", genre: "Chinese Ink", genreCN: "中国水墨" },
-  { name: "Ni Zan", genre: "Chinese Ink", genreCN: "中国水墨" },
-  { name: "Wang Meng", genre: "Chinese Ink", genreCN: "中国水墨" },
-  { name: "Beeple", genre: "Digital & Tech Art", genreCN: "数字 & 科技艺术" },
-  { name: "Refik Anadol", genre: "Digital & Tech Art", genreCN: "数字 & 科技艺术" },
-  { name: "Mario Klingemann", genre: "Digital & Tech Art", genreCN: "数字 & 科技艺术" },
-  { name: "Ian Cheng", genre: "Digital & Tech Art", genreCN: "数字 & 科技艺术" },
-  { name: "Casey Reas", genre: "Digital & Tech Art", genreCN: "数字 & 科技艺术" },
-  { name: "Joshua Davis", genre: "Digital & Tech Art", genreCN: "数字 & 科技艺术" },
-  { name: "Zach Lieberman", genre: "Digital & Tech Art", genreCN: "数字 & 科技艺术" },
-  { name: "Golan Levin", genre: "Digital & Tech Art", genreCN: "数字 & 科技艺术" },
-  { name: "teamLab", genre: "Digital & Tech Art", genreCN: "数字 & 科技艺术" },
-  { name: "Memo Akten", genre: "Digital & Tech Art", genreCN: "数字 & 科技艺术" },
-  { name: "Sougwen Chung", genre: "Digital & Tech Art", genreCN: "数字 & 科技艺术" },
-  { name: "Rafael Lozano-Hemmer", genre: "Digital & Tech Art", genreCN: "数字 & 科技艺术" },
-  { name: "Alphonse Mucha", genre: "Art Nouveau & Symbolism", genreCN: "新艺术 & 象征" },
-  { name: "Gustav Klimt", genre: "Art Nouveau & Symbolism", genreCN: "新艺术 & 象征" },
-  { name: "Aubrey Beardsley", genre: "Art Nouveau & Symbolism", genreCN: "新艺术 & 象征" },
-  { name: "Koloman Moser", genre: "Art Nouveau & Symbolism", genreCN: "新艺术 & 象征" },
-  { name: "Hector Guimard", genre: "Art Nouveau & Symbolism", genreCN: "新艺术 & 象征" },
-  { name: "Louis Comfort Tiffany", genre: "Art Nouveau & Symbolism", genreCN: "新艺术 & 象征" },
-  { name: "Victor Horta", genre: "Art Nouveau & Symbolism", genreCN: "新艺术 & 象征" },
-  { name: "Antoni Gaudí", genre: "Art Nouveau & Symbolism", genreCN: "新艺术 & 象征" },
-  { name: "William Morris", genre: "Art Nouveau & Symbolism", genreCN: "新艺术 & 象征" },
-  { name: "Charles Rennie Mackintosh", genre: "Art Nouveau & Symbolism", genreCN: "新艺术 & 象征" },
-  { name: "Donald Judd", genre: "Minimalism & Modernism", genreCN: "极简 & 现代" },
-  { name: "Dan Flavin", genre: "Minimalism & Modernism", genreCN: "极简 & 现代" },
-  { name: "Carl Andre", genre: "Minimalism & Modernism", genreCN: "极简 & 现代" },
-  { name: "Agnes Martin", genre: "Minimalism & Modernism", genreCN: "极简 & 现代" },
-  { name: "Frank Stella", genre: "Minimalism & Modernism", genreCN: "极简 & 现代" },
-  { name: "Ellsworth Kelly", genre: "Minimalism & Modernism", genreCN: "极简 & 现代" },
-  { name: "Sol LeWitt", genre: "Minimalism & Modernism", genreCN: "极简 & 现代" },
-  { name: "Richard Serra", genre: "Minimalism & Modernism", genreCN: "极简 & 现代" },
-  { name: "Robert Ryman", genre: "Minimalism & Modernism", genreCN: "极简 & 现代" },
-  { name: "Brice Marden", genre: "Minimalism & Modernism", genreCN: "极简 & 现代" }
+  { name: "Leonardo da Vinci", genre: "Renaissance", genreCN: "文艺复兴", styleDesc: "sfumato soft atmospheric haze, anatomical precision in the reader's posture, Renaissance oil painting, deep chiaroscuro lighting, mysterious half-smile, arched window with aerial perspective, muted earth tones of umbers and siennas, balanced pyramidal composition, distant misty landscape visible" },
+  { name: "Michelangelo", genre: "Renaissance", genreCN: "文艺复兴", styleDesc: "monumental muscular figure, dramatic contrapposto, tenebrism lighting, Sistine Chapel ceiling grandeur, bold anatomical definition, monumental scale, deep shadows and blazing highlights, classical marble tension, powerful heroic presence" },
+  { name: "Raphael", genre: "Renaissance", genreCN: "文艺复兴", styleDesc: "serene High Renaissance harmony, soft diffused light, idealized beauty, perfectly balanced composition, gentle Madonnalike grace, clear perspectival space, warm golden ochre palette, classical architectural setting, calm intellectual dignity" },
+  { name: "Sandro Botticelli", genre: "Renaissance", genreCN: "文艺复兴", styleDesc: "flowing linear grace, Primavera-like ethereal beauty, delicate gold outlines, pale rose and ivory tones, floating drapery, mythological softness, early Renaissance elegance, long slender proportions, decorative floral details, serene melancholy" },
+  { name: "Giotto", genre: "Renaissance", genreCN: "文艺复兴", styleDesc: "proto-Renaissance solidity, flat gold backgrounds, emotional narrative directness, heavy drapery folds, Byzantine influence, early perspective attempts, muted earth pigments, solemn human expression, religious gravitas, simple architectural framing" },
+  { name: "Masaccio", genre: "Renaissance", genreCN: "文艺复兴", styleDesc: "scientific perspective, realistic shadowing, monumental figures, early Renaissance oil painting, architectural depth, natural light sources" },
+  { name: "Titian", genre: "Renaissance", genreCN: "文艺复兴", styleDesc: "Venetian color supremacy, warm golden flesh, sensual oil painting, late dramatic impasto, rich crimson and deep blue, mythological grandeur, loose brushwork, atmospheric depth, luminous skin tones, Baroque anticipation" },
+  { name: "Tintoretto", genre: "Renaissance", genreCN: "文艺复兴", styleDesc: "Mannerist drama, swirling energy, dramatic diagonal composition, lightning-like illumination, crowded canvas, bold foreshortening, dark Venice setting, muscular action, religious ecstasy, theatrical staging" },
+  { name: "Jan van Eyck", genre: "Renaissance", genreCN: "文艺复兴", styleDesc: "Northern Renaissance oil glazing, microscopic detail in every texture, mirror reflection, jewel-like color saturation, symbolic objects, crisp panel painting, oak wood grain, precise fabric rendering, luminous oil technique, intimate domestic setting" },
+  { name: "Hieronymus Bosch", genre: "Renaissance", genreCN: "文艺复兴", styleDesc: "fantastical hybrid creatures, moral allegory, dense symbolic detail, hellish landscapes, grotesque imagination, surreal dreamscape" },
+  { name: "Piero della Francesca", genre: "Renaissance", genreCN: "文艺复兴", styleDesc: "geometric calm, mathematical perspective, serene stillness, muted pastel palette, architectural precision, Renaissance humanist order" },
+  { name: "Andrea Mantegna", genre: "Renaissance", genreCN: "文艺复兴", styleDesc: "extreme foreshortening, archaeological classicism, sharp linear perspective, fresco technique, bold foreshortened views, Roman antiquity influence" },
+  { name: "Caravaggio", genre: "Baroque", genreCN: "巴洛克", styleDesc: "tenebrism extreme chiaroscuro, spotlight from darkness, gritty realism, contemporary Roman dress, psychological intensity, Baroque drama, stark light and shadow, visceral humanity, chiaroscuro as narrative, intimate yet monumental" },
+  { name: "Rembrandt", genre: "Baroque", genreCN: "巴洛克", styleDesc: "golden hour lighting, psychological depth, textured impasto, intimate portraits, Dutch Golden Age, warm amber tones, contemplative mood" },
+  { name: "Peter Paul Rubens", genre: "Baroque", genreCN: "巴洛克", styleDesc: "Flemish Baroque dynamism, fleshy voluptuous flesh, swirling movement, vibrant saturated reds, energetic composition, sensual curves, mythological abundance, oil sketch vitality, warm flesh tones, dramatic coloristic harmony" },
+  { name: "Johannes Vermeer", genre: "Baroque", genreCN: "巴洛克", styleDesc: "Delft light tranquility, diffused window illumination, quiet domestic intimacy, pearl-like luminosity, map on wall, blue and yellow tonal harmony, camera obscura softness, suspended time, contemplative stillness, crystalline silence" },
+  { name: "Gian Lorenzo Bernini", genre: "Baroque", genreCN: "巴洛克", styleDesc: "sculptural drama, marble fluidity, Baroque theatricality, dynamic poses, emotional religious ecstasy, textural marble surfaces, movement in stone" },
+  { name: "Diego Velázquez", genre: "Baroque", genreCN: "巴洛克", styleDesc: "Spanish Baroque naturalism, loose painterly brushwork, Las Meninas spatial complexity, courtly dignity, cool gray palette, brushstroke as subject, mirror and reflection, realist spontaneity, painterly freedom, aristocratic calm" },
+  { name: "Nicolas Poussin", genre: "Baroque", genreCN: "巴洛克", styleDesc: "French Classical order, rational composition, mythological clarity, cool landscape, intellectual structure, archaeological accuracy, balanced foreground and background, idealized geometry, stoic calm, classical narrative" },
+  { name: "Claude Lorrain", genre: "Baroque", genreCN: "巴洛克", styleDesc: "idealized Italian landscape, golden atmospheric perspective, classical ruins, serene dawn light, poetic pastoral, warm luminous horizon, tree framing, balanced symmetry, Arcadian dream, poetic landscape painting" },
+  { name: "Jacques-Louis David", genre: "Neoclassicism & Romanticism", genreCN: "新古典 & 浪漫", styleDesc: "Neoclassical moral severity, Roman Republican virtue, stark composition, political propaganda, clean contour, cool palette, Oath of Horatii solidarity, revolutionary fervor, classical costume, civic duty" },
+  { name: "Jean-Auguste-Dominique Ingres", genre: "Neoclassicism & Romanticism", genreCN: "新古典 & 浪漫", styleDesc: "Neoclassical line perfection, smooth enamel-like surface, idealized contour, odalisque sensuality, archaeological precision, cool drawing supremacy, polished finish, classical repose, linear elegance, timeless idealization" },
+  { name: "Eugène Delacroix", genre: "Neoclassicism & Romanticism", genreCN: "新古典 & 浪漫", styleDesc: "French Romantic color explosion, dynamic diagonal composition, Orientalist exoticism, vibrant complementary palette, literary passion, energetic brushwork, historical drama, lion hunt energy, painterly freedom, emotional intensity" },
+  { name: "J.M.W. Turner", genre: "Neoclassicism & Romanticism", genreCN: "新古典 & 浪漫", styleDesc: "English Romantic light dissolution, atmospheric vapor, golden sunset flooding, sea and sky merging, precursor to Impressionism, almost abstract luminosity, turbulent nature, sublime light, watercolor transparency, elemental power" },
+  { name: "Francisco Goya", genre: "Neoclassicism & Romanticism", genreCN: "新古典 & 浪漫", styleDesc: "Spanish Romantic darkness, Black Paintings horror, etching aquatint, stark social commentary, loose late brushwork, psychological grotesque, penetrating darkness, bullfight intensity, Spanish identity, human cruelty and tenderness" },
+  { name: "Caspar David Friedrich", genre: "Neoclassicism & Romanticism", genreCN: "新古典 & 浪漫", styleDesc: "German Romantic sublime, solitary figure in vast landscape, contemplative isolation, misty atmospheric perspective, symbolic graveyard, spiritual transcendence, cold Nordic light, melancholic vastness, nature as cathedral, existential solitude" },
+  { name: "Théodore Géricault", genre: "Neoclassicism & Romanticism", genreCN: "新古典 & 浪漫", styleDesc: "romantic realism, muscular anatomy, dramatic contemporary subjects, Raft of the Medusa intensity, turbulent emotion, historical narrative, tenebrism" },
+  { name: "François Boucher", genre: "Neoclassicism & Romanticism", genreCN: "新古典 & 浪漫", styleDesc: "Rococo pastel fantasy, playful eroticism, decorative charm, pastoral myth, soft pink and blue palette, aristocratic leisure, voluptuous sensuality" },
+  { name: "Jean-Honoré Fragonard", genre: "Neoclassicism & Romanticism", genreCN: "新古典 & 浪漫", styleDesc: "Rococo flirtatious energy, playful romance, The Swing theatricality, loose brushwork, garden fantasy, aristocratic escapism, pastel exuberance" },
+  { name: "John Constable", genre: "Neoclassicism & Romanticism", genreCN: "新古典 & 浪漫", styleDesc: "English pastoral naturalism, cloud studies, green Suffolk landscape, natural light observation, detailed tree foliage, sky as protagonist, rural English countryside, oil sketch freshness, meteorological accuracy, earthbound poetry" },
+  { name: "Claude Monet", genre: "Impressionism", genreCN: "印象派", styleDesc: "Impressionist plein air, broken color brushstrokes, series repetition of light, water lily reflections, Japanese bridge, Rouen Cathedral series, fleeting atmospheric moment, outdoor light capture, pastel tonal vibration, optical color mixing" },
+  { name: "Pierre-Auguste Renoir", genre: "Impressionism", genreCN: "印象派", styleDesc: "Impressionist sensual warmth, soft rosy flesh, dappled social gathering, feminine beauty, vibrating light on skin, feathery brushstroke, cheerful bourgeois leisure, warm palette, intimate charm, joyous luminosity" },
+  { name: "Edgar Degas", genre: "Impressionism", genreCN: "印象派", styleDesc: "Impressionist draughtsman, ballet dancers in rehearsal, cropped composition, pastel and monotype, Japanese print asymmetry, intimate voyeurism, movement study, artificial light, unconventional framing, psychological tension" },
+  { name: "Alfred Sisley", genre: "Impressionism", genreCN: "印象派", styleDesc: "Impressionist sky painter, quiet suburban landscape, soft grey weather, riverside reflection, modest palette, unobtrusive beauty, atmospheric subtlety, winter scene, tranquil water, understated harmony" },
+  { name: "Camille Pissarro", genre: "Impressionism", genreCN: "印象派", styleDesc: "Impressionist rural commune, peasant labor, muddy boots, pointillist late period, agricultural rhythm, provincial French town, rural road, harvest season, democratic landscape, solid earthy color" },
+  { name: "Berthe Morisot", genre: "Impressionism", genreCN: "印象派", styleDesc: "Impressionist feminine domesticity, mother and child intimacy, interior garden, light veil curtains, pastel softness, female gaze, domestic bourgeois life, airy brushwork, tender moment, intimate privacy" },
+  { name: "Frédéric Bazille", genre: "Impressionism", genreCN: "印象派", styleDesc: "sunlit outdoor figures, bold color areas, early Impressionist clarity, group compositions, southern French light, academic-Impressionist bridge" },
+  { name: "Gustave Caillebotte", genre: "Impressionism", genreCN: "印象派", styleDesc: "urban Parisian modernity, perspective distortion, photographic realism, boulevards and bridges, wealthy leisure, precise draftsmanship, urban alienation" },
+  { name: "Édouard Manet", genre: "Impressionism", genreCN: "印象派", styleDesc: "Modern life painterly flatness, black as color, café society immediacy, provocative subject, oil sketch boldness, Japanese print influence, flattened perspective, contemporary Paris, fragmented brushwork, modernist precursor" },
+  { name: "Mary Cassatt", genre: "Impressionism", genreCN: "印象派", styleDesc: "Impressionist mother-child tenderness, pastel portrait, Japanese print influence, domestic intimacy, tender embrace, women's private world, soft color harmonies, American expatriate, caregiving moment, interior warmth" },
+  { name: "Childe Hassam", genre: "Impressionism", genreCN: "印象派", styleDesc: "American urban flag paintings, patriotic Impressionism, city street scenes, mosaic-like color spots, American metropolitan light, flags and architecture" },
+  { name: "William Merritt Chase", genre: "Impressionism", genreCN: "印象派", styleDesc: "American tonalist, elegant still life, studio interiors, rich tonal harmonies, dark atmospheric background, painterly elegance, American genteel" },
+  { name: "Vincent van Gogh", genre: "Post-Impressionism", genreCN: "后印象派", styleDesc: "Post-Impressionist impasto intensity, swirling dynamic sky, cobalt and chrome yellow, emotional turbulence, Starry Night energy, rhythmic brush marks, sunflower warmth, thick textured paint, expressive vibration, soulful agony" },
+  { name: "Paul Cézanne", genre: "Post-Impressionism", genreCN: "后印象派", styleDesc: "Post-Impressionist constructive brushstroke, geometric underlying structure, Mont Sainte-Victoire repetitions, still life solidity, color modulation, blocky brushwork, architectural landscape, constructive stroke, formal order, painterly architecture" },
+  { name: "Paul Gauguin", genre: "Post-Impressionism", genreCN: "后印象派", styleDesc: "Post-Impressionist primitivism, flat cloisonnist color, Tahitian exoticism, Symbolist spiritual, bold contour outlines, synthetic vision, South Pacific escape, decorative pattern, color as emotion, primitive paradise" },
+  { name: "Henri de Toulouse-Lautrec", genre: "Post-Impressionism", genreCN: "后印象派", styleDesc: "Post-Impressionist graphic poster, Moulin Rouge nightlife, flat color blocks, advertising boldness, lithographic line, Parisian demimonde, cancan dancer, Japanese print flatness, commercial art, urban entertainment" },
+  { name: "Odilon Redon", genre: "Post-Impressionism", genreCN: "后印象派", styleDesc: "symbolist dream imagery, noirs charcoal darkness, fantastical flowers, floating eyes, mystical nocturnal, visionary imagination, color explosion, subconscious symbolism" },
+  { name: "Pierre Bonnard", genre: "Post-Impressionism", genreCN: "后印象派", styleDesc: "Nabis intimate domestic, color vibration, bathroom scene, pattern on pattern, warm interior, Japanese print influence, color saturation, intimate moment, domestic mystery, sensory color" },
+  { name: "Édouard Vuillard", genre: "Post-Impressionism", genreCN: "后印象派", styleDesc: "Nabis interior pattern, wallpaper and fabric, quiet domesticity, muted color harmony, intimate room, decorative surface, bourgeois interior, textile richness, quiet conversation, pattern painting" },
+  { name: "Paul Sérusier", genre: "Post-Impressionism", genreCN: "后印象派", styleDesc: "Nabis synthetist, Talisman landscape, flat color areas, cloisonnist outlines, symbolic color use, spiritual painting, Gauguin influence, mystical color theory" },
+  { name: "Maurice Denis", genre: "Post-Impressionism", genreCN: "后印象派", styleDesc: "Nabis decorative flatness, religious symbolism, color as emotion, Christian mystery, panel painting, decorative border, spiritual content, flat color, Japanese influence, symbolist painting" },
+  { name: "Georges Seurat", genre: "Post-Impressionism", genreCN: "后印象派", styleDesc: "Neo-Impressionist pointillism, scientific color dots, Sunday afternoon park, optical color mixing, systematic divisionism, golden frame, methodical stipple, calm afternoon, optical vibration, color theory application" },
+  { name: "Edvard Munch", genre: "Expressionism & Fauvism", genreCN: "表现 & 野兽", styleDesc: "Expressionist primal scream, anxiety swirling lines, The Scream landscape, psychological distortion, Norwegian fjord, symbolic color, existential dread, love and death cycle, woodcut boldness, inner turmoil" },
+  { name: "Ernst Ludwig Kirchner", genre: "Expressionism & Fauvism", genreCN: "表现 & 野兽", styleDesc: "Die Brücke angular distortion, urban street scenes, psychological intensity, raw color, primitive carving, Expressionist urban angst, jagged forms, German modernism" },
+  { name: "Henri Matisse", genre: "Expressionism & Fauvism", genreCN: "表现 & 野兽", styleDesc: "Fauvist color liberation, bold arbitrary color, decorative flatness, cut-out late period, red studio, joyful pattern, dance rhythm, Mediterranean light, interior with window, expressive color" },
+  { name: "André Derain", genre: "Expressionism & Fauvism", genreCN: "表现 & 野兽", styleDesc: "Fauvist bold complementary, London Thames, violent color, structural colorism, African mask influence, simplified form, explosive palette, primal energy, early color experiment, raw color force" },
+  { name: "Maurice de Vlaminck", genre: "Expressionism & Fauvism", genreCN: "表现 & 野兽", styleDesc: "Fauvist dark intensity, Van Gogh influence, heavy impasto, turbulent landscape, bold color clash, rural France, stormy atmosphere, earthy violence, expressive landscape, dark Fauve" },
+  { name: "Albert Marquet", genre: "Expressionism & Fauvism", genreCN: "表现 & 野兽", styleDesc: "Fauvist restrained color, port and harbor scenes, light atmosphere, simplified forms, softer palette within Fauvism, Mediterranean light, architectural clarity, gentle color" },
+  { name: "Georges Rouault", genre: "Expressionism & Fauvism", genreCN: "表现 & 野兽", styleDesc: "Expressionist stained glass, dark outlines, religious intensity, Fauvist color, thick black line, clown and judge, spiritual darkness, medieval glass, emotional brutality, somber palette" },
+  { name: "Emil Nolde", genre: "Expressionism & Fauvism", genreCN: "表现 & 野兽", styleDesc: "Nazi Expressionist, violent color, religious ecstasy, flower paintings, watercolor intensity, thick impasto, spiritual emotionalism, primitive Germanic, color drama" },
+  { name: "Max Pechstein", genre: "Expressionism & Fauvism", genreCN: "表现 & 野兽", styleDesc: "Die Brücke color, bold simplified forms, exotic subject matter, tribal art influence, Fauvist intensity, decorative pattern, East Prussian landscape, expressionist color fields" },
+  { name: "Karl Schmidt-Rottluff", genre: "Expressionism & Fauvism", genreCN: "表现 & 野兽", styleDesc: "Die Brücke angular forms, woodcut aesthetic, bold flat color, African sculpture influence, rough hewn texture, primitive energy, architectural landscape, expressionist starkness" },
+  { name: "Pablo Picasso", genre: "Cubism & Futurism", genreCN: "立体 & 未来", styleDesc: "Cubist geometric fragmentation, multiple simultaneous viewpoints, Analytical and Synthetic Cubism, flattened picture plane, collage elements, African mask influence, fractured guitar, monochromatic ochre, intellectual deconstruction, form analysis" },
+  { name: "Georges Braque", genre: "Cubism & Futurism", genreCN: "立体 & 未来", styleDesc: "Cubist muted still life, newspaper collage, faceted bottle and glass, limited palette, analytical fragmentation, contemplative quiet, interior tabletop, soft grey and brown, intimate scale, painterly structure" },
+  { name: "Fernand Léger", genre: "Cubism & Futurism", genreCN: "立体 & 未来", styleDesc: "Cubist mechanical tubular forms, primary color boldness, modern city, cylinder and cone, machine aesthetic, dynamic contrast, contemporary life, ballet dancers, mechanical precision, bold outline" },
+  { name: "Umberto Boccioni", genre: "Cubism & Futurism", genreCN: "立体 & 未来", styleDesc: "Futurist speed and dynamism, force lines, urban motion, horse and rider energy, shattered perspective, technological optimism, Italian modernity, velocity sensation, multiple movement, explosive force" },
+  { name: "Giacomo Balla", genre: "Cubism & Futurism", genreCN: "立体 & 未来", styleDesc: "Futurist light motion, dynamic dog on leash, sequential movement, light decomposition, speed lines, street lamp, energetic vibration, color segmentation, progressive motion, abstracted movement" },
+  { name: "Gino Severini", genre: "Cubism & Futurism", genreCN: "立体 & 未来", styleDesc: "Futurist Parisian nightlife, dance hall, mosaic color division, café concert, rhythmic pattern, modern entertainment, color syncopation, energetic crowd, Parisian society, fragmented light" },
+  { name: "André Lhote", genre: "Cubism & Futurism", genreCN: "立体 & 未来", styleDesc: "Cubist geometric landscape, crystalline forms, academic Cubism, color harmony, French landscape abstraction, theoretical cubism, structured composition, architectural nature" },
+  { name: "Juan Gris", genre: "Cubism & Futurism", genreCN: "立体 & 未来", styleDesc: "Cubist systematic composition, bright flat color, guitar and newspaper, organized grid, intellectual arrangement, synthetic clarity, decorative Cubism, clear structure, readable still life, balanced geometry" },
+  { name: "Jean Metzinger", genre: "Cubism & Futurism", genreCN: "立体 & 未来", styleDesc: "Cubist theory, multiple simultaneous perspective, Portrait of a Dancer, intellectual geometric composition, Divisionist-Cubist synthesis, French abstract pioneer, color facet analysis" },
+  { name: "Amédée Ozenfant", genre: "Cubism & Futurism", genreCN: "立体 & 未来", styleDesc: "Purism clarity, Le Corbusier collaboration, industrial precision, pure geometric forms, clean machine aesthetic, anti-expressionist, object type, architectural painting, French rationalism" },
+  { name: "Salvador Dalí", genre: "Surrealism", genreCN: "超现实", styleDesc: "Surrealist melting dreamscape, hyperrealistic detail, impossible architecture, soft watch, crutch and ant, Gala portrait, Catalan landscape, paranoiac critical method, dream symbolism, meticulous hallucination" },
+  { name: "René Magritte", genre: "Surrealism", genreCN: "超现实", styleDesc: "Surrealist conceptual paradox, bowler hat man, pipe and text, cloud in room, blue sky wall, ordinary made strange, Belgian clarity, intellectual puzzle, clean illustration, philosophical mystery" },
+  { name: "Max Ernst", genre: "Surrealism", genreCN: "超现实", styleDesc: "Surrealist frottage forest, bird alter ego Loplop, grattage texture, unconscious automatism, European forest, decalcomania, mythological collage, bird king, frottage rubbings, psychological landscape" },
+  { name: "Joan Miró", genre: "Surrealism", genreCN: "超现实", styleDesc: "Surrealist automatic biomorphic, primary color symbols, star and moon, Catalan peasant, playful constellation, organic abstraction, childlike spontaneity, automatic drawing, symbolic universe, poetic signs" },
+  { name: "Yves Tanguy", genre: "Surrealism", genreCN: "超现实", styleDesc: "Surrealist desert landscape, biomorphic rocks, floating forms, dreamlike emptiness, precise hallucination, bone-like architecture, infinite horizon, subconscious landscape, mysterious silence, enigmatic presence" },
+  { name: "Paul Delvaux", genre: "Surrealism", genreCN: "超现实", styleDesc: "surreal nude railway stations, nocturnal classical architecture, moonlit dreamscape, Belgian surrealism, Greek temple fantasy, sleepwalker nudes, deserted urban mystery, classical surreal" },
+  { name: "André Masson", genre: "Surrealism", genreCN: "超现实", styleDesc: "automatic drawing, sand painting technique, biomorphic violence, surrealist myth, French-American abstraction, psychic automatism, organic labyrinth, surrealist action painting, nature mythology" },
+  { name: "Man Ray", genre: "Surrealism", genreCN: "超现实", styleDesc: "Rayograph photogram, surrealist photography, solarization technique, Dada readymade, American in Paris, avant-garde portrait, experimental film, rayograph abstract, surrealist object" },
+  { name: "Óscar Domínguez", genre: "Surrealism", genreCN: "超现实", styleDesc: "decalcomania technique, automatic surrealism, Spanish surrealist, biomorphic landscape, dripping paint method, surrealist invention, nature automatic, painterly surrealism, innovative technique" },
+  { name: "Remedios Varo", genre: "Surrealism", genreCN: "超现实", styleDesc: "alchemical surrealism, mystical woman figure, intricate symbolic detail, Mexican surrealism, scientific fantasy, Renaissance technique, magical realism, detailed narrative, feminine surreal" },
+  { name: "Jackson Pollock", genre: "Abstract Expressionism", genreCN: "抽象表现", styleDesc: "Abstract Expressionist drip painting, action painting gesture, all-over composition, enamel and aluminum, chaotic energy, unconscious rhythm, dynamic splatter, floor canvas, energetic trace, American sublime" },
+  { name: "Willem de Kooning", genre: "Abstract Expressionism", genreCN: "抽象表现", styleDesc: "Abstract Expressionist aggressive brushwork, Woman series distortion, pink and flesh, urban energy, slashing gesture, figurative abstraction, violent paint handling, New York vitality, raw emotion, painterly violence" },
+  { name: "Mark Rothko", genre: "Abstract Expressionism", genreCN: "抽象表现", styleDesc: "Color Field soft rectangles, luminous floating edges, spiritual contemplation, emotional color, subtle tonal shifts, large scale meditation, warm and cool vibration, translucent layering, transcendent mood, meditative immersion" },
+  { name: "Barnett Newman", genre: "Abstract Expressionism", genreCN: "抽象表现", styleDesc: "Color Field zip vertical, vast monochromatic, sublime minimalism, Who's Afraid of Red, existential vertical, large scale, philosophical minimalism, single division, spiritual simplicity, monolithic presence" },
+  { name: "Franz Kline", genre: "Abstract Expressionism", genreCN: "抽象表现", styleDesc: "Abstract Expressionist black and white, bold industrial brushstroke, coal and steel, stark contrast, architectural abstraction, powerful gesture, urban energy, black slashes, white ground, dynamic tension" },
+  { name: "Robert Motherwell", genre: "Abstract Expressionism", genreCN: "抽象表现", styleDesc: "Abstract Expressionist Spanish Elegy, black ovoid, automatism, intellectual abstraction, white and black, Elegy to the Spanish Republic, poetic symbolism, restrained gesture, classical balance, modernist gravitas" },
+  { name: "Adolph Gottlieb", genre: "Abstract Expressionism", genreCN: "抽象表现", styleDesc: "Burst series, red disc over black, sun and ground symbolism, abstract primitive, mystical totem, color field, circular cosmic form, mythological abstraction, universal symbol" },
+  { name: "Philip Guston", genre: "Abstract Expressionism", genreCN: "抽象表现", styleDesc: "late hooded figures, pink fleshy abstraction, personal cartoon, existential gloom, transition to figuration, abstract-expressionist-turned-figurative, painterly return, existential narrative" },
+  { name: "Bradley Walker Tomlin", genre: "Abstract Expressionism", genreCN: "抽象表现", styleDesc: "calligraphic abstract expressionism, Asian influence, elegant letter-like forms, restrained color, meditative abstraction, American lyrical, eastern calligraphy, poetic abstraction, spiritual geometry" },
+  { name: "Clyfford Still", genre: "Abstract Expressionism", genreCN: "抽象表现", styleDesc: "Abstract Expressionist jagged color fields, tearing forms, dramatic vertical, thick impasto, organic eruption, dark palette, sublime nature, visceral color, monumental canvas, primal energy" },
+  { name: "Andy Warhol", genre: "Pop & Contemporary", genreCN: "波普 & 当代", styleDesc: "Pop Art silkscreen repetition, Campbell soup cans, Marilyn Monroe portrait, Factory production, celebrity obsession, commercial imagery, electric color, mass culture, photographic transfer, ironic consumerism" },
+  { name: "Roy Lichtenstein", genre: "Pop & Contemporary", genreCN: "波普 & 当代", styleDesc: "Pop Art Ben-Day dots, comic strip panels, bold black outline, speech bubble, romance and war, mechanical reproduction, parody of advertising, primary color flatness, graphic style, American comic" },
+  { name: "Jean-Michel Basquiat", genre: "Pop & Contemporary", genreCN: "波普 & 当代", styleDesc: "neo-expressionist graffiti, SAMO tag, raw energy, crown symbol, African American identity, street art to gallery, text and image fusion, primitivist energy, urban social commentary" },
+  { name: "Yayoi Kusama", genre: "Pop & Contemporary", genreCN: "波普 & 当代", styleDesc: "Japanese infinity room, polka dot, pumpkin sculpture, obsessive repetition, infinity mirror, performance art, yellow polka, psychedelic, self-obliteration, mental health, infinite pattern" },
+  { name: "Jeff Koons", genre: "Pop & Contemporary", genreCN: "波普 & 当代", styleDesc: "shiny balloon sculpture, kitsch celebration, stainless steel poodle, balloon dog, pop banality, high-low culture blend, commercial aesthetic, manufactured perfection, kitsch monumentality" },
+  { name: "Damien Hirst", genre: "Pop & Contemporary", genreCN: "波普 & 当代", styleDesc: "spot painting systematic, shark in formaldehyde, pharmaceutical cabinet, skull diamond, British YBA, conceptual shock, death obsession, scientific classification, pharmaceutical spot grid" },
+  { name: "Takashi Murakami", genre: "Pop & Contemporary", genreCN: "波普 & 当代", styleDesc: "Japanese superflat, anime aesthetic, smiling flower, pop art, otaku culture, commercial collaboration, colorful sculpture, Japanese pop, kawaii, Louis Vuitton, cartoon explosion" },
+  { name: "Banksy", genre: "Pop & Contemporary", genreCN: "波普 & 当代", styleDesc: "street art stencil, political satire, subversive graffiti, black and white silhouette, urban intervention, anonymous identity, social commentary, rat imagery, ironic anti-war, guerrilla art" },
+  { name: "Keith Haring", genre: "Pop & Contemporary", genreCN: "波普 & 当代", styleDesc: "bold black outline figures, radiant baby, energetic street art, pop shop commercialization, AIDS activism, subway chalk drawings, vibrant primary colors, dancing figures, social justice imagery" },
+  { name: "Barbara Kruger", genre: "Pop & Contemporary", genreCN: "波普 & 当代", styleDesc: "red black and white text overlay, Futura Bold Oblique, photographic appropriation, institutional critique, feminist slogans, advertising language, power and identity, text-image collage, graphic confrontational" },
+  { name: "Katsushika Hokusai", genre: "Ukiyo-e", genreCN: "浮世绘", styleDesc: "Ukiyo-e woodblock print, Great Wave, Mount Fuji, bold flat color, Prussian blue, Japanese landscape, manga sketch, dynamic nature, Edo period, detailed line, iconic silhouette" },
+  { name: "Utagawa Hiroshige", genre: "Ukiyo-e", genreCN: "浮世绘", styleDesc: "Ukiyo-e travel landscape, Fifty-three Stations, rain and snow, atmospheric perspective, pine tree, river crossing, seasonal beauty, traveler figure, Japanese scenic route, poetic journey" },
+  { name: "Kitagawa Utamaro", genre: "Ukiyo-e", genreCN: "浮世绘", styleDesc: "Ukiyo-e bijin-ga beauty, courtesan portrait, delicate facial expression, kimono pattern, intimate interior, feminine grace, hair arrangement, theatrical entertainment, woodblock elegance, subtle color" },
+  { name: "Tōshūsai Sharaku", genre: "Ukiyo-e", genreCN: "浮世绘", styleDesc: "Ukiyo-e kabuki actor, intense portrait, exaggerated expression, stark realism, dramatic makeup, theatrical presence, bold outline, psychological intensity, actor portrait, confrontational gaze" },
+  { name: "Torii Kiyonaga", genre: "Ukiyo-e", genreCN: "浮世绘", styleDesc: "tall bijin-ga, fashion beauty, Edo period elegance, Japanese woodblock tall format, courtesan procession, sophisticated color, tall graceful figures, decorative pattern, urban pleasure" },
+  { name: "Suzuki Harunobu", genre: "Ukiyo-e", genreCN: "浮世绘", styleDesc: "brocade print nishiki-e, pastel color innovation, bijin-ga romance, Japanese woodblock poetry, love and leisure, delicate color, elegant couple, literary allusion, domestic beauty" },
+  { name: "Utagawa Kuniyoshi", genre: "Ukiyo-e", genreCN: "浮世绘", styleDesc: "musha-e warrior print, legendary heroes, dynamic action, Japanese woodblock fantasy, tattoo design, cat prints, historical narrative, imaginative composition, bold graphic power" },
+  { name: "Tsukioka Yoshitoshi", genre: "Ukiyo-e", genreCN: "浮世绘", styleDesc: "bloody meiji era print, historical violence, Japanese woodblock ghost, one hundred aspects of moon, graphic horror, Meiji transition, traditional Japanese, ghost story, moon contemplation" },
+  { name: "Zhang Daqian", genre: "Chinese Ink", genreCN: "水墨", styleDesc: "Chinese splashed-ink landscape, majestic mountain, blue-green mineral color, later abstract splash, grand Chinese landscape, multiple techniques, traditional and modern, dramatic cloud, monumental scroll, painterly virtuosity" },
+  { name: "Qi Baishi", genre: "Chinese Ink", genreCN: "水墨", styleDesc: "Chinese ink wash, shrimp and crab, spontaneous brushwork, folk vitality, bright color, traditional seal, modern simplicity, flower and bird, bold wet ink, playful nature" },
+  { name: "Wu Guanzhong", genre: "Chinese Ink", genreCN: "水墨", styleDesc: "Chinese modernist ink, bridge and village, semi-abstract landscape, black ink and bright color, Eastern-Western fusion, simple form, rural Jiangnan, white space, poetic abstraction, contemporary ink" },
+  { name: "Fan Kuan", genre: "Chinese Ink", genreCN: "水墨", styleDesc: "Northern Song monumental landscape, Travelers among Mountains and Streams, towering peak, tiny human figure, vast nature humility, Chinese ink mist, vertical scroll grandeur, Song dynasty realism, mountain worship" },
+  { name: "Huang Gongwang", genre: "Chinese Ink", genreCN: "水墨", styleDesc: "Yuan dynasty literati, Dwelling in the Fuchun Mountains, dry brush texture, sparse ink, meditative landscape, scholarly retreat, calligraphic line, ancient trees, mountain mist, contemplative journey" },
+  { name: "Dong Yuan", genre: "Chinese Ink", genreCN: "水墨", styleDesc: "Southern landscape softness, hemp fiber texture, misty river scene, Chinese ink pastoral, Yuan dynasty influence, Jiangnan landscape, quiet rural scenery, soft mountain form, atmospheric depth" },
+  { name: "Ni Zan", genre: "Chinese Ink", genreCN: "水墨", styleDesc: "sparse minimalist landscape, lonely tree riverbank, dry brush restraint, Yuan literati painting, ink economy, melancholic emptiness, intellectual painting, solitary retreat, refined loneliness, maximum emptiness" },
+  { name: "Wang Meng", genre: "Chinese Ink", genreCN: "水墨", styleDesc: "dense complex landscape, Oxherd and Horses, layered mountain, Yuan dynasty dense brushwork, intricate texture, retreating depth, complex forest, Chinese intellectual, detailed complexity, deep mountain dwelling" },
+  { name: "Beeple", genre: "Digital & Tech Art", genreCN: "数字艺术", styleDesc: "everyday digital art, dystopian future, photorealistic 3D render, NFT explosion, vivid saturated color, cyberpunk landscape, social commentary, digital collage, apocalyptic satire, technological critique" },
+  { name: "Refik Anadol", genre: "Digital & Tech Art", genreCN: "数字艺术", styleDesc: "AI data sculpture, machine hallucination, generative architecture, LED immersive installation, building projection, data painting, algorithmic dream, media art installation, museum facade, light and data" },
+  { name: "Mario Klingemann", genre: "Digital & Tech Art", genreCN: "数字艺术", styleDesc: "neural network art, AI-generated portrait, GAN style, code and algorithm, European digital art, machine learning art, generative image, creative coding, portrait distortion, algorithmic aesthetic" },
+  { name: "Ian Cheng", genre: "Digital & Tech Art", genreCN: "数字艺术", styleDesc: "live simulation art, AI agent creature, digital ecosystem, evolving narrative, video game engine, empathetic digital life, real-time simulation, MoMA acquisition, digital creature behavior, interactive simulation" },
+  { name: "Casey Reas", genre: "Digital & Tech Art", genreCN: "数字艺术", styleDesc: "Processing code art, generative software, emergent behavior, random algorithm, co-founder Processing, digital drawing system, instruction-based art, computational art, generative growth, open source art" },
+  { name: "Joshua Davis", genre: "Digital & Tech Art", genreCN: "数字艺术", styleDesc: "Flash digital art, PrayStation, generative design, code-driven graphic, random algorithm pattern, early digital art, explosive color, digital generation, interactive web, algorithmic explosion" },
+  { name: "Zach Lieberman", genre: "Digital & Tech Art", genreCN: "数字艺术", styleDesc: "openFrameworks code, augmented reality, interactive installation, eye tracking, face projection, digital poetry, creative coding, public interactive, Playful technology, live coding performance" },
+  { name: "Golan Levin", genre: "Digital & Tech Art", genreCN: "数字艺术", styleDesc: "American digital art, interactive eye, audiovisual performance, computational aesthetics, creative code, real-time graphics, interactive installation, generative eye, digital performance, computational beauty" },
+  { name: "teamLab", genre: "Digital & Tech Art", genreCN: "数字艺术", styleDesc: "immersive digital room, interactive projection, borderless digital world, flower and butterfly, Japanese digital collective, experiential digital, visitor interaction, nature digital, floating light, collective creativity" },
+  { name: "Memo Akten", genre: "Digital & Tech Art", genreCN: "数字艺术", styleDesc: "Turkish-British digital art, deep learning, machine learning, artificial intelligence, abstract data, computational aesthetics, digital abstraction, learning machine, AI art, data visualization, code art" },
+  { name: "Sougwen Chung", genre: "Digital & Tech Art", genreCN: "数字艺术", styleDesc: "Canadian digital art, human-machine collaboration, drawing robot, biofeedback, biometric data, human-AI duet, robotic drawing, neural network, human and machine, collaborative art, technological symbiosis" },
+  { name: "Rafael Lozano-Hemmer", genre: "Digital & Tech Art", genreCN: "数字艺术", styleDesc: "Mexican-Canadian digital art, interactive light, biometric installation, pulse room, public interaction, shadow play, technological poetry, light and shadow, participatory art, electronic media, human data" },
+  { name: "Alphonse Mucha", genre: "Art Nouveau & Symbolism", genreCN: "新艺术 & 象征", styleDesc: "Art Nouveau decorative panel, flowing organic line, beautiful woman, floral border, pastel palette, commercial poster, theatrical elegance, Byzantine halo, organic typography, Czech decorative" },
+  { name: "Gustav Klimt", genre: "Art Nouveau & Symbolism", genreCN: "新艺术 & 象征", styleDesc: "Vienna Secession gold leaf, Byzantine mosaic, decorative pattern, The Kiss embrace, Jugendstil ornament, erotic flatness, gold background, geometric floral, feminine mystique, ornamental painting" },
+  { name: "Aubrey Beardsley", genre: "Art Nouveau & Symbolism", genreCN: "新艺术 & 象征", styleDesc: "Art Nouveau black ink illustration, decadent line, high contrast, Salome and Oscar Wilde, Japanese print influence, erotic grotesque, precise line, decorative border, dark aesthetic, decadent elegance" },
+  { name: "Koloman Moser", genre: "Art Nouveau & Symbolism", genreCN: "新艺术 & 象征", styleDesc: "Vienna Secession geometric, Wiener Werkstätte, decorative graphic, Art Nouveau Austria, geometric pattern, poster design, stained glass simplicity, craft and art unity, Austrian modernism, geometric floral" },
+  { name: "Hector Guimard", genre: "Art Nouveau & Symbolism", genreCN: "新艺术 & 象征", styleDesc: "Art Nouveau organic architecture, Paris Métro entrance, whiplash line, botanical ironwork, asymmetrical design, nature-inspired form, decorative structure, fluid curve, architectural detail, organic modern" },
+  { name: "Louis Comfort Tiffany", genre: "Art Nouveau & Symbolism", genreCN: "新艺术 & 象征", styleDesc: "Art Nouveau stained glass, Favrile iridescent, lamp and window, nature motif, dragonfly and peacock, rich color glass, decorative art, interior light, jewel-like glow, American decorative" },
+  { name: "Victor Horta", genre: "Art Nouveau & Symbolism", genreCN: "新艺术 & 象征", styleDesc: "Art Nouveau whiplash interior, Brussels townhouse, organic ironwork, natural light, stained glass, floral mosaic, flowing space, domestic architecture, curving line, Belgian style" },
+  { name: "Antoni Gaudí", genre: "Art Nouveau & Symbolism", genreCN: "新艺术 & 象征", styleDesc: "Catalan Modernisme organic, Sagrada Família, trencadís mosaic, natural form, parabolic arch, biomorphic architecture, Mediterranean color, structural fantasy, nature-inspired, Catalan identity" },
+  { name: "William Morris", genre: "Art Nouveau & Symbolism", genreCN: "新艺术 & 象征", styleDesc: "Arts and Crafts pattern, floral wallpaper, repeating botanical, medieval revival, socialist ideal, natural dye, textile design, Kelmscott Press, William Morris, organic pattern, British decorative" },
+  { name: "Charles Rennie Mackintosh", genre: "Art Nouveau & Symbolism", genreCN: "新艺术 & 象征", styleDesc: "Glasgow Style elongated line, rose motif, geometric furniture, white interior, delicate architecture, stylized flower, Scottish modern, elegant restraint, light and space, decorative simplicity" },
+  { name: "Donald Judd", genre: "Minimalism & Modernism", genreCN: "极简 & 现代", styleDesc: "Minimalist specific objects, stacked boxes, industrial fabrication, plexiglass and aluminum, gallery space, serial repetition, three-dimensional, anti-illusion, precise measure, material honesty" },
+  { name: "Dan Flavin", genre: "Minimalism & Modernism", genreCN: "极简 & 现代", styleDesc: "Minimalist fluorescent light, colored tubes, corner installation, commercial fixture, site-specific, architectural intervention, white and colored, light as medium, industrial readymade, spatial glow" },
+  { name: "Carl Andre", genre: "Minimalism & Modernism", genreCN: "极简 & 现代", styleDesc: "Minimalist floor sculpture, metal plate, equivalent arrangement, industrial material, horizontal plane, walk on sculpture, raw metal, brick and lead, grid formation, literal presence" },
+  { name: "Agnes Martin", genre: "Minimalism & Modernism", genreCN: "极简 & 现代", styleDesc: "Minimalist subtle grid, pencil lines, pale wash, meditative canvas, ethereal beauty, quiet perfection, spiritual abstraction, small scale, delicate line, contemplative space" },
+  { name: "Frank Stella", genre: "Minimalism & Modernism", genreCN: "极简 & 现代", styleDesc: "Minimalist shaped canvas, black striped early, protractor later, hard edge geometry, industrial paint, literal objecthood, metallic powder, systematic stripe, Dutch Village, color structure, pure form" },
+  { name: "Ellsworth Kelly", genre: "Minimalism & Modernism", genreCN: "极简 & 现代", styleDesc: "Minimalist hard edge color panel, shaped canvas, monochrome spectrum, Color for a Large Wall, plant drawing, negative space, flat color, precise geometry, outdoor influence, pure color" },
+  { name: "Sol LeWitt", genre: "Minimalism & Modernism", genreCN: "极简 & 现代", styleDesc: "Conceptual wall drawing, systematic instruction, geometric cube, open cube, modular structure, instruction-based, serial variation, wall installation, architectural module, idea as art" },
+  { name: "Richard Serra", genre: "Minimalism & Modernism", genreCN: "极简 & 现代", styleDesc: "Minimalist torqued steel, weathered steel, site-specific installation, massive curve, Cor-Ten, process art, heavy industrial, rust and weight, viewer's body, physical encounter" },
+  { name: "Robert Ryman", genre: "Minimalism & Modernism", genreCN: "极简 & 现代", styleDesc: "Minimalist white painting, varied surface, subtle brushstroke, wall attachment, monochrome investigation, material process, close value, white on white, painterly texture, surface focus" },
+  { name: "Brice Marden", genre: "Minimalism & Modernism", genreCN: "极简 & 现代", styleDesc: "Minimalist monochrome panel, later serpentine calligraphy, Chinese influence, cold wax, minimal and lyrical, single color, reductive and expressive, meditative surface, organic line, nature-inspired" }
 ];
-
 function getImageUrl(artist) {
-  const fullPrompt = PROMPT + artist.name + ".";
-  return "https://image.pollinations.ai/prompt/" + encodeURIComponent(fullPrompt) + IMAGE_PARAMS;
+  return "images/" + artist.name.replace(/[^a-zA-Z0-9]/g, "_") + ".jpg";
+}
+
+function getPrompt(artist) {
+  return BASE_PROMPT + ". In the distinctive style of " + artist.name + ": " + artist.styleDesc;
 }
 
 let activeGenre = "all";
 let searchQuery = "";
+let compareMode = false;
+let compareSelected = [];
 
-const gallery = document.getElementById("gallery");
-const genreTags = document.getElementById("genreTags");
-const searchInput = document.getElementById("searchInput");
-const resultsCount = document.getElementById("resultsCount");
-const lightbox = document.getElementById("lightbox");
-const lightboxClose = document.getElementById("lightboxClose");
-const lightboxInner = document.getElementById("lightboxInner");
+function filterArtists() {
+  return artists.filter(a => {
+    const matchGenre = activeGenre === "all" || a.genre === activeGenre;
+    const q = searchQuery.toLowerCase();
+    const matchSearch = !q || a.name.toLowerCase().includes(q) || a.genre.toLowerCase().includes(q) || a.genreCN.includes(q);
+    return matchGenre && matchSearch;
+  });
+}
 
-function renderGenreTags() {
-  genreTags.innerHTML = genres.map(g => {
-    const isActive = g.id === activeGenre;
-    return `<button class="genre-tag ${isActive ? 'active' : ''}" data-genre="${g.id}">${g.cn}</button>`;
-  }).join("");
-  
-  genreTags.querySelectorAll(".genre-tag").forEach(btn => {
-    btn.addEventListener("click", () => {
-      activeGenre = btn.dataset.genre;
-      renderGenreTags();
+function renderGallery() {
+  const filtered = filterArtists();
+  document.getElementById("resultsMeta").textContent = filtered.length + " artworks" + (searchQuery ? ' matching "' + searchQuery + '"' : "");
+  const g = document.getElementById("gallery");
+  g.innerHTML = "";
+  filtered.forEach((a, i) => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.style.animationDelay = (i * 0.03) + "s";
+    const isSelected = compareSelected.some(s => s.name === a.name);
+    const compareBtn = compareMode ? `<button class="card-compare-btn ${isSelected ? "selected" : ""}" data-name="${a.name}">${isSelected ? "&#10003;" : "+"}</button>` : "";
+    card.innerHTML = `
+      ${compareBtn}
+      <div class="card-image-wrapper">
+        <div class="card-loading" id="loading-${i}"><div class="card-spinner"></div></div>
+        <img src="${getImageUrl(a)}" alt="${a.name}" onload="document.getElementById('loading-${i}').classList.add('hidden')" onerror="document.getElementById('loading-${i}').innerHTML='<span style=color:#999;font-size:0.75rem>Failed</span>'">
+      </div>
+      <div class="card-info">
+        <div class="card-name">${a.name}</div>
+        <div class="card-genre">${a.genre}</div>
+      </div>
+    `;
+    if (compareMode) {
+      card.addEventListener("click", (e) => {
+        if (e.target.closest(".card-compare-btn")) {
+          e.stopPropagation();
+          toggleCompare(a);
+        } else {
+          toggleCompare(a);
+        }
+      });
+    } else {
+      card.addEventListener("click", () => openLightbox(a));
+    }
+    g.appendChild(card);
+  });
+}
+
+function toggleCompare(artist) {
+  const idx = compareSelected.findIndex(s => s.name === artist.name);
+  if (idx >= 0) {
+    compareSelected.splice(idx, 1);
+  } else {
+    if (compareSelected.length < 2) {
+      compareSelected.push(artist);
+    } else {
+      compareSelected.shift();
+      compareSelected.push(artist);
+    }
+  }
+  updateCompareBar();
+  renderGallery();
+}
+
+function updateCompareBar() {
+  const bar = document.getElementById("compareBar");
+  const slots = document.getElementById("compareSlots");
+  const btn = document.getElementById("compareGoBtn");
+  if (compareSelected.length > 0) {
+    bar.classList.add("active");
+    slots.innerHTML = compareSelected.map((s, i) => `<div class="compare-slot">${s.name} <span class="remove" data-index="${i}">&times;</span></div>`).join("");
+    btn.disabled = compareSelected.length < 2;
+  } else {
+    bar.classList.remove("active");
+    slots.innerHTML = "";
+    btn.disabled = true;
+  }
+  document.querySelectorAll(".compare-slot .remove").forEach(el => {
+    el.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const idx = parseInt(el.dataset.index);
+      compareSelected.splice(idx, 1);
+      updateCompareBar();
       renderGallery();
     });
   });
 }
 
-function getFilteredArtists() {
-  return artists.filter(a => {
-    const matchesGenre = activeGenre === "all" || a.genre === activeGenre;
-    const q = searchQuery.toLowerCase();
-    const matchesSearch = !q || a.name.toLowerCase().includes(q) || a.genre.toLowerCase().includes(q) || a.genreCN.includes(q);
-    return matchesGenre && matchesSearch;
-  });
-}
-
-function renderGallery() {
-  const filtered = getFilteredArtists();
-  resultsCount.textContent = filtered.length + " works" + (activeGenre !== "all" ? " in " + genres.find(g => g.id === activeGenre).cn : "");
-  
-  gallery.innerHTML = filtered.map((a, i) => {
-    const url = getImageUrl(a);
-    return `
-      <div class="card" data-index="${i}" data-name="${a.name}">
-        <div class="card-image-wrapper">
-          <div class="loading-overlay" id="load-${i}"><div class="loading-spinner"></div></div>
-          <img src="${url}" alt="${a.name}" loading="lazy" onload="document.getElementById('load-${i}').classList.add('hidden')">
-        </div>
-        <div class="card-info">
-          <div class="card-name">${a.name}</div>
-          <div class="card-genre">${a.genre} &middot; ${a.genreCN}</div>
-        </div>
-      </div>
-    `;
-  }).join("");
-  
-  gallery.querySelectorAll(".card").forEach(card => {
-    card.addEventListener("click", () => {
-      const name = card.dataset.name;
-      const artist = artists.find(a => a.name === name);
-      openLightbox(artist);
-    });
-  });
-}
-
-function openLightbox(artist) {
-  const url = getImageUrl(artist);
-  lightboxInner.innerHTML = `
-    <img class="lightbox-image" src="${url}" alt="${artist.name}">
-    <div class="lightbox-meta">
-      <div class="lightbox-title">${artist.name}</div>
-      <div class="lightbox-genre">${artist.genre} &middot; ${artist.genreCN}</div>
-      <div class="lightbox-prompt">${PROMPT}${artist.name}.</div>
-    </div>
-  `;
-  lightbox.classList.add("active");
-  document.body.style.overflow = "hidden";
-}
-
-function closeLightbox() {
-  lightbox.classList.remove("active");
-  document.body.style.overflow = "";
-}
-
-lightboxClose.addEventListener("click", closeLightbox);
-lightbox.addEventListener("click", (e) => {
-  if (e.target === lightbox) closeLightbox();
-});
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") closeLightbox();
+document.getElementById("compareGoBtn").addEventListener("click", () => {
+  if (compareSelected.length === 2) {
+    openCompareView(compareSelected[0], compareSelected[1]);
+  }
 });
 
-searchInput.addEventListener("input", (e) => {
-  searchQuery = e.target.value.trim();
+document.getElementById("compareCancelBtn").addEventListener("click", () => {
+  compareSelected = [];
+  compareMode = false;
+  document.getElementById("compareBar").classList.remove("active");
+  document.getElementById("compareHint").style.display = "none";
+  document.getElementById("compareToggleBtn").classList.remove("active");
   renderGallery();
 });
 
-renderGenreTags();
+function openCompareView(a1, a2) {
+  const view = document.getElementById("compareView");
+  document.getElementById("compareViewTitle").textContent = "Compare: " + a1.name + " vs " + a2.name;
+  document.getElementById("compareColumns").innerHTML = `
+    <div class="compare-column">
+      <img src="${getImageUrl(a1)}" alt="${a1.name}">
+      <div class="compare-column-name">${a1.name}</div>
+      <div class="compare-column-genre">${a1.genre}</div>
+    </div>
+    <div class="compare-column">
+      <img src="${getImageUrl(a2)}" alt="${a2.name}">
+      <div class="compare-column-name">${a2.name}</div>
+      <div class="compare-column-genre">${a2.genre}</div>
+    </div>
+  `;
+  view.classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+document.getElementById("compareViewClose").addEventListener("click", () => {
+  document.getElementById("compareView").classList.remove("active");
+  document.body.style.overflow = "";
+});
+
+function openLightbox(artist) {
+  const lb = document.getElementById("lightbox");
+  const inner = document.getElementById("lightboxInner");
+  const prompt = getPrompt(artist);
+  inner.innerHTML = `
+    <img class="lightbox-image" src="${getImageUrl(artist)}" alt="${artist.name}">
+    <div class="lightbox-meta">
+      <div class="lightbox-title">${artist.name}</div>
+      <div class="lightbox-genre">${artist.genre} · ${artist.genreCN}</div>
+      <div class="lightbox-actions">
+        <button class="lightbox-btn lightbox-btn-primary" onclick="downloadImage('${getImageUrl(artist)}', '${artist.name.replace(/'/g, "\'")}')">&#11015; Download</button>
+        <button class="lightbox-btn" onclick="navigator.clipboard.writeText('${prompt.replace(/'/g, "\'")}')">&#128203; Copy prompt</button>
+        ${compareMode && compareSelected.length < 2 ? `<button class="lightbox-btn" onclick="toggleCompareFromLightbox('${artist.name.replace(/'/g, "\'")}')">&#8646; Add to compare</button>` : ""}
+      </div>
+      <div class="lightbox-prompt">${prompt}</div>
+    </div>
+  `;
+  lb.classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+function toggleCompareFromLightbox(name) {
+  const artist = artists.find(a => a.name === name);
+  if (artist) toggleCompare(artist);
+}
+
+function downloadImage(url, name) {
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = name.replace(/[^a-z0-9]/gi, "_") + ".jpg";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
+document.getElementById("lightboxClose").addEventListener("click", () => {
+  document.getElementById("lightbox").classList.remove("active");
+  document.body.style.overflow = "";
+});
+
+document.getElementById("lightbox").addEventListener("click", (e) => {
+  if (e.target === document.getElementById("lightbox")) {
+    document.getElementById("lightbox").classList.remove("active");
+    document.body.style.overflow = "";
+  }
+});
+
+document.getElementById("searchInput").addEventListener("input", (e) => {
+  searchQuery = e.target.value;
+  renderGallery();
+});
+
+genres.forEach(g => {
+  const btn = document.createElement("button");
+  btn.className = "category-pill" + (g.id === "all" ? " active" : "");
+  btn.textContent = g.cn;
+  btn.dataset.genre = g.id;
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".category-pill").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    activeGenre = g.id;
+    renderGallery();
+  });
+  document.getElementById("categoryScroll").appendChild(btn);
+});
+
+document.getElementById("randomBtn").addEventListener("click", () => {
+  const random = artists[Math.floor(Math.random() * artists.length)];
+  openLightbox(random);
+});
+
+document.getElementById("compareToggleBtn").addEventListener("click", () => {
+  compareMode = !compareMode;
+  compareSelected = [];
+  if (compareMode) {
+    document.getElementById("compareHint").style.display = "inline";
+  } else {
+    document.getElementById("compareHint").style.display = "none";
+    document.getElementById("compareBar").classList.remove("active");
+  }
+  renderGallery();
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    document.getElementById("lightbox").classList.remove("active");
+    document.getElementById("compareView").classList.remove("active");
+    document.body.style.overflow = "";
+  }
+  if (e.key === "/" && document.activeElement !== document.getElementById("searchInput")) {
+    e.preventDefault();
+    document.getElementById("searchInput").focus();
+  }
+});
+
 renderGallery();
 </script>
 </body>
