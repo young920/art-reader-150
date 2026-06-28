@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Reader in 150 Styles</title>
+<title>窗畔静读 · The Reader</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
   --airbnb-red: #ff385c;
@@ -17,6 +17,7 @@
   --airbnb-shadow: 0 6px 16px rgba(0,0,0,0.08);
   --airbnb-shadow-hover: 0 6px 20px rgba(0,0,0,0.12);
   --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Noto Serif SC', 'Songti SC', serif;
   --radius: 12px;
   --radius-pill: 32px;
   --transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
@@ -25,12 +26,11 @@
 html { scroll-behavior: smooth; }
 body {
   font-family: var(--font);
-  background: #ffffff;
-  color: var(--airbnb-dark);
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
+  background: #ffffff; color: var(--airbnb-dark);
+  line-height: 1.5; -webkit-font-smoothing: antialiased;
 }
 .container { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+
 .site-header {
   position: sticky; top: 0; background: #fff; z-index: 100;
   border-bottom: 1px solid #ebebeb; padding: 16px 0;
@@ -39,141 +39,166 @@ body {
   display: flex; align-items: center; justify-content: space-between;
   max-width: 1280px; margin: 0 auto; padding: 0 40px;
 }
-.site-logo { font-size: 1.4rem; font-weight: 600; color: var(--airbnb-red); letter-spacing: -0.02em; }
+.site-logo { display: flex; flex-direction: column; gap: 0; }
+.logo-cn { font-family: var(--font-serif); font-size: 1.3rem; font-weight: 600; color: var(--airbnb-dark); letter-spacing: 0.04em; line-height: 1.2; }
+.logo-en { font-family: var(--font); font-size: 0.65rem; font-weight: 500; color: var(--airbnb-gray); letter-spacing: 0.15em; text-transform: uppercase; line-height: 1; }
+.logo-badge { font-family: var(--font); font-size: 0.78rem; font-weight: 400; color: var(--airbnb-gray); letter-spacing: 0.02em; }
+
+.search-bar-sticky {
+  position: sticky; top: 57px; background: #fff; z-index: 95;
+  padding: 12px 0; border-bottom: 1px solid #f0f0f0;
+}
 .search-bar-wrapper {
-  display: flex; justify-content: center; padding: 24px 0 8px; gap: 12px; align-items: center;
+  display: flex; justify-content: center; gap: 10px; align-items: center;
+  max-width: 1280px; margin: 0 auto; padding: 0 40px;
 }
 .search-bar {
-  display: flex; align-items: center; gap: 16px; padding: 12px 24px;
+  display: flex; align-items: center; gap: 14px; padding: 10px 20px;
   border: 1px solid var(--airbnb-border); border-radius: var(--radius-pill);
-  box-shadow: 0 1px 2px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.05);
-  background: #fff; max-width: 640px; width: 100%; transition: var(--transition);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05), 0 2px 8px rgba(0,0,0,0.04);
+  background: #fff; max-width: 480px; width: 100%; transition: var(--transition);
 }
-.search-bar:focus-within { box-shadow: 0 2px 4px rgba(0,0,0,0.08), 0 6px 16px rgba(0,0,0,0.08); }
-.search-icon { width: 20px; height: 20px; flex-shrink: 0; opacity: 0.5; }
-.search-bar input {
-  flex: 1; border: none; outline: none; font-family: var(--font);
-  font-size: 0.95rem; color: var(--airbnb-dark); background: transparent;
+.search-bar:focus-within {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.06), 0 6px 16px rgba(0,0,0,0.06);
+  border-color: var(--airbnb-dark);
 }
+.search-icon { width: 16px; height: 16px; flex-shrink: 0; opacity: 0.4; }
+.search-bar input { flex: 1; border: none; outline: none; font-family: var(--font); font-size: 0.88rem; color: var(--airbnb-dark); background: transparent; }
 .search-bar input::placeholder { color: var(--airbnb-gray); }
-.btn-icon {
-  width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--airbnb-border);
-  background: #fff; display: flex; align-items: center; justify-content: center;
-  cursor: pointer; transition: var(--transition); color: var(--airbnb-dark); font-size: 1.1rem; flex-shrink: 0;
-}
+.btn-icon { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--airbnb-border); background: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); color: var(--airbnb-dark); font-size: 0.9rem; flex-shrink: 0; }
 .btn-icon:hover { border-color: var(--airbnb-dark); box-shadow: var(--airbnb-shadow); }
+
 .category-bar {
-  position: sticky; top: 65px; background: #fff; z-index: 90;
-  padding: 16px 0 4px; border-bottom: 1px solid #ebebeb;
+  position: sticky; top: 111px; background: #fff; z-index: 90;
+  border-bottom: 1px solid #ebebeb; padding: 0;
 }
+.category-inner {
+  max-width: 1280px; margin: 0 auto; padding: 10px 40px;
+  display: flex; align-items: center; gap: 6px;
+}
+.category-scroll-wrapper { flex: 1; overflow: hidden; position: relative; }
 .category-scroll {
-  display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; padding-bottom: 12px;
+  display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none;
+  scroll-behavior: smooth; padding: 4px 0;
 }
 .category-scroll::-webkit-scrollbar { display: none; }
-.category-pill {
-  flex-shrink: 0; padding: 10px 18px; font-family: var(--font); font-size: 0.82rem; font-weight: 500;
-  border: 1px solid var(--airbnb-border); border-radius: var(--radius-pill); background: #fff; color: var(--airbnb-gray);
-  cursor: pointer; transition: var(--transition); white-space: nowrap;
-}
+.category-arrow { width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--airbnb-border); background: #fff; color: var(--airbnb-dark); font-size: 0.8rem; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); flex-shrink: 0; }
+.category-arrow:hover { border-color: var(--airbnb-dark); }
+.category-arrow:disabled { opacity: 0.2; cursor: not-allowed; }
+.category-pill { flex-shrink: 0; padding: 7px 16px; font-family: var(--font); font-size: 0.78rem; font-weight: 500; border: 1px solid var(--airbnb-border); border-radius: var(--radius-pill); background: #fff; color: var(--airbnb-gray); cursor: pointer; transition: var(--transition); white-space: nowrap; }
 .category-pill:hover { border-color: var(--airbnb-dark); color: var(--airbnb-dark); }
 .category-pill.active { background: var(--airbnb-dark); color: #fff; border-color: var(--airbnb-dark); }
-.compare-bar {
-  display: none; padding: 12px 0; background: var(--airbnb-light); border-bottom: 1px solid #ebebeb;
-  position: sticky; top: 121px; z-index: 85;
-}
+
+.compare-bar { display: none; padding: 10px 0; background: var(--airbnb-light); border-bottom: 1px solid #ebebeb; position: sticky; top: 151px; z-index: 85; }
 .compare-bar.active { display: flex; }
-.compare-bar-inner {
-  max-width: 1280px; margin: 0 auto; padding: 0 40px;
-  display: flex; align-items: center; gap: 12px; font-size: 0.85rem;
-}
-.compare-slot {
-  padding: 6px 14px; border-radius: 20px; background: #fff; border: 1px solid var(--airbnb-border);
-  font-size: 0.82rem; font-weight: 500; color: var(--airbnb-dark); display: flex; align-items: center; gap: 8px;
-}
-.compare-slot .remove { cursor: pointer; color: var(--airbnb-gray); font-size: 0.9rem; line-height: 1; }
+.compare-bar-inner { max-width: 1280px; margin: 0 auto; padding: 0 40px; display: flex; align-items: center; gap: 10px; font-size: 0.78rem; width: 100%; }
+.compare-slot { padding: 4px 10px; border-radius: 16px; background: #fff; border: 1px solid var(--airbnb-border); font-size: 0.75rem; font-weight: 500; color: var(--airbnb-dark); display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+.compare-slot .remove { cursor: pointer; color: var(--airbnb-gray); font-size: 0.8rem; line-height: 1; }
 .compare-slot .remove:hover { color: var(--airbnb-red); }
-.compare-btn {
-  padding: 8px 20px; border-radius: 20px; border: none; background: var(--airbnb-dark); color: #fff;
-  font-family: var(--font); font-size: 0.82rem; font-weight: 500; cursor: pointer; transition: opacity 0.2s;
-}
+.compare-btn { padding: 6px 14px; border-radius: 20px; border: none; background: var(--airbnb-dark); color: #fff; font-family: var(--font); font-size: 0.75rem; font-weight: 500; cursor: pointer; transition: opacity 0.2s; white-space: nowrap; }
 .compare-btn:hover { opacity: 0.9; }
-.compare-btn:disabled { opacity: 0.4; cursor: not-allowed; }
-.compare-cancel { margin-left: auto; font-size: 0.82rem; color: var(--airbnb-gray); cursor: pointer; background: none; border: none; font-family: var(--font); }
+.compare-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.compare-cancel { margin-left: auto; font-size: 0.75rem; color: var(--airbnb-gray); cursor: pointer; background: none; border: none; font-family: var(--font); }
 .compare-cancel:hover { color: var(--airbnb-dark); }
-.results-meta { padding: 20px 0 8px; font-size: 0.85rem; color: var(--airbnb-gray); font-weight: 400; display: flex; justify-content: space-between; align-items: center; }
-.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 32px 24px; padding: 16px 0 80px; }
+
+.results-meta { padding: 16px 0 6px; font-size: 0.78rem; color: var(--airbnb-gray); font-weight: 400; display: flex; justify-content: space-between; align-items: center; }
+
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 28px 22px; padding: 12px 0 80px; }
 .card { cursor: pointer; transition: var(--transition); position: relative; }
 .card:hover { transform: translateY(-2px); }
-.card-compare-btn {
-  position: absolute; top: 8px; right: 8px; width: 36px; height: 36px; border-radius: 50%; border: none;
-  background: rgba(255,255,255,0.9); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center;
-  cursor: pointer; opacity: 0; transition: opacity 0.2s, background 0.2s; z-index: 5; color: var(--airbnb-dark); font-size: 0.9rem; font-weight: 600;
-}
+.card-compare-btn { position: absolute; top: 8px; right: 8px; width: 30px; height: 30px; border-radius: 50%; border: none; background: rgba(255,255,255,0.9); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; transition: opacity 0.2s, background 0.2s; z-index: 5; color: var(--airbnb-dark); font-size: 0.8rem; font-weight: 600; }
 .card:hover .card-compare-btn { opacity: 1; }
 .card-compare-btn:hover { background: var(--airbnb-dark); color: #fff; }
 .card-compare-btn.selected { opacity: 1; background: var(--airbnb-dark); color: #fff; }
-.card-image-wrapper {
-  position: relative; width: 100%; aspect-ratio: 1; border-radius: var(--radius); overflow: hidden; background: var(--airbnb-light); margin-bottom: 12px;
-}
+.card-image-wrapper { position: relative; width: 100%; aspect-ratio: 1; border-radius: var(--radius); overflow: hidden; background: var(--airbnb-light); margin-bottom: 10px; }
 .card-image-wrapper img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1); }
 .card:hover .card-image-wrapper img { transform: scale(1.04); }
-.card-loading {
-  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: var(--airbnb-light); z-index: 2; transition: opacity 0.4s ease;
-}
+.card-loading { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: var(--airbnb-light); z-index: 2; transition: opacity 0.4s ease; }
 .card-loading.hidden { opacity: 0; pointer-events: none; }
-.card-spinner { width: 24px; height: 24px; border: 2px solid #e0e0e0; border-top-color: var(--airbnb-dark); border-radius: 50%; animation: spin 0.8s linear infinite; }
+.card-spinner { width: 18px; height: 18px; border: 2px solid #e0e0e0; border-top-color: var(--airbnb-dark); border-radius: 50%; animation: spin 0.8s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
-.card-info { display: flex; flex-direction: column; gap: 2px; }
-.card-name { font-size: 0.95rem; font-weight: 500; color: var(--airbnb-dark); line-height: 1.3; }
-.card-genre { font-size: 0.8rem; color: var(--airbnb-gray); font-weight: 400; }
 
-.lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 1000; overflow-y: auto; padding: 40px 24px; }
+.card-info { display: flex; flex-direction: column; gap: 1px; }
+.card-name-cn { font-family: var(--font-serif); font-size: 0.9rem; font-weight: 500; color: var(--airbnb-dark); line-height: 1.3; }
+.card-name-en { font-family: var(--font); font-size: 0.72rem; font-weight: 400; color: var(--airbnb-gray); line-height: 1.3; letter-spacing: 0.02em; }
+.card-genre { font-size: 0.72rem; color: var(--airbnb-gray); font-weight: 400; margin-top: 1px; }
+
+.lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 1000; overflow-y: auto; padding: 32px 20px; }
 .lightbox.active { display: flex; align-items: center; justify-content: center; }
-.lightbox-inner { max-width: 900px; width: 100%; display: flex; flex-direction: column; gap: 24px; }
-.lightbox-close { position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; border-radius: 50%; border: none; background: rgba(255,255,255,0.15); color: #fff; font-size: 1.4rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+.lightbox-inner { max-width: 840px; width: 100%; display: flex; flex-direction: column; gap: 16px; }
+.lightbox-close { position: fixed; top: 16px; right: 16px; width: 40px; height: 40px; border-radius: 50%; border: none; background: rgba(255,255,255,0.12); color: #fff; font-size: 1.4rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 1001; }
 .lightbox-close:hover { background: rgba(255,255,255,0.25); }
-.lightbox-image { width: 100%; max-height: 65vh; object-fit: contain; border-radius: var(--radius); }
-.lightbox-meta { color: #fff; display: flex; flex-direction: column; gap: 4px; }
-.lightbox-title { font-size: 1.8rem; font-weight: 600; margin-bottom: 4px; }
-.lightbox-genre { font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-bottom: 16px; }
-.lightbox-actions { display: flex; gap: 12px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1); }
-.lightbox-btn { padding: 10px 20px; border-radius: var(--radius-pill); border: 1px solid rgba(255,255,255,0.2); background: transparent; color: #fff; font-family: var(--font); font-size: 0.82rem; font-weight: 500; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 6px; text-decoration: none; }
-.lightbox-btn:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.4); }
+.lightbox-image { width: 100%; max-height: 58vh; object-fit: contain; border-radius: var(--radius); }
+.lightbox-meta { color: #fff; display: flex; flex-direction: column; gap: 2px; }
+.lightbox-title-cn { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 600; margin-bottom: 2px; }
+.lightbox-title-en { font-family: var(--font); font-size: 0.82rem; font-weight: 400; color: rgba(255,255,255,0.5); margin-bottom: 4px; }
+.lightbox-genre { font-size: 0.78rem; color: rgba(255,255,255,0.4); margin-bottom: 10px; }
+.lightbox-actions { display: flex; gap: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.08); flex-wrap: wrap; }
+.lightbox-btn, .lightbox-reload-btn { padding: 8px 16px; border-radius: var(--radius-pill); border: 1px solid rgba(255,255,255,0.18); background: transparent; color: #fff; font-family: var(--font); font-size: 0.75rem; font-weight: 500; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 5px; text-decoration: none; white-space: nowrap; }
+.lightbox-btn:hover, .lightbox-reload-btn:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.35); }
 .lightbox-btn-primary { background: #fff; color: var(--airbnb-dark); border-color: #fff; }
 .lightbox-btn-primary:hover { background: rgba(255,255,255,0.9); border-color: rgba(255,255,255,0.9); }
-.lightbox-prompt { font-size: 0.85rem; line-height: 1.6; color: rgba(255,255,255,0.5); max-width: 600px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1); }
+.lightbox-reload-btn { border-color: rgba(255,255,255,0.3); color: #ff9f43; }
+.lightbox-prompt { font-size: 0.78rem; line-height: 1.6; color: rgba(255,255,255,0.3); max-width: 600px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.08); word-break: break-word; }
 
-.compare-view { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 1001; overflow-y: auto; padding: 80px 40px 40px; }
+.pin-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 2000; align-items: center; justify-content: center; }
+.pin-modal.active { display: flex; }
+.pin-modal-box { background: #fff; padding: 28px; border-radius: var(--radius); max-width: 320px; width: 90%; box-shadow: var(--airbnb-shadow-hover); display: flex; flex-direction: column; gap: 14px; }
+.pin-modal-box h3 { font-family: var(--font-serif); font-size: 1rem; font-weight: 600; color: var(--airbnb-dark); margin: 0; }
+.pin-modal-box p { font-size: 0.75rem; color: var(--airbnb-gray); line-height: 1.5; margin: 0; }
+.pin-input { padding: 10px 14px; border: 1px solid var(--airbnb-border); border-radius: var(--radius); font-family: var(--font); font-size: 0.88rem; width: 100%; outline: none; text-align: center; letter-spacing: 0.3em; }
+.pin-input:focus { border-color: var(--airbnb-dark); }
+.pin-actions { display: flex; gap: 10px; }
+.pin-actions button { flex: 1; padding: 9px; border-radius: var(--radius-pill); border: none; font-family: var(--font); font-size: 0.75rem; font-weight: 500; cursor: pointer; transition: opacity 0.2s; }
+.pin-cancel { background: var(--airbnb-light); color: var(--airbnb-dark); }
+.pin-confirm { background: var(--airbnb-dark); color: #fff; }
+.pin-confirm:disabled { opacity: 0.3; cursor: not-allowed; }
+.pin-error { font-size: 0.72rem; color: var(--airbnb-red); display: none; text-align: center; }
+
+.scroll-top { position: fixed; bottom: 20px; right: 20px; width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--airbnb-border); background: #fff; box-shadow: var(--airbnb-shadow); color: var(--airbnb-dark); font-size: 1rem; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); z-index: 80; opacity: 0; pointer-events: none; }
+.scroll-top.visible { opacity: 1; pointer-events: auto; }
+.scroll-top:hover { border-color: var(--airbnb-dark); box-shadow: var(--airbnb-shadow-hover); }
+
+.compare-view { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 1001; overflow-y: auto; padding: 68px 40px 40px; }
 .compare-view.active { display: flex; flex-direction: column; align-items: center; }
-.compare-view-close { position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; border-radius: 50%; border: none; background: rgba(255,255,255,0.15); color: #fff; font-size: 1.4rem; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.compare-view-close { position: fixed; top: 16px; right: 16px; width: 40px; height: 40px; border-radius: 50%; border: none; background: rgba(255,255,255,0.12); color: #fff; font-size: 1.4rem; cursor: pointer; display: flex; align-items: center; justify-content: center; }
 .compare-view-close:hover { background: rgba(255,255,255,0.25); }
-.compare-view-title { color: #fff; font-size: 1.2rem; font-weight: 500; margin-bottom: 32px; text-align: center; }
-.compare-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1200px; width: 100%; }
-.compare-column { display: flex; flex-direction: column; gap: 16px; align-items: center; }
-.compare-column img { width: 100%; max-height: 60vh; object-fit: contain; border-radius: var(--radius); }
-.compare-column-name { color: #fff; font-size: 1.2rem; font-weight: 600; }
-.compare-column-genre { color: rgba(255,255,255,0.5); font-size: 0.85rem; }
+.compare-view-title { color: #fff; font-size: 1rem; font-weight: 500; margin-bottom: 20px; text-align: center; font-family: var(--font-serif); }
+.compare-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 1200px; width: 100%; }
+.compare-column { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+.compare-column img { width: 100%; max-height: 52vh; object-fit: contain; border-radius: var(--radius); }
+.compare-column-name-cn { color: #fff; font-size: 1rem; font-weight: 600; font-family: var(--font-serif); }
+.compare-column-name-en { color: rgba(255,255,255,0.5); font-size: 0.78rem; font-weight: 400; }
+.compare-column-genre { color: rgba(255,255,255,0.4); font-size: 0.72rem; }
 
 .site-footer { border-top: 1px solid #ebebeb; padding: 24px 0; margin-top: 40px; }
-.site-footer-inner { display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: var(--airbnb-gray); }
+.site-footer-inner { display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: var(--airbnb-gray); }
 
 @media (max-width: 768px) {
-  .container { padding: 0 24px; }
-  .site-header-inner { padding: 0 24px; }
-  .compare-bar-inner { padding: 0 24px; }
-  .gallery { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 20px 12px; }
-  .card-image-wrapper { border-radius: 8px; }
-  .lightbox-inner { max-width: 100%; }
-  .lightbox-title { font-size: 1.3rem; }
-  .compare-columns { grid-template-columns: 1fr; gap: 24px; }
-  .compare-view { padding: 60px 24px 24px; }
-  .search-bar-wrapper { flex-wrap: wrap; }
-  .btn-icon { width: 40px; height: 40px; }
+  .container { padding: 0 20px; }
+  .site-header-inner { padding: 0 20px; }
+  .search-bar-wrapper { padding: 0 20px; }
+  .category-inner { padding: 8px 20px; }
+  .compare-bar-inner { padding: 0 20px; }
+  .gallery { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 14px 10px; }
+  .card-image-wrapper { border-radius: 8px; margin-bottom: 6px; }
+  .card-name-cn { font-size: 0.82rem; }
+  .card-name-en { font-size: 0.68rem; }
+  .lightbox { padding: 20px 14px; }
+  .lightbox-title-cn { font-size: 1.1rem; }
+  .compare-columns { grid-template-columns: 1fr; gap: 18px; }
+  .compare-view { padding: 56px 20px 20px; }
+  .logo-cn { font-size: 1.1rem; }
+  .logo-en { font-size: 0.6rem; }
+  .compare-view-title { font-size: 0.9rem; }
+  .compare-column-name-cn { font-size: 0.9rem; }
+  .compare-arrow { width: 20px; height: 20px; font-size: 0.7rem; }
 }
+
 [data-tooltip] { position: relative; }
 [data-tooltip]::after {
-  content: attr(data-tooltip); position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%);
-  padding: 6px 12px; background: var(--airbnb-dark); color: #fff; font-size: 0.75rem; border-radius: 6px;
+  content: attr(data-tooltip); position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%);
+  padding: 5px 10px; background: var(--airbnb-dark); color: #fff; font-size: 0.7rem; border-radius: 6px;
   white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 10;
 }
 [data-tooltip]:hover::after { opacity: 1; }
@@ -183,41 +208,48 @@ body {
 
 <header class="site-header">
   <div class="site-header-inner">
-    <div class="site-logo">The Reader</div>
-    <div style="font-size:0.85rem; color:var(--airbnb-gray); font-weight:400;">150 Styles</div>
+    <div class="site-logo">
+      <div class="logo-cn">窗畔静读</div>
+      <div class="logo-en">The Reader</div>
+    </div>
+    <div class="logo-badge">150 种风格</div>
   </div>
 </header>
 
-<div class="container">
+<div class="search-bar-sticky">
   <div class="search-bar-wrapper">
     <div class="search-bar">
       <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="text" id="searchInput" placeholder="Search artist, genre..." autocomplete="off">
+      <input type="text" id="searchInput" placeholder="搜索艺术家、流派..." autocomplete="off">
     </div>
-    <button class="btn-icon" id="randomBtn" data-tooltip="Random explore">&#127922;</button>
-    <button class="btn-icon" id="compareToggleBtn" data-tooltip="Compare mode">&#8646;</button>
+    <button class="btn-icon" id="randomBtn" data-tooltip="随机探索">&#x1F3B2;</button>
+    <button class="btn-icon" id="compareToggleBtn" data-tooltip="对比模式">&#x21C4;</button>
   </div>
 </div>
 
 <div class="compare-bar" id="compareBar">
   <div class="compare-bar-inner">
-    <span style="color:var(--airbnb-gray); font-size:0.82rem;">Compare:</span>
+    <span style="color:var(--airbnb-gray); font-size:0.75rem;">对比:</span>
     <div id="compareSlots"></div>
-    <button class="compare-btn" id="compareGoBtn" disabled>Compare</button>
-    <button class="compare-cancel" id="compareCancelBtn">Cancel</button>
+    <button class="compare-btn" id="compareGoBtn" disabled>对比</button>
+    <button class="compare-cancel" id="compareCancelBtn">取消</button>
   </div>
 </div>
 
 <div class="category-bar">
-  <div class="container">
-    <div class="category-scroll" id="categoryScroll"></div>
+  <div class="category-inner">
+    <button class="category-arrow" id="catArrowLeft">&#x2039;</button>
+    <div class="category-scroll-wrapper">
+      <div class="category-scroll" id="categoryScroll"></div>
+    </div>
+    <button class="category-arrow" id="catArrowRight">&#x203A;</button>
   </div>
 </div>
 
 <main class="container">
   <div class="results-meta">
     <span id="resultsMeta"></span>
-    <span id="compareHint" style="color:var(--airbnb-gray); font-size:0.75rem; display:none;">Click cards to select for comparison</span>
+    <span id="compareHint" style="color:var(--airbnb-gray); font-size:0.7rem; display:none;">点击卡片选择对比</span>
   </div>
   <div class="gallery" id="gallery"></div>
 </main>
@@ -225,8 +257,8 @@ body {
 <footer class="site-footer">
   <div class="container">
     <div class="site-footer-inner">
-      <span>The Reader in 150 Styles</span>
-      <span>AI-generated gallery</span>
+      <span>窗畔静读 · The Reader</span>
+      <span>AI 生成艺术画廊</span>
     </div>
   </div>
 </footer>
@@ -242,10 +274,22 @@ body {
   <div class="compare-columns" id="compareColumns"></div>
 </div>
 
-<script>
-const BASE_PROMPT = "A person reading by a window, quiet contemplative interior";
-const IMAGE_PARAMS = "?width=1024&height=1024&nologo=true&seed=42";
+<div class="pin-modal" id="pinModal">
+  <div class="pin-modal-box">
+    <h3>重新生成</h3>
+    <p>输入口令以重新生成此图片。口令仅管理员持有。</p>
+    <input type="text" id="pinInput" class="pin-input" placeholder="****" maxlength="10" autocomplete="off">
+    <div class="pin-error" id="pinError">口令错误</div>
+    <div class="pin-actions">
+      <button class="pin-cancel" id="pinCancel">取消</button>
+      <button class="pin-confirm" id="pinConfirm">确认</button>
+    </div>
+  </div>
+</div>
 
+<button class="scroll-top" id="scrollTop" data-tooltip="回到顶部">&#x25B2;</button>
+
+<script>
 const genres = [
   { id: "all", cn: "All" },
   { id: "Renaissance", cn: "文艺复兴" },
@@ -416,8 +460,17 @@ const artists = [
   { name: "Robert Ryman", genre: "Minimalism & Modernism", genreCN: "极简 & 现代", styleDesc: "Minimalist white painting, varied surface, subtle brushstroke, wall attachment, monochrome investigation, material process, close value, white on white, painterly texture, surface focus" },
   { name: "Brice Marden", genre: "Minimalism & Modernism", genreCN: "极简 & 现代", styleDesc: "Minimalist monochrome panel, later serpentine calligraphy, Chinese influence, cold wax, minimal and lyrical, single color, reductive and expressive, meditative surface, organic line, nature-inspired" }
 ];
+const BASE_PROMPT = "A person reading by a window, quiet contemplative interior";
+const IMAGE_PARAMS = "?width=1024&height=1024&nologo=true&seed=42";
+const RELOAD_PASSWORD = "sip3";
+
 function getImageUrl(artist) {
   return "images/" + artist.name.replace(/[^a-zA-Z0-9]/g, "_") + ".jpg";
+}
+
+function getPollinationsUrl(artist) {
+  var prompt = encodeURIComponent(BASE_PROMPT + ". In the distinctive style of " + artist.name + ": " + artist.styleDesc);
+  return "https://image.pollinations.ai/prompt/" + prompt + IMAGE_PARAMS;
 }
 
 function getPrompt(artist) {
@@ -428,40 +481,190 @@ let activeGenre = "all";
 let searchQuery = "";
 let compareMode = false;
 let compareSelected = [];
+let pendingReloadArtist = null;
+let pendingReloadImg = null;
+
+var nameCN = {"Leonardo da Vinci": "列奥纳多·达·芬奇",
+  "Michelangelo": "米开朗基罗",
+  "Raphael": "拉斐尔",
+  "Sandro Botticelli": "桑德罗·波提切利",
+  "Giotto": "乔托",
+  "Masaccio": "马萨乔",
+  "Titian": "提香",
+  "Tintoretto": "丁托列托",
+  "Jan van Eyck": "扬·凡·艾克",
+  "Hieronymus Bosch": "耶罗尼米斯·博斯",
+  "Piero della Francesca": "皮耶罗·德拉·弗朗切斯卡",
+  "Andrea Mantegna": "安德烈亚·曼特尼亚",
+  "Caravaggio": "卡拉瓦乔",
+  "Rembrandt": "伦勃朗",
+  "Peter Paul Rubens": "彼得·保罗·鲁本斯",
+  "Johannes Vermeer": "约翰内斯·维米尔",
+  "Gian Lorenzo Bernini": "吉安·洛伦佐·贝尼尼",
+  "Diego Velázquez": "迭戈·委拉斯开兹",
+  "Nicolas Poussin": "尼古拉·普桑",
+  "Claude Lorrain": "克洛德·洛兰",
+  "Jacques-Louis David": "雅克-路易·大卫",
+  "Jean-Auguste-Dominique Ingres": "让-奥古斯特·多米尼克·安格尔",
+  "Eugène Delacroix": "欧仁·德拉克罗瓦",
+  "J.M.W. Turner": "J.M.W. 透纳",
+  "Francisco Goya": "弗朗西斯科·戈雅",
+  "Caspar David Friedrich": "卡斯帕·大卫·弗里德里希",
+  "Théodore Géricault": "泰奥多尔·籍里柯",
+  "François Boucher": "弗朗索瓦·布歇",
+  "Jean-Honoré Fragonard": "让-奥诺雷·弗拉戈纳尔",
+  "John Constable": "约翰·康斯特布尔",
+  "Claude Monet": "克劳德·莫奈",
+  "Pierre-Auguste Renoir": "皮埃尔-奥古斯特·雷诺阿",
+  "Edgar Degas": "埃德加·德加",
+  "Alfred Sisley": "阿尔弗雷德·西斯莱",
+  "Camille Pissarro": "卡米耶·毕沙罗",
+  "Berthe Morisot": "贝尔特·莫里索",
+  "Frédéric Bazille": "弗雷德里克·巴齐耶",
+  "Gustave Caillebotte": "古斯塔夫·卡耶博特",
+  "Édouard Manet": "爱德华·马奈",
+  "Mary Cassatt": "玛丽·卡萨特",
+  "Childe Hassam": "柴尔德·哈萨姆",
+  "William Merritt Chase": "威廉·梅里特·蔡斯",
+  "Vincent van Gogh": "文森特·梵高",
+  "Paul Cézanne": "保罗·塞尚",
+  "Paul Gauguin": "保罗·高更",
+  "Henri de Toulouse-Lautrec": "亨利·德·图卢兹-劳特累克",
+  "Odilon Redon": "奥迪隆·雷东",
+  "Pierre Bonnard": "皮埃尔·博纳尔",
+  "Édouard Vuillard": "爱德华·维亚尔",
+  "Paul Sérusier": "保罗·塞律西埃",
+  "Maurice Denis": "莫里斯·丹尼斯",
+  "Georges Seurat": "乔治·修拉",
+  "Edvard Munch": "爱德华·蒙克",
+  "Ernst Ludwig Kirchner": "恩斯特·路德维希·基希纳",
+  "Henri Matisse": "亨利·马蒂斯",
+  "André Derain": "安德烈·德朗",
+  "Maurice de Vlaminck": "莫里斯·德·弗拉曼克",
+  "Albert Marquet": "阿尔贝·马尔凯",
+  "Georges Rouault": "乔治·鲁奥",
+  "Emil Nolde": "埃米尔·诺尔德",
+  "Max Pechstein": "马克斯·佩希施泰因",
+  "Karl Schmidt-Rottluff": "卡尔·施密特-罗特卢夫",
+  "Pablo Picasso": "巴勃罗·毕加索",
+  "Georges Braque": "乔治·布拉克",
+  "Fernand Léger": "费尔南·莱热",
+  "Umberto Boccioni": "翁贝托·博乔尼",
+  "Giacomo Balla": "贾科莫·巴拉",
+  "Gino Severini": "吉诺·塞韦里尼",
+  "André Lhote": "安德烈·洛特",
+  "Juan Gris": "胡安·格里斯",
+  "Jean Metzinger": "让·梅青格尔",
+  "Amédée Ozenfant": "阿梅代·奥占方",
+  "Salvador Dalí": "萨尔瓦多·达利",
+  "René Magritte": "勒内·马格利特",
+  "Max Ernst": "马克斯·恩斯特",
+  "Joan Miró": "胡安·米罗",
+  "Yves Tanguy": "伊夫·唐吉",
+  "Paul Delvaux": "保罗·德尔沃",
+  "André Masson": "安德烈·马松",
+  "Man Ray": "曼·雷",
+  "Óscar Domínguez": "奥斯卡·多明格斯",
+  "Remedios Varo": "雷梅迪奥斯·瓦罗",
+  "Jackson Pollock": "杰克逊·波洛克",
+  "Willem de Kooning": "威廉·德·库宁",
+  "Mark Rothko": "马克·罗斯科",
+  "Barnett Newman": "巴尼特·纽曼",
+  "Franz Kline": "弗朗兹·克兰",
+  "Robert Motherwell": "罗伯特·马瑟韦尔",
+  "Adolph Gottlieb": "阿道夫·戈特利布",
+  "Philip Guston": "菲利普·加斯顿",
+  "Bradley Walker Tomlin": "布拉德利·沃克·汤姆林",
+  "Clyfford Still": "克利福德·斯蒂尔",
+  "Andy Warhol": "安迪·沃霍尔",
+  "Roy Lichtenstein": "罗伊·利希滕斯坦",
+  "Jean-Michel Basquiat": "让-米歇尔·巴斯奎特",
+  "Yayoi Kusama": "草间弥生",
+  "Jeff Koons": "杰夫·昆斯",
+  "Damien Hirst": "达明·赫斯特",
+  "Takashi Murakami": "村上隆",
+  "Banksy": "班克斯",
+  "Keith Haring": "凯斯·哈林",
+  "Barbara Kruger": "芭芭拉·克鲁格",
+  "Katsushika Hokusai": "葛饰北斋",
+  "Utagawa Hiroshige": "歌川广重",
+  "Kitagawa Utamaro": "喜多川歌麿",
+  "Tōshūsai Sharaku": "东洲斋写乐",
+  "Torii Kiyonaga": "鸟居清长",
+  "Suzuki Harunobu": "铃木春信",
+  "Utagawa Kuniyoshi": "歌川国芳",
+  "Tsukioka Yoshitoshi": "月冈芳年",
+  "Zhang Daqian": "张大千",
+  "Qi Baishi": "齐白石",
+  "Wu Guanzhong": "吴冠中",
+  "Fan Kuan": "范宽",
+  "Huang Gongwang": "黄公望",
+  "Dong Yuan": "董源",
+  "Ni Zan": "倪瓒",
+  "Wang Meng": "王蒙",
+  "Beeple": "Beeple (迈克·温克尔曼)",
+  "Refik Anadol": "雷菲克·阿纳多尔",
+  "Mario Klingemann": "马里奥·克林格曼",
+  "Ian Cheng": "伊恩·程",
+  "Casey Reas": "凯西·瑞斯",
+  "Joshua Davis": "乔舒亚·戴维斯",
+  "Zach Lieberman": "扎克·利伯曼",
+  "Golan Levin": "戈兰·莱文",
+  "teamLab": "teamLab",
+  "Memo Akten": "梅莫·阿克滕",
+  "Sougwen Chung": "钟愫君",
+  "Rafael Lozano-Hemmer": "拉斐尔·洛萨诺-赫默",
+  "Alphonse Mucha": "阿尔丰斯·穆夏",
+  "Gustav Klimt": "古斯塔夫·克里姆特",
+  "Aubrey Beardsley": "奥布里·比尔兹利",
+  "Koloman Moser": "科洛曼·莫泽",
+  "Hector Guimard": "埃克托尔·吉马德",
+  "Louis Comfort Tiffany": "路易斯·康福特·蒂芙尼",
+  "Victor Horta": "维克多·奥塔",
+  "Antoni Gaudí": "安东尼·高迪",
+  "William Morris": "威廉·莫里斯",
+  "Charles Rennie Mackintosh": "查尔斯·雷尼·麦金托什",
+  "Donald Judd": "唐纳德·贾德",
+  "Dan Flavin": "丹·弗莱文",
+  "Carl Andre": "卡尔·安德烈",
+  "Agnes Martin": "艾格尼丝·马丁",
+  "Frank Stella": "弗兰克·斯特拉",
+  "Ellsworth Kelly": "埃尔斯沃斯·凯利",
+  "Sol LeWitt": "索尔·勒维特",
+  "Richard Serra": "理查德·塞拉",
+  "Robert Ryman": "罗伯特·雷曼",
+  "Brice Marden": "布赖斯·马登"};
+
+function getNameCN(name) {
+  return nameCN[name] || name;
+}
 
 function filterArtists() {
-  return artists.filter(a => {
-    const matchGenre = activeGenre === "all" || a.genre === activeGenre;
-    const q = searchQuery.toLowerCase();
-    const matchSearch = !q || a.name.toLowerCase().includes(q) || a.genre.toLowerCase().includes(q) || a.genreCN.includes(q);
+  return artists.filter(function(a) {
+    var matchGenre = activeGenre === "all" || a.genre === activeGenre;
+    var q = searchQuery.toLowerCase();
+    var cn = getNameCN(a.name);
+    var matchSearch = !q || a.name.toLowerCase().includes(q) || a.genre.toLowerCase().includes(q) || a.genreCN.includes(q) || cn.includes(q);
     return matchGenre && matchSearch;
   });
 }
 
 function renderGallery() {
-  const filtered = filterArtists();
-  document.getElementById("resultsMeta").textContent = filtered.length + " artworks" + (searchQuery ? ' matching "' + searchQuery + '"' : "");
-  const g = document.getElementById("gallery");
+  var filtered = filterArtists();
+  document.getElementById("resultsMeta").textContent = "共 " + filtered.length + " 件作品" + (searchQuery ? ' · 搜索 "' + searchQuery + '"' : "");
+  var g = document.getElementById("gallery");
   g.innerHTML = "";
-  filtered.forEach((a, i) => {
-    const card = document.createElement("div");
+  filtered.forEach(function(a, i) {
+    var card = document.createElement("div");
     card.className = "card";
-    card.style.animationDelay = (i * 0.03) + "s";
-    const isSelected = compareSelected.some(s => s.name === a.name);
-    const compareBtn = compareMode ? `<button class="card-compare-btn ${isSelected ? "selected" : ""}" data-name="${a.name}">${isSelected ? "&#10003;" : "+"}</button>` : "";
-    card.innerHTML = `
-      ${compareBtn}
-      <div class="card-image-wrapper">
-        <div class="card-loading" id="loading-${i}"><div class="card-spinner"></div></div>
-        <img src="${getImageUrl(a)}" alt="${a.name}" onload="document.getElementById('loading-${i}').classList.add('hidden')" onerror="document.getElementById('loading-${i}').innerHTML='<span style=color:#999;font-size:0.75rem>Failed</span>'">
-      </div>
-      <div class="card-info">
-        <div class="card-name">${a.name}</div>
-        <div class="card-genre">${a.genre}</div>
-      </div>
-    `;
+    var isSelected = compareSelected.some(function(s) { return s.name === a.name; });
+    var compareBtn = compareMode ? '<button class="card-compare-btn ' + (isSelected ? "selected" : "") + '" data-name="' + a.name + '">' + (isSelected ? "&#10003;" : "+") + '</button>' : "";
+    card.innerHTML = compareBtn +
+      '<div class="card-image-wrapper"><div class="card-loading" id="loading-' + i + '"><div class="card-spinner"></div></div>' +
+      '<img src="' + getImageUrl(a) + '" alt="' + a.name + '" loading="lazy" onload="document.getElementById('loading-' + i + '').classList.add('hidden')" onerror="document.getElementById('loading-' + i + '').innerHTML='<span style=color:#999;font-size:0.7rem>加载失败</span>'"></div>' +
+      '<div class="card-info"><div class="card-name-cn">' + getNameCN(a.name) + '</div><div class="card-name-en">' + a.name + '</div><div class="card-genre">' + a.genreCN + ' · ' + a.genre + '</div></div>';
     if (compareMode) {
-      card.addEventListener("click", (e) => {
+      card.addEventListener("click", function(e) {
         if (e.target.closest(".card-compare-btn")) {
           e.stopPropagation();
           toggleCompare(a);
@@ -470,14 +673,14 @@ function renderGallery() {
         }
       });
     } else {
-      card.addEventListener("click", () => openLightbox(a));
+      card.addEventListener("click", function() { openLightbox(a); });
     }
     g.appendChild(card);
   });
 }
 
 function toggleCompare(artist) {
-  const idx = compareSelected.findIndex(s => s.name === artist.name);
+  var idx = compareSelected.findIndex(function(s) { return s.name === artist.name; });
   if (idx >= 0) {
     compareSelected.splice(idx, 1);
   } else {
@@ -493,22 +696,24 @@ function toggleCompare(artist) {
 }
 
 function updateCompareBar() {
-  const bar = document.getElementById("compareBar");
-  const slots = document.getElementById("compareSlots");
-  const btn = document.getElementById("compareGoBtn");
+  var bar = document.getElementById("compareBar");
+  var slots = document.getElementById("compareSlots");
+  var btn = document.getElementById("compareGoBtn");
   if (compareSelected.length > 0) {
     bar.classList.add("active");
-    slots.innerHTML = compareSelected.map((s, i) => `<div class="compare-slot">${s.name} <span class="remove" data-index="${i}">&times;</span></div>`).join("");
+    slots.innerHTML = compareSelected.map(function(s, i) {
+      return '<div class="compare-slot">' + getNameCN(s.name) + ' <span class="remove" data-index="' + i + '">&times;</span></div>';
+    }).join("");
     btn.disabled = compareSelected.length < 2;
   } else {
     bar.classList.remove("active");
     slots.innerHTML = "";
     btn.disabled = true;
   }
-  document.querySelectorAll(".compare-slot .remove").forEach(el => {
-    el.addEventListener("click", (e) => {
+  document.querySelectorAll(".compare-slot .remove").forEach(function(el) {
+    el.addEventListener("click", function(e) {
       e.stopPropagation();
-      const idx = parseInt(el.dataset.index);
+      var idx = parseInt(el.dataset.index);
       compareSelected.splice(idx, 1);
       updateCompareBar();
       renderGallery();
@@ -516,73 +721,107 @@ function updateCompareBar() {
   });
 }
 
-document.getElementById("compareGoBtn").addEventListener("click", () => {
+document.getElementById("compareGoBtn").addEventListener("click", function() {
   if (compareSelected.length === 2) {
     openCompareView(compareSelected[0], compareSelected[1]);
   }
 });
 
-document.getElementById("compareCancelBtn").addEventListener("click", () => {
+document.getElementById("compareCancelBtn").addEventListener("click", function() {
   compareSelected = [];
   compareMode = false;
   document.getElementById("compareBar").classList.remove("active");
   document.getElementById("compareHint").style.display = "none";
-  document.getElementById("compareToggleBtn").classList.remove("active");
   renderGallery();
 });
 
 function openCompareView(a1, a2) {
-  const view = document.getElementById("compareView");
-  document.getElementById("compareViewTitle").textContent = "Compare: " + a1.name + " vs " + a2.name;
-  document.getElementById("compareColumns").innerHTML = `
-    <div class="compare-column">
-      <img src="${getImageUrl(a1)}" alt="${a1.name}">
-      <div class="compare-column-name">${a1.name}</div>
-      <div class="compare-column-genre">${a1.genre}</div>
-    </div>
-    <div class="compare-column">
-      <img src="${getImageUrl(a2)}" alt="${a2.name}">
-      <div class="compare-column-name">${a2.name}</div>
-      <div class="compare-column-genre">${a2.genre}</div>
-    </div>
-  `;
+  var view = document.getElementById("compareView");
+  document.getElementById("compareViewTitle").textContent = getNameCN(a1.name) + " 与 " + getNameCN(a2.name);
+  document.getElementById("compareColumns").innerHTML =
+    '<div class="compare-column"><img src="' + getImageUrl(a1) + '" alt="' + a1.name + '"><div class="compare-column-name-cn">' + getNameCN(a1.name) + '</div><div class="compare-column-name-en">' + a1.name + '</div><div class="compare-column-genre">' + a1.genreCN + ' · ' + a1.genre + '</div></div>' +
+    '<div class="compare-column"><img src="' + getImageUrl(a2) + '" alt="' + a2.name + '"><div class="compare-column-name-cn">' + getNameCN(a2.name) + '</div><div class="compare-column-name-en">' + a2.name + '</div><div class="compare-column-genre">' + a2.genreCN + ' · ' + a2.genre + '</div></div>';
   view.classList.add("active");
   document.body.style.overflow = "hidden";
 }
 
-document.getElementById("compareViewClose").addEventListener("click", () => {
+document.getElementById("compareViewClose").addEventListener("click", function() {
   document.getElementById("compareView").classList.remove("active");
   document.body.style.overflow = "";
 });
 
 function openLightbox(artist) {
-  const lb = document.getElementById("lightbox");
-  const inner = document.getElementById("lightboxInner");
-  const prompt = getPrompt(artist);
-  inner.innerHTML = `
-    <img class="lightbox-image" src="${getImageUrl(artist)}" alt="${artist.name}">
-    <div class="lightbox-meta">
-      <div class="lightbox-title">${artist.name}</div>
-      <div class="lightbox-genre">${artist.genre} · ${artist.genreCN}</div>
-      <div class="lightbox-actions">
-        <button class="lightbox-btn lightbox-btn-primary" onclick="downloadImage('${getImageUrl(artist)}', '${artist.name.replace(/'/g, "\'")}')">&#11015; Download</button>
-        <button class="lightbox-btn" onclick="navigator.clipboard.writeText('${prompt.replace(/'/g, "\'")}')">&#128203; Copy prompt</button>
-        ${compareMode && compareSelected.length < 2 ? `<button class="lightbox-btn" onclick="toggleCompareFromLightbox('${artist.name.replace(/'/g, "\'")}')">&#8646; Add to compare</button>` : ""}
-      </div>
-      <div class="lightbox-prompt">${prompt}</div>
-    </div>
-  `;
+  var lb = document.getElementById("lightbox");
+  var inner = document.getElementById("lightboxInner");
+  var prompt = getPrompt(artist);
+  var safeName = artist.name.replace(/'/g, "\'");
+  var safePrompt = prompt.replace(/'/g, "\'");
+  inner.innerHTML =
+    '<img class="lightbox-image" src="' + getImageUrl(artist) + '" alt="' + artist.name + '" id="lightboxImg">' +
+    '<div class="lightbox-meta"><div class="lightbox-title-cn">' + getNameCN(artist.name) + '</div><div class="lightbox-title-en">' + artist.name + '</div><div class="lightbox-genre">' + artist.genreCN + ' · ' + artist.genre + '</div>' +
+    '<div class="lightbox-actions">' +
+    '<button class="lightbox-btn lightbox-btn-primary" onclick="downloadImage('' + getImageUrl(artist) + '', '' + safeName + '')">&#x2B07; 下载</button>' +
+    '<button class="lightbox-btn" onclick="navigator.clipboard.writeText('' + safePrompt + '')">&#x1F4CB; 复制提示词</button>' +
+    '<button class="lightbox-reload-btn" onclick="showReloadPin('' + safeName + '')">&#x27F2; 重新生成</button>' +
+    (compareMode && compareSelected.length < 2 ? '<button class="lightbox-btn" onclick="toggleCompareFromLightbox('' + safeName + '')">&#x21C4; 加入对比</button>' : "") +
+    '</div><div class="lightbox-prompt">' + prompt + '</div></div>';
   lb.classList.add("active");
   document.body.style.overflow = "hidden";
 }
 
+function showReloadPin(artistName) {
+  pendingReloadArtist = artistName;
+  pendingReloadImg = document.getElementById('lightboxImg');
+  document.getElementById('pinInput').value = '';
+  document.getElementById('pinError').style.display = 'none';
+  document.getElementById('pinModal').classList.add('active');
+  document.getElementById('pinInput').focus();
+}
+
+function hidePinModal() {
+  document.getElementById('pinModal').classList.remove('active');
+  pendingReloadArtist = null;
+  pendingReloadImg = null;
+}
+
+function confirmReloadPin() {
+  var input = document.getElementById('pinInput').value.trim();
+  if (input === RELOAD_PASSWORD) {
+    hidePinModal();
+    if (pendingReloadArtist && pendingReloadImg) {
+      var artist = artists.find(function(a) { return a.name === pendingReloadArtist; });
+      if (artist) {
+        var newUrl = getPollinationsUrl(artist) + "&t=" + Date.now();
+        var img = pendingReloadImg;
+        img.src = newUrl;
+        img.onload = function() { img.classList.remove('reloading'); };
+        img.onerror = function() { img.classList.remove('reloading'); alert('重新生成失败，请稍后重试'); };
+      }
+    }
+  } else {
+    document.getElementById('pinError').style.display = 'block';
+    document.getElementById('pinInput').value = '';
+    document.getElementById('pinInput').focus();
+  }
+}
+
+document.getElementById('pinCancel').addEventListener('click', hidePinModal);
+document.getElementById('pinConfirm').addEventListener('click', confirmReloadPin);
+document.getElementById('pinInput').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') confirmReloadPin();
+  if (e.key === 'Escape') hidePinModal();
+});
+document.getElementById('pinModal').addEventListener('click', function(e) {
+  if (e.target === document.getElementById('pinModal')) hidePinModal();
+});
+
 function toggleCompareFromLightbox(name) {
-  const artist = artists.find(a => a.name === name);
+  var artist = artists.find(function(a) { return a.name === name; });
   if (artist) toggleCompare(artist);
 }
 
 function downloadImage(url, name) {
-  const a = document.createElement("a");
+  var a = document.createElement("a");
   a.href = url;
   a.download = name.replace(/[^a-z0-9]/gi, "_") + ".jpg";
   document.body.appendChild(a);
@@ -590,30 +829,47 @@ function downloadImage(url, name) {
   document.body.removeChild(a);
 }
 
-document.getElementById("lightboxClose").addEventListener("click", () => {
+document.getElementById("lightboxClose").addEventListener("click", function() {
   document.getElementById("lightbox").classList.remove("active");
   document.body.style.overflow = "";
 });
 
-document.getElementById("lightbox").addEventListener("click", (e) => {
+document.getElementById("lightbox").addEventListener("click", function(e) {
   if (e.target === document.getElementById("lightbox")) {
     document.getElementById("lightbox").classList.remove("active");
     document.body.style.overflow = "";
   }
 });
 
-document.getElementById("searchInput").addEventListener("input", (e) => {
+document.getElementById("searchInput").addEventListener("input", function(e) {
   searchQuery = e.target.value;
   renderGallery();
 });
 
-genres.forEach(g => {
-  const btn = document.createElement("button");
+var catScroll = document.getElementById("categoryScroll");
+document.getElementById("catArrowLeft").addEventListener("click", function() {
+  catScroll.scrollBy({ left: -200, behavior: 'smooth' });
+});
+document.getElementById("catArrowRight").addEventListener("click", function() {
+  catScroll.scrollBy({ left: 200, behavior: 'smooth' });
+});
+
+function updateArrowVisibility() {
+  var left = document.getElementById("catArrowLeft");
+  var right = document.getElementById("catArrowRight");
+  left.disabled = catScroll.scrollLeft <= 0;
+  right.disabled = catScroll.scrollLeft >= catScroll.scrollWidth - catScroll.clientWidth - 1;
+}
+catScroll.addEventListener("scroll", updateArrowVisibility);
+window.addEventListener("resize", updateArrowVisibility);
+
+genres.forEach(function(g) {
+  var btn = document.createElement("button");
   btn.className = "category-pill" + (g.id === "all" ? " active" : "");
   btn.textContent = g.cn;
   btn.dataset.genre = g.id;
-  btn.addEventListener("click", () => {
-    document.querySelectorAll(".category-pill").forEach(b => b.classList.remove("active"));
+  btn.addEventListener("click", function() {
+    document.querySelectorAll(".category-pill").forEach(function(b) { b.classList.remove("active"); });
     btn.classList.add("active");
     activeGenre = g.id;
     renderGallery();
@@ -621,12 +877,12 @@ genres.forEach(g => {
   document.getElementById("categoryScroll").appendChild(btn);
 });
 
-document.getElementById("randomBtn").addEventListener("click", () => {
-  const random = artists[Math.floor(Math.random() * artists.length)];
+document.getElementById("randomBtn").addEventListener("click", function() {
+  var random = artists[Math.floor(Math.random() * artists.length)];
   openLightbox(random);
 });
 
-document.getElementById("compareToggleBtn").addEventListener("click", () => {
+document.getElementById("compareToggleBtn").addEventListener("click", function() {
   compareMode = !compareMode;
   compareSelected = [];
   if (compareMode) {
@@ -638,19 +894,31 @@ document.getElementById("compareToggleBtn").addEventListener("click", () => {
   renderGallery();
 });
 
-document.addEventListener("keydown", (e) => {
+document.getElementById("scrollTop").addEventListener("click", function() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+window.addEventListener("scroll", function() {
+  var scrollTop = document.getElementById("scrollTop");
+  if (window.scrollY > 400) { scrollTop.classList.add("visible"); }
+  else { scrollTop.classList.remove("visible"); }
+});
+
+document.addEventListener("keydown", function(e) {
   if (e.key === "Escape") {
     document.getElementById("lightbox").classList.remove("active");
     document.getElementById("compareView").classList.remove("active");
+    document.getElementById("pinModal").classList.remove("active");
     document.body.style.overflow = "";
   }
-  if (e.key === "/" && document.activeElement !== document.getElementById("searchInput")) {
+  if (e.key === "/" && document.activeElement !== document.getElementById("searchInput") && !document.getElementById('pinModal').classList.contains('active')) {
     e.preventDefault();
     document.getElementById("searchInput").focus();
   }
 });
 
 renderGallery();
+updateArrowVisibility();
 </script>
 </body>
 </html>
