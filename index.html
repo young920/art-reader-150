@@ -45,7 +45,7 @@ body {
 .logo-badge { font-family: var(--font); font-size: 0.78rem; font-weight: 400; color: var(--airbnb-gray); letter-spacing: 0.02em; }
 
 .search-bar-sticky {
-  position: sticky; top: 57px; background: #fff; z-index: 95;
+  background: #fff; z-index: 95;
   padding: 12px 0; border-bottom: 1px solid #f0f0f0;
 }
 .search-bar-wrapper {
@@ -69,7 +69,7 @@ body {
 .btn-icon:hover { border-color: var(--airbnb-dark); box-shadow: var(--airbnb-shadow); }
 
 .category-bar {
-  position: sticky; top: 111px; background: #fff; z-index: 90;
+  background: #fff; z-index: 90;
   border-bottom: 1px solid #ebebeb; padding: 0;
 }
 .category-inner {
@@ -155,7 +155,7 @@ body {
 .pin-confirm:disabled { opacity: 0.3; cursor: not-allowed; }
 .pin-error { font-size: 0.72rem; color: var(--airbnb-red); display: none; text-align: center; }
 
-.scroll-top { position: fixed; bottom: 20px; right: 20px; width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--airbnb-border); background: #fff; box-shadow: var(--airbnb-shadow); color: var(--airbnb-dark); font-size: 1rem; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); z-index: 999; opacity: 0; pointer-events: none; }
+.scroll-top { position: fixed; bottom: 24px; right: 24px; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--airbnb-border); background: #fff; box-shadow: var(--airbnb-shadow); color: var(--airbnb-dark); font-size: 1rem; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); z-index: 999; opacity: 0; pointer-events: none; }
 .scroll-top.visible { opacity: 1; pointer-events: auto; }
 .scroll-top:hover { border-color: var(--airbnb-dark); box-shadow: var(--airbnb-shadow-hover); }
 
@@ -196,6 +196,7 @@ body {
 }
 
 [data-tooltip] { position: relative; z-index: 200; }
+.scroll-top[data-tooltip] { position: fixed !important; z-index: 999 !important; }
 [data-tooltip]::after {
   content: attr(data-tooltip); position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%);
   padding: 5px 10px; background: var(--airbnb-dark); color: #fff; font-size: 0.7rem; border-radius: 6px;
