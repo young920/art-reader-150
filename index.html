@@ -45,8 +45,8 @@ body {
 .logo-badge { font-family: var(--font); font-size: 0.78rem; font-weight: 400; color: var(--airbnb-gray); letter-spacing: 0.02em; }
 
 .search-bar-sticky {
-  position: sticky; top: 60px; background: #fff; z-index: 95;
-  padding: 14px 0 12px; border-bottom: 1px solid #f0f0f0;
+  position: sticky; top: 57px; background: #fff; z-index: 95;
+  padding: 12px 0; border-bottom: 1px solid #f0f0f0;
 }
 .search-bar-wrapper {
   display: flex; justify-content: center; gap: 10px; align-items: center;
@@ -69,7 +69,7 @@ body {
 .btn-icon:hover { border-color: var(--airbnb-dark); box-shadow: var(--airbnb-shadow); }
 
 .category-bar {
-  position: sticky; top: 118px; background: #fff; z-index: 90;
+  position: sticky; top: 111px; background: #fff; z-index: 90;
   border-bottom: 1px solid #ebebeb; padding: 0;
 }
 .category-inner {
@@ -155,7 +155,7 @@ body {
 .pin-confirm:disabled { opacity: 0.3; cursor: not-allowed; }
 .pin-error { font-size: 0.72rem; color: var(--airbnb-red); display: none; text-align: center; }
 
-.scroll-top { position: fixed; bottom: 20px; right: 20px; width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--airbnb-border); background: #fff; box-shadow: var(--airbnb-shadow); color: var(--airbnb-dark); font-size: 1rem; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); z-index: 80; opacity: 0; pointer-events: none; }
+.scroll-top { position: fixed; bottom: 20px; right: 20px; width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--airbnb-border); background: #fff; box-shadow: var(--airbnb-shadow); color: var(--airbnb-dark); font-size: 1rem; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); z-index: 999; opacity: 0; pointer-events: none; }
 .scroll-top.visible { opacity: 1; pointer-events: auto; }
 .scroll-top:hover { border-color: var(--airbnb-dark); box-shadow: var(--airbnb-shadow-hover); }
 
@@ -195,7 +195,7 @@ body {
   .compare-arrow { width: 20px; height: 20px; font-size: 0.7rem; }
 }
 
-[data-tooltip] { position: relative; }
+[data-tooltip] { position: relative; z-index: 200; }
 [data-tooltip]::after {
   content: attr(data-tooltip); position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%);
   padding: 5px 10px; background: var(--airbnb-dark); color: #fff; font-size: 0.7rem; border-radius: 6px;
@@ -223,7 +223,7 @@ body {
       <input type="text" id="searchInput" placeholder="搜索艺术家、流派..." autocomplete="off">
     </div>
     <button class="btn-icon" id="randomBtn" data-tooltip="随机探索">&#x1F3B2;</button>
-    <button class="btn-icon" id="compareToggleBtn" data-tooltip="对比模式">&#x21C4;</button>
+    <button class="btn-icon" id="compareToggleBtn" data-tooltip="选择两张对比">&#x21C4;</button>
   </div>
 </div>
 
@@ -275,7 +275,7 @@ body {
 <div class="pin-modal" id="pinModal">
   <div class="pin-modal-box">
     <h3>重新生成</h3>
-    <p>输入口令以重新生成此图片。口令仅管理员持有。</p>
+    <p>输入口令以重新生成此图片。新图片会覆盖当前显示，请手动下载保存。</p>
     <input type="text" id="pinInput" class="pin-input" placeholder="****" maxlength="10" autocomplete="off">
     <div class="pin-error" id="pinError">口令错误</div>
     <div class="pin-actions">
@@ -763,7 +763,7 @@ function openLightbox(artist) {
   var imgUrl = getImageUrl(artist);
   var nameCN = getNameCN(artist.name);
   var styleTags = artist.styleDesc.split(", ").slice(0, 6).map(function(t) { return t.trim(); }).filter(function(t) { return t.length > 0; });
-  var tagsHtml = styleTags.length > 0 ? '<div class="lightbox-tags">' + styleTags.map(function(t) { return '<span class="lightbox-tag">' + t + '</span>'; }).join('') + '</div>' : '';
+  var tagsHtml = styleTags.length > 0 ? '<div class="lightbox-tags">' + styleTags.map(function(t) { return '<span class="lightbox-tag" title="' + t + '">' + artist.genreCN + '</span>'; }).join('') + '</div>' : '';
   inner.innerHTML =
     `<img class="lightbox-image" src="${imgUrl}" alt="${artist.name}" id="lightboxImg">` +
     `<div class="lightbox-meta"><div class="lightbox-title-cn">${nameCN}</div><div class="lightbox-title-en">${artist.name}</div><div class="lightbox-genre">${artist.genreCN} · ${artist.genre}</div>${tagsHtml}` +
@@ -801,9 +801,24 @@ function confirmReloadPin() {
       if (artist) {
         var newUrl = getPollinationsUrl(artist) + "&t=" + Date.now();
         var img = pendingReloadImg;
+        img.classList.add('reloading');
+        img.style.opacity = '0.5';
         img.src = newUrl;
-        img.onload = function() { img.classList.remove('reloading'); };
-        img.onerror = function() { img.classList.remove('reloading'); alert('重新生成失败，请稍后重试'); };
+        img.onload = function() { 
+          img.classList.remove('reloading'); 
+          img.style.opacity = '1';
+          // 提示用户保存
+          setTimeout(function() {
+            if (confirm('新图片已生成！是否下载保存到本地？')) {
+              downloadImage(newUrl, artist.name);
+            }
+          }, 300);
+        };
+        img.onerror = function() { 
+          img.classList.remove('reloading'); 
+          img.style.opacity = '1';
+          alert('重新生成失败，请稍后重试'); 
+        };
       }
     }
   } else {
