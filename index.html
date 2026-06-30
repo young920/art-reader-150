@@ -86,8 +86,8 @@ body {
 .category-pill:hover { border-color: var(--airbnb-dark); color: var(--airbnb-dark); }
 .category-pill.active { background: var(--airbnb-dark); color: #fff; border-color: var(--airbnb-dark); }
 
-.compare-bar { display: none; padding: 10px 0; background: var(--airbnb-light); border-bottom: 1px solid #ebebeb; position: sticky; top: 151px; z-index: 85; }
-.compare-bar.active { display: flex; }
+.compare-bar { display: none; padding: 10px 0; background: var(--airbnb-light); border-top: 1px solid #ebebeb; position: fixed; bottom: 0; left: 0; right: 0; z-index: 100; }
+.compare-bar.active { display: flex; padding-bottom: env(safe-area-inset-bottom, 0); }
 .compare-bar-inner { max-width: 1280px; margin: 0 auto; padding: 0 40px; display: flex; align-items: center; gap: 10px; font-size: 0.78rem; width: 100%; }
 .compare-slot { padding: 4px 10px; border-radius: 16px; background: #fff; border: 1px solid var(--airbnb-border); font-size: 0.75rem; font-weight: 500; color: var(--airbnb-dark); display: flex; align-items: center; gap: 6px; white-space: nowrap; }
 .compare-slot .remove { cursor: pointer; color: var(--airbnb-gray); font-size: 0.8rem; line-height: 1; }
@@ -101,6 +101,7 @@ body {
 .results-meta { padding: 16px 0 6px; font-size: 0.78rem; color: var(--airbnb-gray); font-weight: 400; display: flex; justify-content: space-between; align-items: center; }
 
 .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 28px 22px; padding: 12px 0 80px; }
+.compare-bar.active ~ .container .gallery { padding-bottom: 140px; }
 .card { cursor: pointer; transition: var(--transition); position: relative; }
 .card:hover { transform: translateY(-2px); }
 .card-compare-btn { position: absolute; top: 8px; right: 8px; width: 30px; height: 30px; border-radius: 50%; border: none; background: rgba(255,255,255,0.9); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; transition: opacity 0.2s, background 0.2s; z-index: 5; color: var(--airbnb-dark); font-size: 0.8rem; font-weight: 600; }
