@@ -86,9 +86,9 @@ body {
 .category-pill:hover { border-color: var(--airbnb-dark); color: var(--airbnb-dark); }
 .category-pill.active { background: var(--airbnb-dark); color: #fff; border-color: var(--airbnb-dark); }
 
-.compare-bar { display: none; padding: 10px 0; background: var(--airbnb-light); border-top: 1px solid #ebebeb; position: fixed; bottom: 0; left: 0; right: 0; z-index: 100; }
-.compare-bar.active { display: flex; padding-bottom: env(safe-area-inset-bottom, 0); }
-.compare-bar-inner { max-width: 1280px; margin: 0 auto; padding: 0 40px; display: flex; align-items: center; gap: 10px; font-size: 0.78rem; width: 100%; }
+.compare-bar { display: none; position: fixed; bottom: 24px; left: 24px; z-index: 100; background: #fff; border-radius: var(--radius-pill); box-shadow: var(--airbnb-shadow); border: 1px solid var(--airbnb-border); padding: 8px 16px; max-width: calc(100% - 120px); }
+.compare-bar.active { display: flex; }
+.compare-bar-inner { display: flex; align-items: center; gap: 10px; font-size: 0.78rem; padding: 0; max-width: none; margin: 0; }
 .compare-slot { padding: 4px 10px; border-radius: 16px; background: #fff; border: 1px solid var(--airbnb-border); font-size: 0.75rem; font-weight: 500; color: var(--airbnb-dark); display: flex; align-items: center; gap: 6px; white-space: nowrap; }
 .compare-slot .remove { cursor: pointer; color: var(--airbnb-gray); font-size: 0.8rem; line-height: 1; }
 .compare-slot .remove:hover { color: var(--airbnb-red); }
@@ -101,7 +101,6 @@ body {
 .results-meta { padding: 16px 0 6px; font-size: 0.78rem; color: var(--airbnb-gray); font-weight: 400; display: flex; justify-content: space-between; align-items: center; }
 
 .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 28px 22px; padding: 12px 0 80px; }
-.compare-bar.active ~ .container .gallery { padding-bottom: 140px; }
 .card { cursor: pointer; transition: var(--transition); position: relative; }
 .card:hover { transform: translateY(-2px); }
 .card-compare-btn { position: absolute; top: 8px; right: 8px; width: 30px; height: 30px; border-radius: 50%; border: none; background: rgba(255,255,255,0.9); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; transition: opacity 0.2s, background 0.2s; z-index: 5; color: var(--airbnb-dark); font-size: 0.8rem; font-weight: 600; }
@@ -180,7 +179,6 @@ body {
   .site-header-inner { padding: 0 20px; }
   .search-bar-wrapper { padding: 0 20px; }
   .category-inner { padding: 8px 20px; }
-  .compare-bar-inner { padding: 0 20px; }
   .gallery { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 14px 10px; }
   .card-image-wrapper { border-radius: 8px; margin-bottom: 6px; }
   .card-name-cn { font-size: 0.82rem; }
@@ -644,6 +642,105 @@ function getNameCN(name) {
   return nameCN[name] || name;
 }
 
+var styleTermCN = {
+  "Chapel": "教堂", "Sistine": "西斯廷", "abstract": "抽象", "abstract expressionism": "抽象表现主义",
+  "abstraction": "抽象", "acrylic": "丙烯", "aerial": "鸟瞰", "aliasing": "锯齿", "altarpiece": "祭坛画",
+  "ambient": "环境光", "american": "美国", "analogous": "类似色", "anamorphic": "变形", "anamorphosis": "变形画",
+  "anatomical": "解剖", "angular": "棱角分明", "anti-aliased": "抗锯齿", "arched": "拱形", "architectural": "建筑感",
+  "architecture": "建筑", "art": "艺术", "assemblage": "装置", "asymmetrical": "不对称", "atmospheric": "氛围",
+  "atompunk": "原子朋克", "austere": "朴素庄严", "balanced": "平衡", "banding": "色带", "baroque": "巴洛克",
+  "beauty": "美", "bioluminescent": "生物发光", "biopunk": "生物朋克", "black": "黑色", "blazing": "炽烈",
+  "bloom": "泛光", "bokeh": "散景", "bold": "大胆", "botanical": "植物纹样", "brushwork": "笔触",
+  "burning": "燃烧感", "by": "窗边", "calligraphic": "书法性", "camaieu": "单色调", "caustic": "焦散",
+  "ceiling": "天顶", "celestial": "天体", "ceramic": "陶瓷感", "chaotic": "混沌", "charcoal": "炭笔",
+  "chiaroscuro": "明暗法", "chinese": "中式", "chromatic": "色彩", "chromatic aberration": "色散", "classical": "古典",
+  "clockpunk": "钟表朋克", "collage": "拼贴", "color": "色彩", "colorful": "色彩丰富", "complementary": "互补色",
+  "composition": "构图", "conceptual": "观念艺术", "contemplative": "沉思", "contrapposto": "对立平衡", "cool": "冷调",
+  "cross-hatched": "交叉排线", "crystal": "晶体", "crystalline": "结晶", "cubism": "立体派", "cubist": "立体派",
+  "curvilinear": "曲线", "cyberpunk": "赛博朋克", "dada": "达达", "dark": "暗调", "decopunk": "装饰朋克",
+  "decorative": "装饰", "deep": "深邃", "delicate": "精致细腻", "depth of field": "景深", "dieselpunk": "柴油朋克",
+  "diffuse": "漫反射", "digital": "数字", "diptych": "双联画", "distant": "远景", "dithering": "抖动",
+  "diurnal": "日景", "domestic": "家庭", "dramatic": "戏剧性", "drawing": "素描", "duotone": "双色调",
+  "dynamic": "动态", "early": "早期", "earthy": "大地色", "elegance": "优雅", "encaustic": "蜡画",
+  "energy": "能量", "epic": "史诗感", "ethereal": "空灵梦幻", "expressionist": "表现主义", "fabric": "织物感",
+  "faceted": "切面", "fauvism": "野兽派", "figurative": "具象", "fisheye": "鱼眼", "flat": "平面化",
+  "flowing": "流动感", "fluorescent": "荧光", "form": "形态", "forms": "形态", "fractal": "分形",
+  "french": "法式", "fresco": "湿壁画", "frozen": "冰冻感", "futurism": "未来派", "futuristic": "未来感",
+  "gaseous": "气态", "geometric": "几何抽象", "glass": "玻璃", "glitch": "故障艺术", "global illumination": "全局照明",
+  "glossy": "光泽", "glowing": "发光", "golden": "金色", "gothic": "哥特", "gouache": "水粉",
+  "graceful": "优雅", "graffiti": "涂鸦", "grain": "颗粒", "grandeur": "宏伟", "granular": "颗粒感",
+  "graphic": "图形", "graphite": "石墨", "grisaille": "灰色画", "halftone": "半调", "harmonious": "和谐",
+  "haze": "朦胧", "heroic": "英雄", "high contrast": "高对比", "high key": "高调", "high saturation": "高饱和",
+  "highlights": "高光", "holographic": "全息", "human": "人类", "icon": "圣像", "impasto": "厚涂法",
+  "impressionism": "印象派", "ink": "水墨", "ink-wash": "水墨", "installation": "装置艺术", "intaglio": "凹版",
+  "intellectual": "知性", "intensity": "强度", "interactive": "互动", "interior": "室内", "intimate": "亲密感",
+  "iridescent": "虹彩", "isometric": "等距", "kinetic": "动态", "land art": "大地艺术", "landscape": "风景",
+  "layered": "层次丰富", "lens flare": "镜头光晕", "light": "光线", "line": "线条", "linear": "线性",
+  "liquid": "液态", "lithographic": "石版", "low contrast": "低对比", "low key": "低调", "low saturation": "低饱和",
+  "luminous": "光感", "machine": "机械", "macro": "微距", "marble": "大理石", "maritime": "海洋",
+  "matte": "哑光", "meditative": "冥想", "melancholic": "忧郁", "metallic": "金属感", "minimalism": "极简主义",
+  "minimalist": "极简", "misty": "薄雾", "modern": "现代", "molten": "熔融", "monochromatic": "单色",
+  "monochrome": "单色", "monumental": "宏伟巨制", "motion blur": "动态模糊", "muscular": "肌肉线条", "muted": "色调克制",
+  "mysterious": "神秘", "mystical": "神秘", "narrative": "叙事", "naturalistic": "自然主义", "nature": "自然",
+  "neoclassical": "新古典", "neon": "霓虹", "neutral": "中性", "nocturnal": "夜景", "noise": "噪点",
+  "oil": "油画", "op art": "欧普", "opaque": "不透明", "organic": "有机形态", "ornate": "华丽装饰",
+  "painterly": "绘画性", "painting": "绘画", "palette": "调色板", "panoramic": "全景", "patchwork": "拼接",
+  "path-traced": "路径追踪", "pattern": "图案", "performance": "行为艺术", "person": "人物", "perspective": "透视",
+  "phosphorescent": "磷光", "photographic": "摄影", "photorealistic": "照片写实", "pixelated": "像素化", "playful": "活泼",
+  "poetic": "诗意", "polished": "抛光感", "polychrome": "多色", "polyptych": "多联画", "pop art": "波普",
+  "portrait": "肖像", "post-impressionism": "后印象派", "posture": "姿态", "powerful": "有力", "precision": "精确",
+  "predella": "祭坛底座", "presence": "存在", "print": "版画", "prismatic": "棱镜", "psychological": "心理",
+  "quadratura": "天顶画", "quiet": "宁静", "radial": "放射状", "radiant": "光芒四射", "radiosity": "辐射度",
+  "raster": "栅格", "raw": "原始", "ray-traced": "光线追踪", "reading": "阅读", "realism": "写实",
+  "refined": "精致", "relief": "浮雕", "retro": "复古未来", "rococo": "洛可可", "romantic": "浪漫",
+  "rough": "粗犷", "rustic": "质朴", "scale": "尺度", "sculptural": "雕塑", "sepia": "深褐色",
+  "serene": "宁静", "serigraphic": "丝网印", "sfumato": "渐隐法", "shadows": "阴影", "shadowy": "阴影浓重",
+  "shimmering": "闪烁", "silky": "丝滑", "smile": "微笑", "smooth": "平滑", "soft": "柔和",
+  "soft focus": "柔焦", "solarpunk": "太阳朋克", "space": "空间", "specular": "高光反射", "spiritual": "精神",
+  "stately": "庄重", "static": "静态", "steampunk": "蒸汽朋克", "stencil": "模板", "sticker": "贴纸",
+  "stippled": "点描", "stone": "石质", "street art": "街头艺术", "structure": "结构", "stylized": "风格化",
+  "subsurface": "次表面散射", "surrealism": "超现实主义", "surrealist": "超现实", "swirling": "漩涡笔触", "symbolic": "象征",
+  "symmetrical": "对称", "technique": "技法", "telephoto": "长焦", "tempera": "蛋彩", "tenebrism": "明暗对照法",
+  "tense": "张力", "tension": "张力", "tessellated": "镶嵌", "texture": "质感", "textured": "质感丰富",
+  "tile": "瓷砖", "tilt-shift": "移轴", "tondo": "圆形画", "tones": "色调", "translucent": "半透明",
+  "triadic": "三色", "triptych": "三联画", "trompe-l'oeil": "错视画", "urban": "都市", "vector": "矢量",
+  "velvety": "丝绒感", "vibrant": "鲜艳饱和", "vignette": "暗角", "vigorous": "有力", "vintage": "复古",
+  "visible": "可见", "volumetric": "体积", "warm": "暖调", "watercolor": "水彩", "weathered": "风化感",
+  "wheatpaste": "海报粘贴", "white": "白色", "wide-angle": "广角", "wooden": "木质"
+};
+
+function getStyleTagCN(phrase) {
+  if (styleTermCN[phrase.toLowerCase()]) {
+    return styleTermCN[phrase.toLowerCase()];
+  }
+  var stopWords = ['the','a','an','in','of','and','with','to','for','on','at','by','from','into','through','during','before','after','above','below','between','among','within','without','against','about','over','under','again','further','then','once','here','there','when','where','why','how','all','any','both','each','few','more','most','other','some','such','no','nor','not','only','own','same','so','than','too','very','can','will','just','should','now','s','re','ll','d','ve','is','are','was','were','be','been','being','have','has','had','do','does','did','doing','reader','readers','reading','window','windows','scene','scenes'];
+  var words = phrase.toLowerCase().split(/[\s,]+/).filter(function(w) {
+    return w.length > 2 && stopWords.indexOf(w) === -1;
+  });
+  var sortedWords = words.slice().sort(function(a, b) { return b.length - a.length; });
+  for (var i = 0; i < sortedWords.length; i++) {
+    var w = sortedWords[i].replace(/[^a-z0-9-]/g, '');
+    if (!w || w.length < 3) continue;
+    if (styleTermCN[w]) { return styleTermCN[w]; }
+    if (w.endsWith('s') && styleTermCN[w.slice(0, -1)]) { return styleTermCN[w.slice(0, -1)]; }
+    if (w.endsWith('es') && styleTermCN[w.slice(0, -2)]) { return styleTermCN[w.slice(0, -2)]; }
+    if (w.endsWith('ing') && w.length > 5 && styleTermCN[w.slice(0, -3)]) { return styleTermCN[w.slice(0, -3)]; }
+    if (w.endsWith('ed') && w.length > 4 && styleTermCN[w.slice(0, -2)]) { return styleTermCN[w.slice(0, -2)]; }
+    if (w.endsWith('ly') && w.length > 4 && styleTermCN[w.slice(0, -2)]) { return styleTermCN[w.slice(0, -2)]; }
+  }
+  return phrase;
+}
+
+function getStyleTagDisplay(phrase) {
+  var cn = getStyleTagCN(phrase);
+  var words = phrase.split(/[\s,]+/).filter(function(w) { return w.length > 2; });
+  var coreWords = words.slice(0, 2);
+  var coreEn = coreWords.join(' ');
+  if (cn === phrase) { return phrase; }
+  if (cn.toLowerCase() === coreEn.toLowerCase()) { return phrase; }
+  return cn + ' · ' + coreEn;
+}
+
 function filterArtists() {
   return artists.filter(function(a) {
     var matchGenre = activeGenre === "all" || a.genre === activeGenre;
@@ -765,7 +862,7 @@ function openLightbox(artist) {
   var imgUrl = getImageUrl(artist);
   var nameCN = getNameCN(artist.name);
   var styleTags = artist.styleDesc.split(", ").slice(0, 6).map(function(t) { return t.trim(); }).filter(function(t) { return t.length > 0; });
-  var tagsHtml = styleTags.length > 0 ? '<div class="lightbox-tags">' + styleTags.map(function(t) { return '<span class="lightbox-tag" title="' + t + '">' + artist.genreCN + '</span>'; }).join('') + '</div>' : '';
+  var tagsHtml = styleTags.length > 0 ? '<div class="lightbox-tags">' + styleTags.map(function(t) { var display = getStyleTagDisplay(t); return '<span class="lightbox-tag" title="' + t + '">' + display + '</span>'; }).join('') + '</div>' : '';
   inner.innerHTML =
     `<img class="lightbox-image" src="${imgUrl}" alt="${artist.name}" id="lightboxImg">` +
     `<div class="lightbox-meta"><div class="lightbox-title-cn">${nameCN}</div><div class="lightbox-title-en">${artist.name}</div><div class="lightbox-genre">${artist.genreCN} · ${artist.genre}</div>${tagsHtml}` +
