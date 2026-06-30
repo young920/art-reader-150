@@ -45,11 +45,7 @@ body {
 .logo-badge { font-family: var(--font); font-size: 0.78rem; font-weight: 400; color: var(--airbnb-gray); letter-spacing: 0.02em; }
 
 .search-bar-sticky {
-<<<<<<< HEAD
-  position: sticky; top: 57px; background: #fff; z-index: 95;
-=======
   background: #fff; z-index: 95;
->>>>>>> 82580a4f5c18ead82c4b9573c4ad81098b0fed56
   padding: 12px 0; border-bottom: 1px solid #f0f0f0;
 }
 .search-bar-wrapper {
@@ -73,11 +69,7 @@ body {
 .btn-icon:hover { border-color: var(--airbnb-dark); box-shadow: var(--airbnb-shadow); }
 
 .category-bar {
-<<<<<<< HEAD
-  position: sticky; top: 111px; background: #fff; z-index: 90;
-=======
   background: #fff; z-index: 90;
->>>>>>> 82580a4f5c18ead82c4b9573c4ad81098b0fed56
   border-bottom: 1px solid #ebebeb; padding: 0;
 }
 .category-inner {
@@ -90,12 +82,6 @@ body {
   scroll-behavior: smooth; padding: 4px 0;
 }
 .category-scroll::-webkit-scrollbar { display: none; }
-<<<<<<< HEAD
-.category-arrow { width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--airbnb-border); background: #fff; color: var(--airbnb-dark); font-size: 0.8rem; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); flex-shrink: 0; }
-.category-arrow:hover { border-color: var(--airbnb-dark); }
-.category-arrow:disabled { opacity: 0.2; cursor: not-allowed; }
-=======
->>>>>>> 82580a4f5c18ead82c4b9573c4ad81098b0fed56
 .category-pill { flex-shrink: 0; padding: 7px 16px; font-family: var(--font); font-size: 0.78rem; font-weight: 500; border: 1px solid var(--airbnb-border); border-radius: var(--radius-pill); background: #fff; color: var(--airbnb-gray); cursor: pointer; transition: var(--transition); white-space: nowrap; }
 .category-pill:hover { border-color: var(--airbnb-dark); color: var(--airbnb-dark); }
 .category-pill.active { background: var(--airbnb-dark); color: #fff; border-color: var(--airbnb-dark); }
@@ -150,14 +136,10 @@ body {
 .lightbox-btn-primary { background: #fff; color: var(--airbnb-dark); border-color: #fff; }
 .lightbox-btn-primary:hover { background: rgba(255,255,255,0.9); border-color: rgba(255,255,255,0.9); }
 .lightbox-reload-btn { border-color: rgba(255,255,255,0.3); color: #ff9f43; }
-<<<<<<< HEAD
-.lightbox-prompt { font-size: 0.78rem; line-height: 1.6; color: rgba(255,255,255,0.3); max-width: 600px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.08); word-break: break-word; }
-=======
 .lightbox-prompt { font-size: 0.78rem; line-height: 1.6; color: rgba(255,255,255,0.3); max-width: 600px; padding-top: 10px; word-break: break-word; }
 .lightbox-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 12px; }
 .lightbox-tag { padding: 3px 10px; border-radius: 12px; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.55); font-size: 0.68rem; font-weight: 400; border: 1px solid rgba(255,255,255,0.1); white-space: nowrap; }
 
->>>>>>> 82580a4f5c18ead82c4b9573c4ad81098b0fed56
 
 .pin-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 2000; align-items: center; justify-content: center; }
 .pin-modal.active { display: flex; }
@@ -173,11 +155,7 @@ body {
 .pin-confirm:disabled { opacity: 0.3; cursor: not-allowed; }
 .pin-error { font-size: 0.72rem; color: var(--airbnb-red); display: none; text-align: center; }
 
-<<<<<<< HEAD
-.scroll-top { position: fixed; bottom: 20px; right: 20px; width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--airbnb-border); background: #fff; box-shadow: var(--airbnb-shadow); color: var(--airbnb-dark); font-size: 1rem; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); z-index: 80; opacity: 0; pointer-events: none; }
-=======
 .scroll-top { position: fixed; bottom: 24px; right: 24px; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--airbnb-border); background: #fff; box-shadow: var(--airbnb-shadow); color: var(--airbnb-dark); font-size: 1rem; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); z-index: 999; opacity: 0; pointer-events: none; }
->>>>>>> 82580a4f5c18ead82c4b9573c4ad81098b0fed56
 .scroll-top.visible { opacity: 1; pointer-events: auto; }
 .scroll-top:hover { border-color: var(--airbnb-dark); box-shadow: var(--airbnb-shadow-hover); }
 
@@ -217,20 +195,12 @@ body {
   .compare-arrow { width: 20px; height: 20px; font-size: 0.7rem; }
 }
 
-<<<<<<< HEAD
-[data-tooltip] { position: relative; }
-[data-tooltip]::after {
-  content: attr(data-tooltip); position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%);
-  padding: 5px 10px; background: var(--airbnb-dark); color: #fff; font-size: 0.7rem; border-radius: 6px;
-  white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 10;
-=======
 [data-tooltip] { position: relative; z-index: 200; }
 .scroll-top[data-tooltip] { position: fixed !important; z-index: 999 !important; }
 [data-tooltip]::after {
   content: attr(data-tooltip); position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%);
   padding: 5px 10px; background: var(--airbnb-dark); color: #fff; font-size: 0.7rem; border-radius: 6px;
   white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 200;
->>>>>>> 82580a4f5c18ead82c4b9573c4ad81098b0fed56
 }
 [data-tooltip]:hover::after { opacity: 1; }
 </style>
@@ -254,11 +224,7 @@ body {
       <input type="text" id="searchInput" placeholder="搜索艺术家、流派..." autocomplete="off">
     </div>
     <button class="btn-icon" id="randomBtn" data-tooltip="随机探索">&#x1F3B2;</button>
-<<<<<<< HEAD
-    <button class="btn-icon" id="compareToggleBtn" data-tooltip="对比模式">&#x21C4;</button>
-=======
     <button class="btn-icon" id="compareToggleBtn" data-tooltip="选择两张对比">&#x21C4;</button>
->>>>>>> 82580a4f5c18ead82c4b9573c4ad81098b0fed56
   </div>
 </div>
 
@@ -273,17 +239,9 @@ body {
 
 <div class="category-bar">
   <div class="category-inner">
-<<<<<<< HEAD
-    <button class="category-arrow" id="catArrowLeft">&#x2039;</button>
     <div class="category-scroll-wrapper">
       <div class="category-scroll" id="categoryScroll"></div>
     </div>
-    <button class="category-arrow" id="catArrowRight">&#x203A;</button>
-=======
-    <div class="category-scroll-wrapper">
-      <div class="category-scroll" id="categoryScroll"></div>
-    </div>
->>>>>>> 82580a4f5c18ead82c4b9573c4ad81098b0fed56
   </div>
 </div>
 
@@ -318,11 +276,7 @@ body {
 <div class="pin-modal" id="pinModal">
   <div class="pin-modal-box">
     <h3>重新生成</h3>
-<<<<<<< HEAD
-    <p>输入口令以重新生成此图片。口令仅管理员持有。</p>
-=======
     <p>输入口令以重新生成此图片。新图片会覆盖当前显示，请手动下载保存。</p>
->>>>>>> 82580a4f5c18ead82c4b9573c4ad81098b0fed56
     <input type="text" id="pinInput" class="pin-input" placeholder="****" maxlength="10" autocomplete="off">
     <div class="pin-error" id="pinError">口令错误</div>
     <div class="pin-actions">
@@ -506,14 +460,9 @@ const artists = [
   { name: "Brice Marden", genre: "Minimalism & Modernism", genreCN: "极简 & 现代", styleDesc: "Minimalist monochrome panel, later serpentine calligraphy, Chinese influence, cold wax, minimal and lyrical, single color, reductive and expressive, meditative surface, organic line, nature-inspired" }
 ];
 const BASE_PROMPT = "A person reading by a window, quiet contemplative interior";
-<<<<<<< HEAD
-const IMAGE_PARAMS = "?width=1024&height=1024&nologo=true&seed=42";
-const RELOAD_PASSWORD = "sip3";
-=======
 const BASE_PROMPT_CN = "窗边阅读者，宁静沉思的室内场景";
 const IMAGE_PARAMS = "?width=1024&height=1024&nologo=true&seed=42";
 const RELOAD_PASSWORD = "yang";
->>>>>>> 82580a4f5c18ead82c4b9573c4ad81098b0fed56
 
 function getImageUrl(artist) {
   return "images/" + artist.name.replace(/[^a-zA-Z0-9]/g, "_") + ".jpg";
@@ -528,13 +477,10 @@ function getPrompt(artist) {
   return BASE_PROMPT + ". In the distinctive style of " + artist.name + ": " + artist.styleDesc;
 }
 
-<<<<<<< HEAD
-=======
 function getPromptDisplay(artist) {
   return `<span style="color:rgba(255,255,255,0.5)">${BASE_PROMPT_CN}</span><br><span style="color:rgba(255,255,255,0.25);font-size:0.72rem">${BASE_PROMPT}. In the distinctive style of ${artist.name}: ${artist.styleDesc}</span>`;
 }
 
->>>>>>> 82580a4f5c18ead82c4b9573c4ad81098b0fed56
 let activeGenre = "all";
 let searchQuery = "";
 let compareMode = false;
@@ -719,11 +665,7 @@ function renderGallery() {
     var compareBtn = compareMode ? '<button class="card-compare-btn ' + (isSelected ? "selected" : "") + '" data-name="' + a.name + '">' + (isSelected ? "&#10003;" : "+") + '</button>' : "";
     card.innerHTML = compareBtn +
       '<div class="card-image-wrapper"><div class="card-loading" id="loading-' + i + '"><div class="card-spinner"></div></div>' +
-<<<<<<< HEAD
-      '<img src="' + getImageUrl(a) + '" alt="' + a.name + '" loading="lazy" onload="document.getElementById('loading-' + i + '').classList.add('hidden')" onerror="document.getElementById('loading-' + i + '').innerHTML='<span style=color:#999;font-size:0.7rem>加载失败</span>'"></div>' +
-=======
       '<img src="' + getImageUrl(a) + '" alt="' + a.name + '" loading="lazy" onload="document.getElementById(\'loading-' + i + '\').classList.add(\'hidden\')" onerror="document.getElementById(\'loading-' + i + '\').innerHTML=\'<span style=\"color:#999;font-size:0.7rem\">加载失败</span>\'"></div>' +
->>>>>>> 82580a4f5c18ead82c4b9573c4ad81098b0fed56
       '<div class="card-info"><div class="card-name-cn">' + getNameCN(a.name) + '</div><div class="card-name-en">' + a.name + '</div><div class="card-genre">' + a.genreCN + ' · ' + a.genre + '</div></div>';
     if (compareMode) {
       card.addEventListener("click", function(e) {
@@ -815,20 +757,6 @@ document.getElementById("compareViewClose").addEventListener("click", function()
 function openLightbox(artist) {
   var lb = document.getElementById("lightbox");
   var inner = document.getElementById("lightboxInner");
-<<<<<<< HEAD
-  var prompt = getPrompt(artist);
-  var safeName = artist.name.replace(/'/g, "\'");
-  var safePrompt = prompt.replace(/'/g, "\'");
-  inner.innerHTML =
-    '<img class="lightbox-image" src="' + getImageUrl(artist) + '" alt="' + artist.name + '" id="lightboxImg">' +
-    '<div class="lightbox-meta"><div class="lightbox-title-cn">' + getNameCN(artist.name) + '</div><div class="lightbox-title-en">' + artist.name + '</div><div class="lightbox-genre">' + artist.genreCN + ' · ' + artist.genre + '</div>' +
-    '<div class="lightbox-actions">' +
-    '<button class="lightbox-btn lightbox-btn-primary" onclick="downloadImage('' + getImageUrl(artist) + '', '' + safeName + '')">&#x2B07; 下载</button>' +
-    '<button class="lightbox-btn" onclick="navigator.clipboard.writeText('' + safePrompt + '')">&#x1F4CB; 复制提示词</button>' +
-    '<button class="lightbox-reload-btn" onclick="showReloadPin('' + safeName + '')">&#x27F2; 重新生成</button>' +
-    (compareMode && compareSelected.length < 2 ? '<button class="lightbox-btn" onclick="toggleCompareFromLightbox('' + safeName + '')">&#x21C4; 加入对比</button>' : "") +
-    '</div><div class="lightbox-prompt">' + prompt + '</div></div>';
-=======
   var promptText = getPrompt(artist);
   var promptDisplay = getPromptDisplay(artist);
   var safeName = artist.name.replace(/'/g, "\'");
@@ -846,7 +774,6 @@ function openLightbox(artist) {
     `<button class="lightbox-reload-btn" onclick="showReloadPin('${safeName}')">&#x27F2; 重新生成</button>` +
     (compareMode && compareSelected.length < 2 ? `<button class="lightbox-btn" onclick="toggleCompareFromLightbox('${safeName}')">&#x21C4; 加入对比</button>` : "") +
     `</div><div class="lightbox-prompt">${promptDisplay}</div></div>`;
->>>>>>> 82580a4f5c18ead82c4b9573c4ad81098b0fed56
   lb.classList.add("active");
   document.body.style.overflow = "hidden";
 }
@@ -875,11 +802,6 @@ function confirmReloadPin() {
       if (artist) {
         var newUrl = getPollinationsUrl(artist) + "&t=" + Date.now();
         var img = pendingReloadImg;
-<<<<<<< HEAD
-        img.src = newUrl;
-        img.onload = function() { img.classList.remove('reloading'); };
-        img.onerror = function() { img.classList.remove('reloading'); alert('重新生成失败，请稍后重试'); };
-=======
         img.classList.add('reloading');
         img.style.opacity = '0.5';
         img.src = newUrl;
@@ -898,7 +820,6 @@ function confirmReloadPin() {
           img.style.opacity = '1';
           alert('重新生成失败，请稍后重试'); 
         };
->>>>>>> 82580a4f5c18ead82c4b9573c4ad81098b0fed56
       }
     }
   } else {
@@ -950,24 +871,6 @@ document.getElementById("searchInput").addEventListener("input", function(e) {
 });
 
 var catScroll = document.getElementById("categoryScroll");
-<<<<<<< HEAD
-document.getElementById("catArrowLeft").addEventListener("click", function() {
-  catScroll.scrollBy({ left: -200, behavior: 'smooth' });
-});
-document.getElementById("catArrowRight").addEventListener("click", function() {
-  catScroll.scrollBy({ left: 200, behavior: 'smooth' });
-});
-
-function updateArrowVisibility() {
-  var left = document.getElementById("catArrowLeft");
-  var right = document.getElementById("catArrowRight");
-  left.disabled = catScroll.scrollLeft <= 0;
-  right.disabled = catScroll.scrollLeft >= catScroll.scrollWidth - catScroll.clientWidth - 1;
-}
-catScroll.addEventListener("scroll", updateArrowVisibility);
-window.addEventListener("resize", updateArrowVisibility);
-=======
->>>>>>> 82580a4f5c18ead82c4b9573c4ad81098b0fed56
 
 genres.forEach(function(g) {
   var btn = document.createElement("button");
@@ -1024,10 +927,6 @@ document.addEventListener("keydown", function(e) {
 });
 
 renderGallery();
-<<<<<<< HEAD
-updateArrowVisibility();
-=======
->>>>>>> 82580a4f5c18ead82c4b9573c4ad81098b0fed56
 </script>
 </body>
 </html>
